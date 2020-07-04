@@ -1,11 +1,12 @@
+:root {
+  /* --input-padding-x: 1.5rem; */
+  --inpug-padding-x:0px;
+  --input-padding-y: 0.75rem;
+}
 body, h1, h2, h3 ,h4, h5, h6, p, li{
   font-family: 'Roboto', sans-serif;
 }
 
-:root {
-  --input-padding-x: 1.5rem;
-  --input-padding-y: 0.75rem;
-}
   .login,
   .image {
     min-height: 100vh;
@@ -19,6 +20,7 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
   
   .login-heading {
     font-weight: 300;
+    color: #696969;
   }
   
   .btn-login {
@@ -49,7 +51,7 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
     margin-bottom: 0;
     /* Override default `<label>` margin */
     line-height: 1.5;
-    color: #495057;
+    color: #ABACAC;
     cursor: text;
     /* Match the input under the label */
     border: 1px solid transparent;
