@@ -1,0 +1,79 @@
+body, h1, h2, h3 ,h4, h5, h6, p, li{
+    font-family: 'Roboto', sans-serif;
+  }
+
+/* Navbar  */
+    .navbar .container{
+        border-bottom: 1px solid #B9915B;
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+    .navbar-dark .navbar-nav .nav-link{
+        color:white;
+        font-size: 14px;
+        line-height: 38px;
+        padding-right: 1em;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover{
+        color:#B9915B;
+    }
+    .navbar-dark .navbar-nav .nav-link.invest{
+        background-color: #B9915B;
+    }
+    .navbar-dark .navbar-nav .nav-link.invest:hover{
+        background-color:#333646;
+        color:#fff;
+    }
+
+    .fixed-top{
+        position: absolute;
+    }
+
+/*#############   Banner    ######################*/
+    /* banner images */
+    .carousel-item {
+        height: 100vh;
+        min-height: 350px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-image: url('/img/banner.png');  /* fallback colour. Make sure this is just one solid colour. */
+        background-image: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner.png');
+        background-image: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner.png');
+        background-position: bottom;
+    }
+
+    .carousel-item#bn2{
+        background: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner2.png');
+        background: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner2.png');
+        background-position: bottom;
+    }
+
+    /* indicators */
+    .carousel-indicators{
+        left:unset;
+    }
+    .carousel-indicators li{
+        width: 130px;
+        margin-left:0;
+        margin-right:0;
+    }
+
+    .carousel-caption {
+        position: absolute;
+        right: 15%;
+        bottom: 20px;
+        left: 15%;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: left;
+        margin-bottom: 5em;
+    }
+    .carousel-caption p{
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
