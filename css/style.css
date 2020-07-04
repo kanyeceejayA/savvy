@@ -12,22 +12,70 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
         color:white;
         font-size: 14px;
         line-height: 38px;
-        padding-right: 1em;
+        padding-right: 1.5em;
+        padding-left: 1.5em;
     }
     .navbar-dark .navbar-nav .nav-link:hover{
         color:#B9915B;
     }
     .navbar-dark .navbar-nav .nav-link.invest{
         background-color: #B9915B;
+        text-transform: uppercase;
     }
     .navbar-dark .navbar-nav .nav-link.invest:hover{
         background-color:#333646;
         color:#fff;
     }
 
-    .fixed-top{
-        position: absolute;
-    }
+    /* Top Menu  */
+
+        .top-menu.navbar .container{
+            border-bottom: 0px;
+            padding-bottom: 1em;
+            padding-top: 0px;
+            margin-top:0px;
+        }
+
+        .top-menu{
+            height: 60px;
+            position: absolute;
+            padding-top:0px;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .top-menu.navbar-dark .navbar-nav .nav-link{
+            color:white;
+            font-size: 14px;
+            line-height: 38px;
+            padding-right: 1em;
+            padding-left: 1em;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            background-color: #424657;
+        }
+    
+        .top-menu.navbar-dark .navbar-nav .nav-link:hover{
+            color:#B9915B;
+        }
+        .top-menu.navbar-dark .navbar-nav .nav-link.invest{
+            background-color: #333646;
+            color:#fff;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .top-menu.navbar-dark .navbar-nav .nav-link.invest:hover{
+            background-color: #B9915B;
+            color:#fff;
+        }
+
+        .fixed-top{
+            position: absolute;
+        }
+        nav.navbar:not(.top-menu){
+            margin-top:38px;
+        }
 
 /*#############   Banner    ######################*/
     /* banner images */
@@ -50,30 +98,90 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
         background-position: bottom;
     }
 
-    /* indicators */
-    .carousel-indicators{
-        left:unset;
+    /* indicators*/
+        .carousel-indicators{
+            left:unset;
+            margin-bottom:50px;
+        }
+        .carousel-indicators li{
+            width: 130px;
+            margin-left:0;
+            margin-right:0;
+        }
+
+    /* banner caption  */
+        .banner-caption {
+            display: block;
+            position: relative;
+            z-index: 10;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: #fff;
+            text-align: left;
+            margin-top: 45vh;
+        }
+        .banner-caption p{
+            font-size: 46px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+    /* End of baner caption  */
+
+    /* Social Links  */
+    .social-links{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 15;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        margin-bottom: 50px;
+        list-style: none;
     }
-    .carousel-indicators li{
-        width: 130px;
-        margin-left:0;
-        margin-right:0;
+    .social-links a{
+        margin-right: 1em;
+        margin-left: 1em;
     }
 
-    .carousel-caption {
-        position: absolute;
-        right: 15%;
-        bottom: 20px;
-        left: 15%;
-        z-index: 10;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        color: #fff;
-        text-align: left;
-        margin-bottom: 5em;
-    }
-    .carousel-caption p{
-        font-size: 3.5rem;
-        font-weight: 300;
-        line-height: 1.2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @media screen and (max-width:700px){
+       .top-menu{
+           display:none;
+       }
+       nav.navbar:not(.top-menu){
+        margin-top:0;
+       }
+        /* Banner on mobile  */
+        .banner-caption{
+            text-align:center;
+            margin-top:35vh;
+            left:0;
+        }
+        .banner-caption p{
+            font-size: 36px;
+        }
+        .carousel-indicators{
+            margin-bottom: 20px;
+        }
+        .social-links{
+            margin-bottom:70px;
+        }
+        
     }
