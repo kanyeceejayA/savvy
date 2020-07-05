@@ -1,31 +1,105 @@
 body, h1, h2, h3 ,h4, h5, h6, p, li{
     font-family: 'Roboto', sans-serif;
   }
+	  
+  	
+	h2{
+		font-size: 24px;
+		color:#909090;
+		padding: 1em 0;
+	}
+	h2:before {
+		border-top: 2px solid #909090;
+		display: inline-block;
+		position: relative;
+		top: -10px;
+		margin: 0;
+		margin-right: 7px;
+		width: 84px;
+		content: "";
+	}
+	
+	.copy{
+		font-size: 1.25rem;
+		font-weight: 300;
+		padding: 0 91px;
+	}
+	.py-6{
+		padding:5em 0;
+	}
 
-/* Navbar  */
-    .navbar .container{
-        border-bottom: 1px solid #B9915B;
-        padding-bottom: 1em;
-        padding-top: 1em;
-    }
-    .navbar-dark .navbar-nav .nav-link{
-        color:white;
-        font-size: 14px;
-        line-height: 38px;
-        padding-right: 1.5em;
-        padding-left: 1.5em;
-    }
-    .navbar-dark .navbar-nav .nav-link:hover{
-        color:#B9915B;
-    }
-    .navbar-dark .navbar-nav .nav-link.invest{
-        background-color: #B9915B;
-        text-transform: uppercase;
-    }
-    .navbar-dark .navbar-nav .nav-link.invest:hover{
-        background-color:#333646;
-        color:#fff;
-    }
+	/* cards  */
+	.card{
+	   min-height: 347;
+	   border-radius: 0px;
+	   color:#909090;
+
+   }
+   #cards1{
+	   margin-top:-20vh;
+   }
+
+	h3{
+		font-size:36px;
+		color:#B9915B;
+		text-align:left;
+		padding: 30px 80px;
+		padding-right:40px;
+	}
+
+	.copy.card-copy {
+		padding: 0 50px;
+		padding-left: 70px;
+	}
+	
+    #vision{
+		background-color:#424657;
+	}
+	#core{
+		background-color:#333646;
+	}
+
+	.dark{
+		background-color: #333646;
+		color:#909090;
+		margin-top: -1px;
+	}
+
+	#cards2{
+		margin-bottom:-20vh;
+		background-color: #333646;
+	}
+	#cards2 img{
+		background-color: #424657;
+		width: 100%;
+	}
+
+
+    /*  Navbar  */
+		.navbar .container{
+			border-bottom: 1px solid #B9915B;
+			padding-bottom: 1em;
+			padding-top: 1em;
+		}
+		.navbar-dark .navbar-nav .nav-link{
+			color:white;
+			font-size: 14px;
+			line-height: 38px;
+			padding-right: 1.5em;
+			padding-left: 1.5em;
+		}
+		.navbar-dark .navbar-nav .nav-link:hover{
+			color:#B9915B;
+		}
+		.navbar-dark .navbar-nav .nav-link.invest{
+			background-color: #B9915B;
+			text-transform: uppercase;
+		}
+		.navbar-dark .navbar-nav .nav-link.invest:hover{
+			background-color:#333646;
+			color:#fff;
+		}
+	/* End of Navbar  */
 
     /* Top Menu  */
 
@@ -55,7 +129,7 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
             padding-bottom: 0px;
             background-color: #424657;
         }
-    
+
         .top-menu.navbar-dark .navbar-nav .nav-link:hover{
             color:#B9915B;
         }
@@ -96,11 +170,12 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
         background: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner2.png');
         background: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner2.png');
         background-position: bottom;
+        background-size: cover;
     }
 
     /* indicators*/
         .carousel-indicators{
-            left:unset;
+            left: unset;
             margin-bottom:50px;
         }
         .carousel-indicators li{
@@ -139,7 +214,7 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
         justify-content: center;
         padding-left: 0;
         margin-right: 15%;
-        margin-left: 15%;
+        margin-left: 11%;
         margin-bottom: 50px;
         list-style: none;
     }
@@ -149,13 +224,60 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
     }
 
 
+	/* Sign Up Form  */
+	#newsletter{
+		background-color: #424657;
+	}
+	#newsletter p.copy{
+		color:#909090;
+	}
+	form.signup{
+		display: inline-block;
+	}
+	form.signup input, form.input button.btn2{
+		padding: .375rem .75rem;
+    	border-width: 1px;
+	}
 
 
 
 
 
+	/* footer  */
+	footer p.copy{
+		padding:1em;
+	}
+	footer .btn{
+		float: none;
+	}
+	footer .social-links{
+		float: left;
+		position: relative;
+		padding: 1em 0;
+		margin: 0px;
+	}
+	footer .social-links a{
+		margin: 0.5em;
+	}
+	.pl-6{
+		padding-left: 91px!important;
+	}
 
 
+
+	#TopBtn{
+		display: none; /* Hidden by default */
+		position: fixed; /* Fixed/sticky position */
+		width: 40px;
+		bottom: 20px; /* Place the button at the bottom of the page */
+		right: 30px; /* Place the button 30px from the right */
+		z-index: 99; /* Make sure it does not overlap */
+		cursor: pointer; /* Add a mouse pointer on hover */
+		}
+	  
+	  #TopBtn:hover {
+		background-color: #555; /* Add a dark-grey background on hover */
+	  }
 
 
 
@@ -178,10 +300,15 @@ body, h1, h2, h3 ,h4, h5, h6, p, li{
             font-size: 36px;
         }
         .carousel-indicators{
+			left:0;
             margin-bottom: 20px;
         }
         .social-links{
             margin-bottom:70px;
-        }
-        
+		}
+		
+		/* Page content  */
+        .copy{
+			padding: 0 1em;
+		}
     }
