@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/login.css"> -->
   
   </head>
   <body>
-      <!-- Navigation -->
+      <!-- TOp Menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top top-menu">
         <div class="container">
         
@@ -31,7 +31,8 @@
         </div>
         </div>
     </nav>
-
+    
+    <!-- Main Navigation  -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
         <div class="container">
         <a class="navbar-brand" href="#"><img class="img-fluid" src="img/logo.svg"></a>
@@ -41,27 +42,27 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">About
+                <a class="nav-link" href="#about">About
                     <span class="sr-only">(current)</span>
                     </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">SME Bridge Fund</a>
+                <a class="nav-link" href="#sme">SME Bridge Fund</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Advisory Services</a>
+                <a class="nav-link" href="#advisory">Advisory Services</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Team</a>
+                <a class="nav-link" href="#team">Team</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Partnerships</a>
+                <a class="nav-link" href="#partnerships">Partnerships</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link invest" href="login">Invest Now</a>
+                <a class="nav-link invest" href="contact">Invest Now</a>
             </li>
             <li class="nav-item d-xs-block d-md-none">
-                <a class="nav-link invest" href="login">Investor Login</a>
+                <a class="nav-link btn-alt" href="login">Investor Login</a>
             </li>
             </ul>
         </div>
@@ -71,11 +72,11 @@
     <header>
         <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
             <div class="social-links">
-                <a href=""><img src="img/ln.svg"></a>
-                <a href=""><img src="img/tw.svg"></a>
-                <a href=""><img src="img/fb.svg"></a>
-                <a href=""><img src="img/ig.svg"></a>
-                <a href=""><img src="img/yt.svg"></a>
+                <a href=""><img src="img/ln.png"></a>
+                <a href=""><img src="img/tw.png"></a>
+                <a href=""><img src="img/fb.png"></a>
+                <a href=""><img src="img/ig.png"></a>
+                <a href=""><img src="img/yt.png"></a>
             </div>
         <ol class="carousel-indicators">
             <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
@@ -154,7 +155,7 @@
         </div>
     </section>
 
-    <section class="py-6 dark">
+    <section class="py-6 dark" style="padding-bottom: 30vh;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -168,37 +169,123 @@
         </div>
     </section>
 
-    <!-- <section class="py-6 dark">
+    <section class="py-6" style="background-color:#F9F3EA; min-height: 30vh;">
         <div class="container">
 
-            <div class="row no-gutters" id="cards2">
-                <div class="col-sm-6 col-lg-5">
+            <div class="row" id="cards2">
+                <div class="col-sm-6 col-lg-5 ml-auto">
                   <div class="card">
                     <img class="card-img-top img-fluid" src="img/sme.png" alt="Card image cap">
                     <div class="card-body">
-                      <h3 >SME Bridge Fund</h3>
+                      <h3 >SME Bridge <br>Fund</h3>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6 col-lg-5">
+                <div class="col-sm-6 col-lg-5 mr-auto">
                   <div class="card">
                     <img class="card-img-top img-fluid" src="img/advisory.png" alt="Card image cap">
                     <div class="card-body">
-                      <h3 >Advisory Services</h3>
+                      <h3 >Advisory<br>Services</h3>
                     </div>
                   </div>
                 </div>
               </div>
 
         </div>
-    </section> -->
+    </section>
 
 
-    <section class="py-6">
+    <section class="py-6" id="team">
+        <div class="container">
+            <h2 class="heading">Our Team</h2>
+            <div class="row">
+                <div class="col-md-4 media">
+                    <img src="img/reginald.jpg">
+                    <div class="overlay">
+                        <p><strong>Reginald Tumusiime</strong><br>
+                            <button onclick="slide('reginald')" class="btn">READ ABOUT REGINALD</button><br>
+                            <span class="position">Co-founder & Director</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 media" data-filter="Syringes">
+                    <img src="img/anna.jpg">
+                    <div class="overlay">
+                        <p>
+                            <strong>Anna Sharp</strong><br>
+                            <button onclick='$(".profile").slideUp("slow")' class="btn" id="annaBtn">READ ABOUT ANNA</button> <br>
+                            <span class="position">Financial Advisor</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 media filter_link all" data-filter="Syringes">
+                    <img src="img/edwin.jpg">
+                    <div class="overlay">
+                        <p><strong>Edwin Rwemigabo</strong><br> 
+                            <button onclick="slide('edwin')" class="btn" id="edwinbtn">READ ABOUT EDWIN</button> <br> 
+                            <span class="position">Co-founder & Director</span>
+                        </p>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="py-6 profile" id="reginald">
+        <div class="container">
+            <div class="row">
+                <h2 class="heading col-md-8">Reginald Tumisiime<br>
+                    <span class="position">Co-Founder & Director</span>
+                </h2>
+                <ul class="col-md-4">
+                    <li> <img src="img/tw.png" class="img-fluid"> <a href="">@Raymond_T</a></li>
+                    <li> <img src="img/mail.png" class="img-fluid"> <a href="">Raymond@capitalsavvy.com</a></li>
+                    <li> <img src="img/phone.png" class="img-fluid"> <a href="">+256-782-265760</a></li>
+                </ul>
+            </div>
+                    <p class="copy">Reginald has over 8 years’ experience in banking and finance at leading financial institutions. Reginald is responsible for daily operations of the firm as well as business development. He has very strong interpersonal skills that have enabled him to develop and grow strategic relationships within both the private sector and public sector. His analytical mind is also invaluable to the firm.</p>
+
+
+                        <p class="copy">He was most recently the Manager Capital, Stanbic Bank – the largest local bank by Balance sheet and revenue. Reginald started his career at Standard Chartered Bank, where he joined the bank through the prestigious international graduate program in 2012. He rose through the ranks to serve as the Regional Head Business Clients Leads Management, for the Standard Chartered Bank Africa Regional Office, where he was in charge of big data analytics solutions for the Business Banking Client Segment across the 8 markets of Kenya, Uganda, Tanzania, Ghana, Zambia, Zimbabwe, Botswana and Nigeria. </p>
+                        
+                        <p class="copy">Prior to that, he worked in several functions within StanChart Uganda such as Finance where he took on different transformational projects, Retail Segments where he was the Segment Proposition Head for the retail premium segment, Priority Banking where Wealth Management was the key pillar. </p>
+                         
+                        <p class="copy">Reginald holds a BSc in Statistics (Hons), and is currently pursuing the Chartered Financial Analyst (CFA) program. </p>
+
+        </div>
+    </section>
+
+
+    <section class="py-6 profile" id="edwin">
+        <div class="container">
+            <div class="row">
+                <h2 class="heading col-md-8">Edwin Rwemigabo<br>
+                    <span class="position">CFA - Co-Founder & Director</span>
+                </h2>
+                <ul class="col-md-4">
+                    <li> <img src="img/tw.png" class="img-fluid"> <a href="">@Raymond_T</a></li>
+                    <li> <img src="img/mail.png" class="img-fluid"> <a href="">Raymond@capitalsavvy.com</a></li>
+                    <li> <img src="img/phone.png" class="img-fluid"> <a href="">+256-782-265760</a></li>
+                </ul>
+            </div>
+                    <p class="copy">Edwin’s experience in financial analysis and modeling, research as well as risk management is invaluable to the firm’s clientele. Edwin is responsible for the Finance and Investment decisions of the firm, guided by internal principles<br>
+
+                        Edwin has worked for key government agencies such as the Ministry of Agriculture and most recently Bank of Uganda (as a Financial Analyst). <br>
+                        
+                        Edwin holds a BSc in Mathematics with Statistics (First Class Hons) from the University of Surrey. He also has an MSc in Risk and Stochastics, Insurance/Financial Mathematics from London School of Economics and Political Science. Edwin is also Chartered Financial Analyst (CFA) charter holder. </p>
+
+        </div>
+    </section>
+
+    <section class="py-6" id="partnerships">
         <div class="container">
             <h2 class="heading">Partnerships</h2>
             <div class="row">
-                <div class="col-lg-4 pl-6">
+                <div class="col-lg-4 pl-6" style="text-align: center;">
                     
                     <img class="img-fluid" src="img/monetix.png" style="margin: 2em 0;">
                     <span>www.monetix.com</span>
@@ -220,12 +307,17 @@
             <div class="row">
                 <div class="col-lg-8">
                     <h3>Stay up-to-date</h3>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
                     <p class="copy">Sign up to receive our latest research on the forces shaping African economies and markets.</p>
                 </div>
                 <div class="col-lg-4">
                     <form class="signup">
-                        <input type="text" name="namezz" placeholder="Email Address">
-                        <button class="btn btn2">submit</button>
+                        <input type="text" name="namezz" placeholder="YOUR EMAIL ADDRESS">
+                        <button class="btn btn2">SIGN UP</button>
                     </form>
                 </div>
                 
@@ -237,18 +329,19 @@
     <footer class="py-6 dark" id="footer">
         <div class="container">
             <h2 class="heading">Set an appointment today</h2>
+            
+            <p class="copy pl-6"><img class="img-fluid" src="img/logo.svg"></p>
             <div class="row">
-                <div class="col-lg-6">
-                    <p class="copy pl-6"><img class="img-fluid" src="img/logo.svg"></p>
-                    <p class="copy pl-6">Suit 5, Ecobank Plaza<br>
+                <div class="col-lg-6 pl-6">
+                    <p class="copy">Suit 5, Ecobank Plaza<br>
                         Plot 28, Parliamentary Avenue<br>
                         Kampala,  Uganda
                     </p>
-                    <p class="copy pl-6"><img src="img/mail.png"> info@capitalsavvy.com <br>
+                    <p class="copy"><img src="img/mail.png"> info@capitalsavvy.com <br>
                         <img src="img/phone.png"> +256-772-123543</p>
                 </div>
                 <div class="col-lg-3">
-                    <a href="login" class="btn">Investor Login</a>
+                    <a href="login" class="btn btn-alt">Investor Login</a>
                     <p class="copy">
                         <a href="">Jobs</a><br>
                         <a href="">Terms of Use & Privacy</a><br>
@@ -259,26 +352,28 @@
                 <div class="col-lg-3">
                     <a href="contact" class="btn">Invest now</a>
                     <div class="social-links">
-                        <a href=""><img src="img/ln.svg"></a>
-                        <a href=""><img src="img/tw.svg"></a>
-                        <a href=""><img src="img/fb.svg"></a>
-                        <a href=""><img src="img/ig.svg"></a>
-                        <a href=""><img src="img/yt.svg"></a>
+                        <a href=""><img src="img/ln.png"></a>
+                        <a href=""><img src="img/tw.png"></a>
+                        <a href=""><img src="img/fb.png"></a>
+                        <a href=""><img src="img/ig.png"></a>
+                        <a href=""><img src="img/yt.png"></a>
                     </div>
                 </div>
                 
             </div>
             <div class="row">
-                <p class="copy pl-6" style="color: white;">© 2020 Capital Savvy Ltd. All Rights reserved</p>
+                <p class="copy pl-6" style="color: #EBEBEB;padding-top:1em">© 2020 Capital Savvy Ltd. All Rights reserved</p>
             </div>
         </div>
     </footer>
 
+    <!-- <a onclick="topFunction()" id="TopBtn" title="Go to top"><img src="img/top.png" class="img-fluid"></button> -->
     <a onclick="topFunction()" id="TopBtn" title="Go to top"><img src="img/top.png" class="img-fluid"></button>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
     <script src="js/scripts.js"></script>
-     
+  
   </body>
 </html>
