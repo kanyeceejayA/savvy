@@ -199,8 +199,8 @@
         <div class="container">
             <h2 class="heading">Our Team</h2>
             <div class="row">
-                <div class="col-md-4 media">
-                    <img src="img/reginald.jpg">
+                <div class="col-md-4 media" onclick="slide('reginald')">
+                    <img src="img/reginald.jpg" >
                     <div class="overlay">
                         <p><strong>Reginald Tumusiime</strong><br>
                             <button onclick="slide('reginald')" class="btn">READ ABOUT REGINALD</button><br>
@@ -209,9 +209,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 media" data-filter="Syringes">
+                <div class="col-md-4 media" onclick='$(".profile").slideUp("slow")'>
                     <img src="img/anna.jpg">
-                    <div class="overlay">
+                    <div class="overlay" >
                         <p>
                             <strong>Anna Sharp</strong><br>
                             <button onclick='$(".profile").slideUp("slow")' class="btn" id="annaBtn">READ ABOUT ANNA</button> <br>
@@ -220,7 +220,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 media filter_link all" data-filter="Syringes">
+                <div class="col-md-4 media" onclick="slide('edwin')">
                     <img src="img/edwin.jpg">
                     <div class="overlay">
                         <p><strong>Edwin Rwemigabo</strong><br> 

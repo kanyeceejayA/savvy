@@ -12,6 +12,9 @@ color:white;
 .btn:hover{
 background-color: #333646;
 }
+.btn:focus{
+    box-shadow: none;
+}
 .btn-alt{
     background-color:#424657;
     color:#B9915B;
