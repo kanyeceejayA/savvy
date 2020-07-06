@@ -194,14 +194,14 @@ color:#333646;
         -o-background-size: cover;
         background-size: cover;
         background-image: url('/img/banner.png');  /* fallback colour. Make sure this is just one solid colour. */
-        background-image: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner.png');
-        background-image: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner.png');
+        background-image: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner.jpg');
+        background-image: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner.jpg');
         background-position: bottom;
     }
 
     .carousel-item#bn2{
-        background: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner2.png');
-        background: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner2.png');
+        background: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner2.jpg');
+        background: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner2.jpg');
         background-position: bottom;
         background-size: cover;
     }
@@ -403,6 +403,7 @@ color:#333646;
     }
 	footer .btn{
         /* display: block; */
+        margin-bottom: 1em;
         float: unset;
         /* width: max-content; */
     }

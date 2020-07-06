@@ -44,7 +44,7 @@
       $(target).slideDown('slow');
       $('html, body').animate({
         scrollTop: $(target).offset().top
-      }, 'slow');
+      }, 'slow', 'easeInOutQuad');
 
 
     });  
@@ -65,12 +65,12 @@
     }
 
     // prevent standard hash navigation (avoid blinking in IE)
-    // e.preventDefault();
+    e.preventDefault();
 
     // top position relative to the document
     var pos = $id.offset().top;
     
 
     // animated top scrolling
-    $('body, html').animate({scrollTop: pos});
+    $('body, html').animate({scrollTop: pos},'slow','easeInOutQuad');
   });
