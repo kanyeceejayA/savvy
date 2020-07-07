@@ -190,8 +190,9 @@ color:#333646;
 /*#############   Banner    ######################*/
     /* banner images */
     .carousel-item {
-        height: 100vh;
+        /* height: 100vh; */
         min-height: 350px;
+        min-height: 100vh;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -289,8 +290,72 @@ color:#333646;
     }
 
 
+    /* services   */
+    #services .col-lg-5{
+        cursor: pointer;
+    }
+    .service{
+        background-color:#F9F3EA;
+        padding-top:0px;
+        display: none;
+    }
+    .service h2{
+        color: #B9915B;
+        padding-left: 2rem;
+        font-weight: 400;
+    }
+    .service h2:before{
+        display: none;
+    }
+    .service p.copy{
+        margin-left: 2rem;
+        /* margin-right: 91px; */
+        padding: 0;
+        padding-bottom: 1rem;
+    }
+    .service .btn{
+        background-color: rgba(0,0,0,0);
+        float: left;
+        font-size: 24px;
+        padding-left: 2rem;
+        text-transform: capitalize;
+    }
+    .service .btn::after{
+        content: url('../img/arrow.png');
+        display: inline-block;
+        position: relative;
+        padding-left: 10px;
+    }
+    .service .btn:hover{
+        border:1px solid #B9915B;
+    }
+    .service .btn:hover::after{
+        padding-left:15px;
+    }
 
-
+    .service .left{
+        display: flex;
+    }
+    .service .no{
+        color:#B9915B;
+        font-weight: 600;
+    }
+    .service h2.no{
+        border-top: 2px solid #B9915B;
+        margin-left: 32px;
+        margin-top: 20px;
+        padding: 5px 10px;
+        font-size: 41px;
+    }
+    #advisory h2.heading{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #advisory p.copy{
+        padding-bottom: 0px;
+        margin-bottom: 0.5rem;
+        margin-right: 0px;
+    }
 
 
     /* our team  */
@@ -355,6 +420,7 @@ color:#333646;
         -o-transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
         transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
         color: white;
+        cursor: pointer;
     }
     .media:hover .overlay {
         opacity: 1;
@@ -467,6 +533,7 @@ color:#333646;
             text-align:center;
             margin-top:35vh;
             left:0;
+            margin-bottom: 0px;
         }
         .banner-caption p{
             font-size: 36px;

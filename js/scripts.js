@@ -16,32 +16,31 @@
 
   // When the user clicks on the button, scroll to the top of the document
   function topFunction() {
-    // document.body.scrollTop = 0; // For Safari
-    // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    $('body, html').animate({scrollTop: 0});
+    $('body, html').animate({scrollTop: 0}, 'EaseinOutQuad');
   }
 
  //Slide Sections
-  // function slide(id){
-  //   let target = $('#'+id);
-
-  //   $(target).slideToggle('slow', function() {
-  //     if($(target).css('display') != 'none'){
-  //       $('html, body').animate({
-  //         scrollTop: $(target).offset().top
-  //       }, 'slow');
-  //     }
-  //   });
-
-    
-  // }
 
   function slide(id){
     let target = $('#'+id);
-    var all = 
 
     $(".profile:not(#"+id+")").slideUp('fast', function(){
       $(target).slideDown('slow');
+      $('html, body').animate({
+        scrollTop: $(target).offset().top
+      }, 'slow', 'easeInOutQuad');
+
+
+    });  
+
+    
+  }
+
+  function slide2(id){
+    let target = $('#'+id);
+
+    $(".service:not(#"+id+")").fadeOut('fast', function(){
+      $(target).fadeIn('slow');
       $('html, body').animate({
         scrollTop: $(target).offset().top
       }, 'slow', 'easeInOutQuad');

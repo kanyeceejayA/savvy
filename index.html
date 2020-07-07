@@ -9,7 +9,7 @@
   
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css?ver=2323">
 		<!-- <link rel="stylesheet" type="text/css" href="css/login.css"> -->
   
   </head>
@@ -169,11 +169,11 @@
         </div>
     </section>
 
-    <section class="py-6" id="sme" style="background-color:#F9F3EA; min-height: 30vh;">
+    <section class="py-6" id="services" style="background-color:#F9F3EA; min-height: 30vh;">
         <div class="container">
 
             <div class="row" id="cards2">
-                <div class="col-sm-6 col-lg-5 ml-auto">
+                <div class="col-sm-6 col-lg-5 ml-auto" onclick="slide2('sme')">
                   <div class="card">
                     <img class="card-img-top img-fluid" src="img/sme.png" alt="Card image cap">
                     <div class="card-body">
@@ -181,7 +181,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6 col-lg-5 mr-auto">
+                <div class="col-sm-6 col-lg-5 mr-auto" onclick="slide2('advisory')">
                   <div class="card">
                     <img class="card-img-top img-fluid" src="img/advisory.png" alt="Card image cap">
                     <div class="card-body">
@@ -190,6 +190,78 @@
                   </div>
                 </div>
               </div>
+
+        </div>
+    </section>
+
+    <section class="py-6 service" id="sme">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-10 ml-auto mr-auto">
+                    <h2 class="heading" style="padding-bottom:2rem">Our SME Bridge Fund</h2>
+                
+                    <p class="copy">Together with our investors, we are committed to accelerating growth of our economy through facilitating financing solutions to Small and Medium Enterprises.</p>
+
+                    <p class="copy" style="padding-bottom:2.5rem;border-bottom: 1px solid #B9915B;">Our first fund, The SME Bridge Fund, is a credit fund aimed at providing innovative short-term debt financing solutions to SMEs such as; receivables financing, import tax financing, supplier top-ups and stock financing, payment of freight and taxes, contract/LPO financing, commodity financing and bid bond guarantee financing to mention but a few.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 offset-lg-1">
+                    <h2 class="heading">Investors</h2>
+                </div>
+                <div class="col-lg-6 mr-auto">
+                    <p class="copy" style="padding-top:1em;">
+                        Our anchor investors are institutional investors, including foundations, pension funds, family offices and high net worth individuals.
+                    </p>
+                    <a href="contact" class="btn btn-alt" >Invest Now </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-6 service" id="advisory">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-10 ml-auto mr-auto">
+                    <h2 style="padding-bottom:2rem">Our Advisory Services</h2>
+                
+                    <p class="copy">Our services are client oriented based on who you are.</p>
+
+                    <!-- <p class="copy" style="padding-bottom:2.5rem;border-bottom: 1px solid #B9915B;">Our first fund, The SME Bridge Fund, is a credit fund aimed at providing innovative short-term debt financing solutions to SMEs such as; receivables financing, import tax financing, supplier top-ups and stock financing, payment of freight and taxes, contract/LPO financing, commodity financing and bid bond guarantee financing to mention but a few.</p> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 offset-lg-1 left" style="border-bottom: 1px solid #B9915B;">
+                    <h2 class="no">A</h2>
+                    <h2 class="heading">HIGH NET WORTH INDIVIDUAL AND INSTITUTIONAL INVESTORS?</h2>
+                </div>
+                <div class="col-lg-6 mr-auto" style="border-bottom: 1px solid #B9915B;">
+                    <p class="copy" style="padding-top:1em;">
+                        <span class="no">i.</span> Investment due-diligence: local and regional market insights, research, financial modelling and investee commercial due diligence.</p>
+                    <p class="copy">
+                        <span class="no">ii.</span> Financial advisory services in structuring, negotiating and executing local and regional debt and equity investments.
+                    </p>
+                    <!-- <a href="contact" class="btn btn-alt" >Invest Now </a> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 offset-lg-1 left">
+                    <h2 class="no">B</h2>
+                    <h2 class="heading">PUBLIC SECTOR ENTITIES AND DEVELOPMENT PARTNERS?</h2>
+                </div>
+                <div class="col-lg-6 mr-auto">
+                    <p class="copy" style="padding-top:1em;">
+                        <span class="no">i.</span> Development of public sector project concepts.</p>
+                        <p class="copy">
+                        <span class="no">ii.</span> Pre-feasibility and feasibility studies of focus public sector projects.
+                    </p>
+                        <p class="copy">
+                        <span class="no">iii.</span> Impact assessment studies of focus public sector projects.
+                    </p>
+                    <a href="contact" class="btn btn-alt" >Learn More </a>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -272,11 +344,11 @@
                     <li> <img src="img/phone.png" class="img-fluid"> <a href="">+256-782-265760</a></li>
                 </ul>
             </div>
-                    <p class="copy">Edwin’s experience in financial analysis and modeling, research as well as risk management is invaluable to the firm’s clientele. Edwin is responsible for the Finance and Investment decisions of the firm, guided by internal principles<br>
+                    <p class="copy">Edwin’s experience in financial analysis and modeling, research as well as risk management is invaluable to the firm’s clientele. Edwin is responsible for the Finance and Investment decisions of the firm, guided by internal principles</p>
 
-                        Edwin has worked for key government agencies such as the Ministry of Agriculture and most recently Bank of Uganda (as a Financial Analyst). <br>
+                    <p class="copy">Edwin has worked for key government agencies such as the Ministry of Agriculture and most recently Bank of Uganda (as a Financial Analyst). </p>
                         
-                        Edwin holds a BSc in Mathematics with Statistics (First Class Hons) from the University of Surrey. He also has an MSc in Risk and Stochastics, Insurance/Financial Mathematics from London School of Economics and Political Science. Edwin is also Chartered Financial Analyst (CFA) charter holder. </p>
+                    <p class="copy">Edwin holds a BSc in Mathematics with Statistics (First Class Hons) from the University of Surrey. He also has an MSc in Risk and Stochastics, Insurance/Financial Mathematics from London School of Economics and Political Science. Edwin is also Chartered Financial Analyst (CFA) charter holder. </p>
 
         </div>
     </section>
@@ -374,7 +446,7 @@
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="js/easing.min.js"></script>
 
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js?ver=we23we"></script>
   
   </body>
 </html>
