@@ -320,6 +320,7 @@ color:#333646;
     }
     .service .btn{
         background-color: rgba(0,0,0,0);
+        border: 1px solid transparent;
         float: left;
         font-size: 24px;
         padding-left: 2rem;
@@ -354,7 +355,7 @@ color:#333646;
     }
     #advisory h2.heading{
         font-size: 20px;
-        font-weight: bold;
+        font-weight: 600;
     }
     #advisory p.copy{
         padding-bottom: 0px;
