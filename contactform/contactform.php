@@ -28,13 +28,13 @@ $recaptcha = json_decode($recaptcha);
  */
 
 // an email address that will be in the From field of the email.
-$from = 'Silbaka Contact Form <site@silbaka.com>';
+$from = 'CapitalSavvy Contact Form <site@capitalsavvy.pro>';
 
 // an email address that will receive the email with the output of the form
-$sendTo = 'Boss Man<kanye@silbaka.com>';
+$sendTo = 'Akbr<kakbr800@gmail.com>';
 
 // subject of the email
-$subject = 'New message from Website: '.$_POST['company'];
+$subject = 'New message from Website: '.$_POST['name'];
 
 // form field names and their translations.
 // array variable name => Text to appear in the email
@@ -90,7 +90,7 @@ try
         mail($sendTo, $subject, $emailText, implode("\n", $headers));
         
     }else{
-        // echo($sendTo.' '.$subject.'  '.$emailText);
+        $okMessage .= ' (Not on Live Server)';
     }
 
     $responseArray = array('type' => 'success', 'message' => $okMessage);
