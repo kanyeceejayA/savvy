@@ -80,6 +80,48 @@
             color:#B9915B;
             font-weight: medium;
         }
+        input.form-control, textarea.form-control {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            border: 1px solid #ABACAC;
+            border-radius: 0px;
+            padding-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        input.form-control:focus, textarea.form-control:focus{
+            border: 1px solid #ABACAC;
+            box-shadow: 0 0 0 0.2rem rgba(185,145,91,.25);
+            
+        }
+        label {
+            font-size: 1.25rem;
+            font-weight: 300;
+            padding: 0 91px;
+            color: #707070;
+            text-align: right;
+        }
+        small.copy{
+            font-size: unset;
+            display: block;
+            padding: 0;
+        }
+        .btn{
+            float:left;
+            padding: .5rem 2rem;
+        }
+        .btn:hover{
+            color:white;
+        }
+        @media screen and (max-width:700px) {
+            label{
+                text-align: left;
+            }
+            .btn{
+                float:center;
+            }
+            
+        }
     </style>
     
     <header class="py-6">
@@ -89,13 +131,85 @@
     </header>
     
     <!-- Page Content -->
-    <!-- About Section  -->
+    <!-- Top Section  -->
     <section class="py-6" style="padding-bottom:20vh" id="about">
 			<div class="container">
 				<!-- <h2 class="heading">About</h2> -->
                 <p class="copy">Welcome! The following steps will have you create an account with the CapitalSavvy and fill out paperwork required for submission for the SME Bridge Fund.</p>
-                <form>
+                
+                <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center">* Contact Name </label>
+                            <div class="col-md-6">
+                                <input id="name" name="name" type="text" class="form-control" required>
+                            </div>
+                        </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center">* Email </label>
+                            <div class="col-md-6">
+                                <input id="email" name="email" type="text" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center">* Phone </label>
+                            <div class="col-md-6">
+                                <input id="phone" name="phone" type="text" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center">Title </label>
+                            <div class="col-md-6">
+                                <input id="title" name="title" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center">* Company Name </label>
+                            <div class="col-md-6">
+                                <input id="company" name="company" type="text" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center"> City </label>
+                            <div class="col-md-6">
+                                <input id="city" name="city" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center"> Country </label>
+                            <div class="col-md-6">
+                                <input id="country" name="country" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 text-xs-center">Additional Comments? </label>
+                            <div class="col-md-6">
+                                <textarea id="comments" name="comments" type="text" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-2">
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                                <small class="copy">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-2">
+                                <div id="messages"></div>
+                                
+                                <button name="submit" class="btn">Send</button>
+                            </div>
+                        </div>
+                    </fieldset>
                 </form>
 			</div>
     </section>
@@ -150,6 +264,10 @@
     <script src="js/easing.min.js"></script>
 
     <script src="js/scripts.js?ver=we23we"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq"></script>
+    
+    <script src="contactform/contactform.js"></script>
   
   </body>
 </html>

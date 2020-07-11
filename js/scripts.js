@@ -21,15 +21,54 @@
 
  //Slide Sections
 
+  // function slide(id){
+  //   let target = $('#'+id);
+
+  //   $(".profile:not(#"+id+")").slideUp('fast', function(){
+  //     $(target).slideDown('slow');
+  //     $('html, body').animate({
+  //       scrollTop: $(target).offset().top
+  //     }, 'slow', 'easeInOutQuad');
+
+  //   });  
+
+  // }
+
+  // function slide(id){
+  //   let target = $('#'+id);
+
+  //   $(".profile:not(#"+id+")").slideUp('fast', function(){
+  //     if(id != 'reginald'){
+  //       $(target).slideDown('slow');
+  //       $('html, body').animate({
+  //         scrollTop: $(target).offset().top
+  //       }, 'slow', 'easeInOutQuad');
+  //     }
+  //     else{
+  //         $(target).slideDown('fast', function(){
+  //           $('html, body').animate({
+  //             scrollTop: $(target).offset().top
+  //           }, 'slow', 'easeInOutQuad');
+  //         });
+          
+  //     }
+
+  //   });  
+
+    
+  // }
+
+
   function slide(id){
     let target = $('#'+id);
 
     $(".profile:not(#"+id+")").slideUp('fast', function(){
-      $(target).slideDown('slow');
-      $('html, body').animate({
-        scrollTop: $(target).offset().top
-      }, 'slow', 'easeInOutQuad');
 
+          $(target).slideDown('fast', function(){
+            $('html, body').animate({
+              scrollTop: $(target).offset().top
+            }, 'slow', 'easeInOutQuad');
+          });
 
     });  
 

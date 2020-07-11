@@ -133,8 +133,8 @@ color:#333646;
 		}
 		.navbar-dark .navbar-nav .nav-link.invest:hover{
 			background-color:#333646;
-			color:#fff;
-        }
+			color: #B9915B;
+			}
         @media (max-width: 992px){
             .navbar-nav{
                 background: #333646;
@@ -181,8 +181,8 @@ color:#333646;
             text-transform: uppercase;
         }
         .top-menu.navbar-dark .navbar-nav .nav-link.invest:hover{
-            background-color: #B9915B;
-            color:#fff;
+            color: #B9915B;
+            /* color:#fff; */
         }
 
         .fixed-top{
