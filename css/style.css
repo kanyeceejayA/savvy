@@ -450,14 +450,8 @@ color:#333646;
         width: 84px;
         content: "";
     }
-    .profile ul{
-        padding-top: 24px;
-    }
     .profile img{
         margin-right: 1.5em;
-    }
-    .profile li a{
-        color: #707070;
     }
 
 
@@ -510,18 +504,19 @@ color:#333646;
 
 
 	#TopBtn{
-		display: none; /* Hidden by default */
-		position: fixed; /* Fixed/sticky position */
-		width: 40px;
-		bottom: 20px; /* Place the button at the bottom of the page */
-		right: 30px; /* Place the button 30px from the right */
-		z-index: 99; /* Make sure it does not overlap */
-		cursor: pointer; /* Add a mouse pointer on hover */
-		}
-	  
-	  #TopBtn:hover {
-		background-color: #555; /* Add a dark-grey background on hover */
-	  }
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed/sticky position */
+        width: 40px;
+        bottom: 20px; /* Place the button at the bottom of the page */
+        right: 30px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap */
+        cursor: pointer; /* Add a mouse pointer on hover */
+    }
+    
+    #TopBtn:hover {
+        background-color: #555; /* Add a dark-grey background on hover */
+    }
+    .grecaptcha-badge { visibility: hidden; } /* hide google recaptcha  */
 
 
 
