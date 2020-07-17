@@ -98,28 +98,30 @@
                     <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
                         <div class="row">
                             <div class="col-md-6">
-                                <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name" required>
+                                <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name*" required>
                             </div>
                             <div class="col-md-6">
-                                <input id="lname" name="lname" type="text" class="form-control" placeholder="Last Name" required>
+                                <input id="lname" name="lname" type="text" class="form-control" placeholder="Last Name*" required>
                             </div>
                             <div class="col-md-6">
-                                <input id="email" name="email" type="text" class="form-control" placeholder="Email">
+                                <input id="email" name="email" type="text" class="form-control" placeholder="Email*" required>
                             </div>
                             <div class="col-md-6">
                                 <input id="company" name="company" type="text" class="form-control" placeholder="Company">
                             </div>
                             <div class="col-md-12">
-                                <textarea id="message" name="message" type="text" class="form-control" placeholder="Message"></textarea>
+                                <textarea id="message" name="message" type="text" class="form-control" placeholder="Message*" required></textarea>
                             </div>
                             <div class="col-md-12">
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                                 <small class="copy">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
-                                <div id="messages"></div>
                             </div>
                             <div class="col-md-12">
                                 
-                                <button name="send" class="btn">Send</button>
+                                <button name="send" class="" id="submit"></button>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="messages"></div>
                             </div>
                         </div>
                     </form>

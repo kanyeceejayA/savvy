@@ -1,16 +1,23 @@
 <?php
 include('env.php');
 
+// sleep('10');
+
 function url_get_contents ($url) {
+    if($_SERVER["HTTP_HOST"] == "savvy.local"){
+        return file_get_contents($url);
+    }
 	if (!function_exists('curl_init')){
-		die('CURL is not installed!');
-	}
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	$output = curl_exec($ch);
-	curl_close($ch);
-	return $output;
+		die;
+    }
+    else{
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
+    }
 }
 
 // Build POST request:
@@ -19,8 +26,9 @@ $recaptcha_secret = env('secret');
 $recaptcha_response = $_POST['recaptcha_response'];
 
 //SWITCH THIS TO FILE_GET_CONTENTS IF ON LOCALHOST!!!
+//the instruction above isnt needed anymore. updated url_get_contents to account for that. Akbr, 14/07/2020
 // Make and decode POST request:
-$recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+$recaptcha = url_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
 $recaptcha = json_decode($recaptcha);
 
 /*
@@ -34,15 +42,15 @@ $from = 'CapitalSavvy Contact Form <site@capitalsavvy.pro>';
 $sendTo = 'Akbr<kakbr800@gmail.com>';
 
 // subject of the email
-$subject = 'New message from Website: '.$_POST['name'];
+$subject = 'New message from CapitalSavvy Website: '.$_POST['email'];
 
-// form field names and their translations.
+// form field names and their traCapitalSavvyations.
 // array variable name => Text to appear in the email
 $fields = array('fname' => 'First Name',
                 'lname' => 'Last Name',
                 'email' => 'email',
                 'company' => 'company',
-                'message' => 'message'); 
+                'message' => 'message');  
 
 // message that will be displayed when everything is OK :)
 $okMessage = 'Contact form successfully submitted. Thank you, we will be in touch soon!';
@@ -64,6 +72,7 @@ try
     if(count($_POST) == 0) throw new \Exception('3MPT-Y34');
 
     if($recaptcha->score <= 0.5) throw new \Exception('SP-M45-'.$recaptcha->score);
+    // if($recaptcha->score <= 0.5) throw new \Exception('REcaptcha Response= '.$recaptcha_response);
 
             
     $emailText = "New Message\t Score:".$recaptcha->score."\n";
@@ -87,7 +96,7 @@ try
         mail($sendTo, $subject, $emailText, implode("\n", $headers));
         
     }else{
-        $okMessage .= ' (Not on Live Server)';
+        $okMessage .= ' (Not on Live Server) <br> email Text: '.$emailText;
     }
 
     $responseArray = array('type' => 'success', 'message' => $okMessage);
