@@ -379,11 +379,14 @@ color:#333646;
         text-align: left;
         font-size: 1.2em;
         color: white;
-        margin: 3em auto;
+        /* margin: 3em auto; */
         text-decoration: none;
         width: max-content;
         max-width: 350px;
         line-height: 2;
+        bottom: 0;
+        left: 3em;
+        position: absolute;
     }
     .position{
         color:#B9915B;
