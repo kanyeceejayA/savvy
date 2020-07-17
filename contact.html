@@ -10,19 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css?ver=2323">
+    <link rel="stylesheet" type="text/css" href="css/contact.css?ver=2323">
 		<!-- <link rel="stylesheet" type="text/css" href="css/login.css"> -->
   
   </head>
   <body class="contact">
       <!-- TOp Menu -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-transparent fixed-top top-menu">
+      <nav class="navbar navbar-expand-md navbar-dark bg-transparent fixed-top top-menu">
         <div class="container">
         
         <div class="collapse navbar-collapse" id="topmenu">
             <ul class="navbar-nav ml-auto">
             
             <li class="nav-item">
-                <a class="nav-link" href="tel:+256711222342"><span style="color:#B9915B;">Call</span> +256-711-222342</a>
+                <a class="nav-link" href="#contact"><span style="color:#B9915B;">CONTACT US</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link invest" href="login">Investor Login</a>
@@ -35,7 +36,7 @@
     <!-- Main Navigation  -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
         <div class="container">
-        <a class="navbar-brand" href="/"><img class="img-fluid" src="img/logo.svg"></a>
+        <a class="navbar-brand" href="#"><img class="img-fluid" src="img/logo.svg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,14 +44,13 @@
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/#about">About
-                    <span class="sr-only">(current)</span>
                     </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/#sme">SME Bridge Fund</a>
+                <a class="nav-link" href="/#SME">SME Bridge Fund</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/#sme">Advisory Services</a>
+                <a class="nav-link" href="/#ADVISORY">Advisory Services</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/#team">Team</a>
@@ -59,7 +59,7 @@
                 <a class="nav-link" href="/#partnerships">Partnerships</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link invest" href="#">Invest Now</a>
+                <a class="nav-link invest" href="contact">Invest Now</a>
             </li>
             <li class="nav-item d-xs-block d-md-none">
                 <a class="nav-link btn-alt" href="login">Investor Login</a>
@@ -68,62 +68,6 @@
         </div>
         </div>
     </nav>
-    <style>
-        .contact header{
-            background-image: url('img/header.jpg');
-            background-size: cover;
-            background-position: top;
-            color:#B9915B;
-            padding-top: 200px;
-        }
-        header h2{
-            color:#B9915B;
-            font-weight: medium;
-        }
-        input.form-control, textarea.form-control {
-            border: 0;
-            outline: 0;
-            background: transparent;
-            border: 1px solid #ABACAC;
-            border-radius: 0px;
-            padding-bottom: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 300;
-        }
-        input.form-control:focus, textarea.form-control:focus{
-            border: 1px solid #ABACAC;
-            box-shadow: 0 0 0 0.2rem rgba(185,145,91,.25);
-            
-        }
-        label {
-            font-size: 1.25rem;
-            font-weight: 300;
-            padding: 0 91px;
-            color: #707070;
-            text-align: right;
-        }
-        small.copy{
-            font-size: unset;
-            display: block;
-            padding: 0;
-        }
-        .btn{
-            float:left;
-            padding: .5rem 2rem;
-        }
-        .btn:hover{
-            color:white;
-        }
-        @media screen and (max-width:700px) {
-            label{
-                text-align: left;
-            }
-            .btn{
-                float:center;
-            }
-            
-        }
-    </style>
     
     <header class="py-6">
 			<div class="container">
@@ -134,113 +78,110 @@
     <!-- Page Content -->
     <!-- Top Section  -->
     <section class="py-6" style="padding-bottom:20vh" id="about">
-			<div class="container">
-				<!-- <h2 class="heading">About</h2> -->
-                <p class="copy">Welcome! The following steps will have you create an account with the CapitalSavvy and fill out paperwork required for submission for the SME Bridge Fund.</p>
-                
-                <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
-                    <fieldset>
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center">* Contact Name </label>
-                            <div class="col-md-6">
-                                <input id="name" name="name" type="text" class="form-control" required>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 left-col">
+                    <div class="text">
+                        <div class="first-part">
+                            <h2 class="no-line">For Client Service/Investor Relations, please contact:</h2>
+                            <div class="separator">
+                                <img src="/wp-content/themes/morgan-creek/assets/images/separator.png" alt="">
+                            </div>
+                            <p>
+                            <p>
+                                CapitalSavvy Ltd,<br>
+                                Email: info@capitalsavvy.com <br>
+                                Phone: +256-772-123543
+                            </p>
+                        </div>
+                        <div class="second-part">
+                            <h3></h3>
+                            <div class="separator">
+                                <img src="/wp-content/themes/morgan-creek/assets/images/separator.png" alt="">
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center">* Email </label>
+                <div class="col-md-6 right-col">
+                    <div class="text">
+                        <h2 class="no-line">Contact Form</h2>
+                    </div>
+                    <div class="separator">
+                        <img src="/wp-content/themes/morgan-creek/assets/images/separator.png" alt="">
+                    </div>
+
+                    <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
+                        <div class="row">
                             <div class="col-md-6">
-                                <input id="email" name="email" type="text" class="form-control" required>
+                                <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name" required>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center">* Phone </label>
                             <div class="col-md-6">
-                                <input id="phone" name="phone" type="text" class="form-control" required>
+                                <input id="lname" name="lname" type="text" class="form-control" placeholder="Last Name" required>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center">Title </label>
                             <div class="col-md-6">
-                                <input id="title" name="title" type="text" class="form-control">
+                                <input id="email" name="email" type="text" class="form-control" placeholder="Email">
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center">* Company Name </label>
                             <div class="col-md-6">
-                                <input id="company" name="company" type="text" class="form-control" required>
+                                <input id="company" name="company" type="text" class="form-control" placeholder="Company">
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center"> City </label>
-                            <div class="col-md-6">
-                                <input id="city" name="city" type="text" class="form-control">
+                            <div class="col-md-12">
+                                <textarea id="message" name="message" type="text" class="form-control" placeholder="Message"></textarea>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center"> Country </label>
-                            <div class="col-md-6">
-                                <input id="country" name="country" type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 text-xs-center">Additional Comments? </label>
-                            <div class="col-md-6">
-                                <textarea id="comments" name="comments" type="text" class="form-control"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-2">
+                            <div class="col-md-12">
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                                 <small class="copy">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-2">
                                 <div id="messages"></div>
+                            </div>
+                            <div class="col-md-12">
                                 
                                 <button name="submit" class="btn">Send</button>
                             </div>
                         </div>
-                    </fieldset>
-                </form>
-			</div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer  -->
     <footer class="py-6 dark" id="footer">
         <div class="container">
-            <h2 class="heading">Set an appointment today</h2>
+            <h2 class="heading" id="contact">Contact Us</h2>
             
             <p class="copy pl-6"><img class="img-fluid" src="img/logo.svg"></p>
             <div class="row">
-                <div class="col-lg-6 pl-6">
-                    <p class="copy">Suit 5, Ecobank Plaza<br>
-                        Plot 28, Parliamentary Avenue<br>
-                        Kampala,  Uganda
+                <div class="col-md-5 pl-6">
+                    <!-- <p class="copy">
+                        For Client Service/Investor Relations, please contact:
+                        CapitalSavvy Ltd<br>
+                        <img src="img/mail.png">info@capitalsavvy.com <br>
+                        <img src="img/phone.png"> +256-772-123543
+                    </P> -->
+                    <p class="copy">
+                        CapitalSavvy Ltd<br>
+                        Suite 2C Ecobank Plaza,<br>
+                        Plot 4, Parliament Avenue<br>
+                        Kampala, Uganda.
                     </p>
-                    <p class="copy"><img src="img/mail.png"> info@capitalsavvy.com <br>
-                        <img src="img/phone.png"> +256-772-123543</p>
                 </div>
-                <div class="col-lg-3">
-                    <a href="login" class="btn btn-alt">Investor Login</a>
+                <div class="col-md-3 pl-6">
                     <p class="copy">
                         <a href="">Jobs</a><br>
-                        <a href="">Terms of Use & Privacy</a><br>
+                        <a href="">Terms of Use</a><br>
                         <a href="">Conduct</a><br>
                         <a href="">Who We Are</a>
                     </p>
                 </div>
-                <div class="col-lg-3">
-                    <a href="contact" class="btn">Invest now</a>
+                <div class="col-md-4 pl-6">
+                    
+                    <p class="copy">
+                        <!-- For Client Service/Investor Relations, please contact:
+                        CapitalSavvy Ltd<br> -->
+                        Contacts:<br>
+                        <img src="img/mail.png"> invest@capitalsavvy.pro <br>
+                        <img src="img/phone.png"> +256-772-123543
+                    </P>
                     <div class="social-links">
                         <a href=""><img src="img/ln.png"></a>
                         <a href=""><img src="img/tw.png"></a>
@@ -248,11 +189,17 @@
                         <a href=""><img src="img/ig.png"></a>
                         <a href=""><img src="img/yt.png"></a>
                     </div>
+                    
+                    <!-- <p class="copy">
+                        CapitalSavvy Ltd<br>
+                        Suite 2C Ecobank Plaza,<br>
+                        Plot 4, Parliament Avenue Kampala, Uganda.
+                    </p> -->
                 </div>
                 
             </div>
             <div class="row">
-                <p class="copy pl-6" style="color: #EBEBEB;padding-top:1em">© 2020 Capital Savvy Ltd. All Rights reserved</p>
+                <p class="copy pl-6" style="color: #EBEBEB;padding-top:1em">© 2020 CapitalSavvy Ltd. All Rights reserved</p>
             </div>
         </div>
     </footer>

@@ -488,8 +488,9 @@ color:#333646;
         color:#B1B1B1;
     }
 	footer .social-links{
-		/* position: relative; */
-		padding: 1em 0;
+		position: relative;
+		padding: 0 1em;
+		float: left;
 		margin: 0px;
 	}
 	footer .social-links a{
