@@ -99,6 +99,13 @@ color:#333646;
     #cards2 .card-body{
         background-color: #333646;
     }
+    #cards2 .card-body:hover{
+        background-color: #B9915B;
+        /* color:white!important; */
+    }
+    #cards2 .card-body:hover h3{
+        color:white;
+    }
     
     #cards2 .card-body h3{
         padding:0px;
