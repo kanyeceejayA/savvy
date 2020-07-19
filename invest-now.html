@@ -107,13 +107,109 @@
             display: block;
             padding: 0;
         }
-        .btn{
-            float:left;
-            padding: .5rem 2rem;
-        }
-        .btn:hover{
-            color:white;
-        }
+        
+.btn{
+    float: l;
+    padding: .5rem 2rem;
+}
+.btn:hover{
+    color:white;
+}
+form .col-md-6, form .col-md-12{
+    margin-bottom: 0.5em;
+}
+#submit {
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius: 40px;
+    background: #fff;
+    border: 2px solid #1ECD97;
+    color: #1ECD97;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    border-radius: 0px;
+    color: #B9915B;
+    border-color: #B9915B;
+}
+#submit:hover {
+    color: white;
+    background: #1ECD97;
+    background: #B9915B;
+  }
+		#submit:active {
+            letter-spacing: 2px;
+		}
+		#submit:after {
+            content: "SUBMIT";
+		}
+
+		#submit.onclick {
+            width: 40px;
+            border-color: #bbbbbb;
+            border-width: 3px;
+            font-size: 0;
+            border-left-color: #1ECD97;
+            -webkit-animation: rotating 2s 0.25s linear infinite;
+            animation: rotating 2s 0.25s linear infinite;
+            border-left-color: #B9915B;
+            border-radius: 40px;
+    }
+		#submit.onclick:after {
+            content: "";
+		}
+		#submit.onclick:hover {
+            color: #1ECD97;
+		background: white;
+    }
+    
+    #submit.done {
+        font-size: 13px;
+		color: white;
+		background: #1ECD97;
+    }
+    #submit.done:after {
+        font-family: 'FontAwesome';
+		content: "Success!";
+    }
+    
+    #submit.fail {
+        font-size: 13px;
+		color: white;
+		background: #cd1e2d;
+    }
+    #submit.fail:after {
+        font-family: 'FontAwesome';
+		content: "Please Retry";
+    }
+    
+    @-webkit-keyframes rotating {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+		}
+		to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+		}
+    }
+    
+    @keyframes rotating {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+		}
+		to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+		}
+    }
         @media screen and (max-width:700px) {
             label{
                 text-align: left;
@@ -138,7 +234,7 @@
 				<!-- <h2 class="heading">About</h2> -->
                 <p class="copy">Welcome! The following steps will have you create an account with the CapitalSavvy and fill out paperwork required for submission for the SME Bridge Fund.</p>
                 
-                <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
+                <form action="investform/investform.php" method="post" role="form" class="investform" id="contact-form">
                     <fieldset>
                         <div class="form-group row">
                             <label class="col-md-2 text-xs-center">* Contact Name </label>
@@ -207,7 +303,7 @@
                             <div class="col-md-6 offset-md-2">
                                 <div id="messages"></div>
                                 
-                                <button name="submit" class="btn">Send</button>
+                                <button name="submit" class="" id="submit"></button>
                             </div>
                         </div>
                     </fieldset>
@@ -286,7 +382,7 @@
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq"></script>
     
-    <script src="contactform/contactform.js"></script>
+    <script src="investform/investform.js"></script>
   
   </body>
 </html>

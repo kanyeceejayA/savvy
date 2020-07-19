@@ -64,11 +64,10 @@
 
     $(".profile:not(#"+id+")").slideUp('fast', function(){
 
-          $(target).slideDown('fast', function(){
-            $('html, body').animate({
-              scrollTop: $(target).offset().top
-            }, 'slow', 'easeInOutQuad');
-          });
+          $(target).slideDown('fast');
+          $('html, body').animate({
+            scrollTop: $(target).offset().top
+          }, 'slow', 'easeInOutQuad');
 
     });  
 

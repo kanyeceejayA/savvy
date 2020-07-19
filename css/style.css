@@ -27,7 +27,7 @@ color:#333646;
 }
   	
 	h2{
-		font-size: 24px;
+		font-size: 20px;
 		color:#909090;
 		padding: 1em 0;
 	}
@@ -43,7 +43,7 @@ color:#333646;
 	}
 	
 	.copy{
-		font-size: 1.25rem;
+		font-size: 1rem;
 		font-weight: 300;
 		padding: 0 91px;
 		color: #707070;
@@ -64,12 +64,12 @@ color:#333646;
    }
 
 	h3{
-		font-size:36px;
+		font-size: 24px;
 		color:#B9915B;
 		text-align:left;
 		padding: 30px 80px;
 		padding-right:40px;
-    }
+		}
 
 	.copy.card-copy {
 		padding: 0 50px;
@@ -370,6 +370,13 @@ color:#333646;
         margin-right: 0px;
     }
 
+    #logo3d{
+        max-width: 200;
+        width: 100%;
+        margin: auto;
+        display: block;
+    }
+
 
     /* our team  */
     #team{
@@ -473,7 +480,7 @@ color:#333646;
 	footer p.copy{
         padding: 0 1em;
         line-height: 1.5em;
-        font-size: 18px;
+        font-size: 1rem;
         color:#B1B1B1;
     }
 
