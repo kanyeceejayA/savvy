@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css?ver=20201907">
+    <link rel="stylesheet" type="text/css" href="css/contact.css">
 	
   </head>
   <body>
@@ -459,16 +460,17 @@
         <div class="container">
             <h2 class="heading" id="contact">Contact Us</h2>
             
-            <p class="copy pl-6"><img class="img-fluid" src="img/logo.svg"></p>
             <div class="row">
-                <div class="col-md-5 pl-6">
-                    <!-- <p class="copy">
+                <div class="col-md-6 pl-6">
+                    <p class="copy"><img class="img-fluid" src="img/logo.svg"></p>
+                    <p class="copy">
                         For Client Service/Investor Relations, please contact:
                         CapitalSavvy Ltd<br>
-                        <img src="img/mail.png">invest@capitalsavvy.com <br>
-                        <img src="img/phone.png"> +256772123543
-                    </P> -->
+                        <img src="img/mail.png"> Mail: invest@capitalsavvy.com <br>
+                        <img src="img/phone.png"> Phone:  +256772123543
+                    </P>
                     <p class="copy">
+                        <strong>Address:</strong><br>
                         CapitalSavvy Ltd<br>
                         Suite 2C Ecobank Plaza,<br>
                         Plot 4, Parliament Avenue<br>
@@ -483,7 +485,8 @@
                         <a href="">Who We Are</a>
                     </p>
                 </div>
-                <div class="col-md-4 pl-6">
+                
+                <!-- <div class="col-md-4 pl-6">
                     
                     <p class="copy">
                         <img src="img/mail.png"> invest@capitalsavvy.pro <br>
@@ -496,14 +499,85 @@
                         <a href=""><img src="img/ig.png"></a>
                         <a href=""><img src="img/yt.png"></a>
                     </div>
-                    
-                    <!-- <p class="copy">
-                        CapitalSavvy Ltd<br>
-                        Suite 2C Ecobank Plaza,<br>
-                        Plot 4, Parliament Avenue Kampala, Uganda.
-                    </p> -->
-                </div>
+                </div> -->
+
+                <!-- <div class="col-lg-6">
+                    <div class="row">
+                      <div class="col-md-12 info">
+                        <h4>Get In Touch</h4>
+                      </div>
+                    </div>
+        
+                    <div class="form">
+                      <div id="messages"></div>
+                      <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
+                        <div class="form-row">
+                          <div class="form-group col-lg-6">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                            <div class="validation"></div>
+                          </div>
+                          <div class="form-group col-lg-6">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required="">
+                            <div class="validation"></div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required="">
+                          <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                          <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message" required=""></textarea>
+                          <div class="validation"></div>
+                        </div>
+                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                        <small>
+                          This site is protected by reCAPTCHA and the Google
+                          <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                          <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                        </small> <br><br>
+                        <div class="text-center"><button type="submit" title="Send Message" onclick="" id="submitbtn">Send Message</button></div>
+                      </form>
+                      
+                      
+                    </div>
+                  </div> -->
                 
+                <div class="col-md-6 right-col" id="contact">
+                    <div class="text">
+                        <h2 class="no-line">Get in Touch</h2>
+                    </div>
+
+                    <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name*" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="lname" name="lname" type="text" class="form-control" placeholder="Last Name*" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="email" name="email" type="text" class="form-control" placeholder="Email*" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="company" name="company" type="text" class="form-control" placeholder="Company">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea id="message" name="message" type="text" class="form-control" row="4" placeholder="Message*" required=""></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                                <small class="copy">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
+                            </div>
+                            <div class="col-md-12">
+                                
+                                <button name="send" class="" id="submit"></button>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="messages"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="row">
                 <p class="copy pl-6" style="color: #EBEBEB;padding-top:1em">© 2020 CapitalSavvy Ltd. All Rights reserved</p>
@@ -523,10 +597,14 @@
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="js/easing.min.js"></script>
     
-    <script src="js/scripts.js?ver=20201907
-    "></script>
+    <script src="js/scripts.js?ver=20201907"></script>
     
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='NAME';ftypes[1]='text';fnames[2]='JOBTITLE';ftypes[2]='text';fnames[6]='MMERGE6';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js' async></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='NAME';ftypes[1]='text';fnames[2]='JOBTITLE';ftypes[2]='text';fnames[6]='MMERGE6';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     
+    
+    <script src="https://www.google.com/recaptcha/api.js?render=6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq" async></script>
+    
+    <script src="contactform/contactform.js" async></script>
+
 </body>
 </html>
