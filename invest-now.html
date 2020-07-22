@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Contact | Capital Savvy Investment Portal</title>
+    <title>Invest Now | Capital Savvy Investment Ltd - Your Right Investment Partner</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css?ver=20201907">
-		<!-- <link rel="stylesheet" type="text/css" href="css/login.css"> -->
+		<link rel="stylesheet" type="text/css" href="css/contact.css">
   
   </head>
   <body class="contact">
@@ -22,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
             
             <li class="nav-item">
-                <a class="nav-link" href="contact"><span style="color:#B9915B;">CONTACT US</span></a>
+                <a class="nav-link" href="/#contact"><span style="color:#B9915B;">CONTACT US</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link invest" href="login">Investor Login</a>
@@ -80,145 +80,42 @@
             color:#B9915B;
             font-weight: medium;
         }
-        input.form-control, textarea.form-control {
+        #invest-form input.form-control, #invest-form textarea.form-control {
             border: 0;
             outline: 0;
             background: transparent;
             border: 1px solid #ABACAC;
             border-radius: 0px;
             padding-bottom: 0.5rem;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 300;
         }
-        input.form-control:focus, textarea.form-control:focus{
+        #invest-form input.form-control:focus, #invest-form textarea.form-control:focus{
             border: 1px solid #ABACAC;
             box-shadow: 0 0 0 0.2rem rgba(185,145,91,.25);
             
         }
-        label {
+        #invest-form label {
             font-size: 1.25rem;
             font-weight: 300;
-            padding: 0 91px;
             color: #707070;
             text-align: right;
         }
-        small.copy{
+        #invest-form small.copy{
             font-size: unset;
             display: block;
             padding: 0;
         }
-        
-        .btn{
-            float: l;
-            padding: .5rem 2rem;
-        }
-        .btn:hover{
-            color:white;
-        }
-        form .col-md-6, form .col-md-12{
-            margin-bottom: 0.5em;
-        }
-        #submit {
-            outline: none;
-            height: 40px;
-            text-align: center;
-            width: 130px;
-            border-radius: 40px;
-            background: #fff;
-            border: 2px solid #1ECD97;
-            color: #1ECD97;
-            letter-spacing: 1px;
-            text-shadow: 0;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            -webkit-transition: all 0.25s ease;
-            transition: all 0.25s ease;
-            border-radius: 0px;
-            color: #B9915B;
-            border-color: #B9915B;
-        }
-        #submit:hover {
-            color: white;
-            background: #1ECD97;
-            background: #B9915B;
-        }
-                #submit:active {
-                    letter-spacing: 2px;
-                }
-                #submit:after {
-                    content: "SUBMIT";
-                }
 
-                #submit.onclick {
-                    width: 40px;
-                    border-color: #bbbbbb;
-                    border-width: 3px;
-                    font-size: 0;
-                    border-left-color: #1ECD97;
-                    -webkit-animation: rotating 2s 0.25s linear infinite;
-                    animation: rotating 2s 0.25s linear infinite;
-                    border-left-color: #B9915B;
-                    border-radius: 40px;
+        @media screen and (max-width:700px) {
+            label{
+                text-align: left;
             }
-                #submit.onclick:after {
-                    content: "";
-                }
-                #submit.onclick:hover {
-                    color: #1ECD97;
-                background: white;
+            .btn{
+                float:center;
             }
             
-            #submit.done {
-                font-size: 13px;
-                color: white;
-                background: #1ECD97;
-            }
-            #submit.done:after {
-                font-family: 'FontAwesome';
-                content: "Success!";
-            }
-            
-            #submit.fail {
-                font-size: 13px;
-                color: white;
-                background: #cd1e2d;
-            }
-            #submit.fail:after {
-                font-family: 'FontAwesome';
-                content: "Please Retry";
-            }
-            
-            @-webkit-keyframes rotating {
-                from {
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                to {
-                    -webkit-transform: rotate(360deg);
-                    transform: rotate(360deg);
-                }
-            }
-            
-            @keyframes rotating {
-                from {
-                    -webkit-transform: rotate(0deg);
-                    transform: rotate(0deg);
-                }
-                to {
-                    -webkit-transform: rotate(360deg);
-                    transform: rotate(360deg);
-                }
-            }
-                @media screen and (max-width:700px) {
-                    label{
-                        text-align: left;
-                    }
-                    .btn{
-                        float:center;
-                    }
-                    
-                }
+        }
     </style>
     
     <header class="py-6">
@@ -234,7 +131,7 @@
 				<!-- <h2 class="heading">About</h2> -->
                 <p class="copy">Welcome! The following steps will have you create an account with the CapitalSavvy and fill out paperwork required for submission for the SME Bridge Fund.</p>
                 
-                <form action="investform/investform.php" method="post" role="form" class="investform" id="contact-form">
+                <form action="investform/investform.php" method="post" role="form" class="investform" id="invest-form">
                     <fieldset>
                         <div class="form-group row">
                             <label class="col-md-2 text-xs-center">* Contact Name </label>
@@ -246,7 +143,7 @@
                         <div class="form-group row">
                             <label class="col-md-2 text-xs-center">* Email </label>
                             <div class="col-md-6">
-                                <input id="email" name="email" type="text" class="form-control" required>
+                                <input id="email2" name="email" type="text" class="form-control" required>
                             </div>
                         </div>
 
@@ -267,7 +164,7 @@
                         <div class="form-group row">
                             <label class="col-md-2 text-xs-center">* Company Name </label>
                             <div class="col-md-6">
-                                <input id="company" name="company" type="text" class="form-control" required>
+                                <input id="company2" name="company" type="text" class="form-control" required>
                             </div>
                         </div>
 
@@ -294,16 +191,16 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-2">
-                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse2">
                                 <small class="copy">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
                             </div>
                         </div>
                         
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-2">
-                                <div id="messages"></div>
+                                <button name="submit" class="" id="send"></button>
                                 
-                                <button name="submit" class="" id="submit"></button>
+                                <div id="message"></div>
                             </div>
                         </div>
                     </fieldset>
@@ -316,54 +213,60 @@
         <div class="container">
             <h2 class="heading" id="contact">Contact Us</h2>
             
-            <p class="copy pl-6"><img class="img-fluid" src="img/logo.svg"></p>
             <div class="row">
-                <div class="col-md-5 pl-6">
-                    <!-- <p class="copy">
+                <div class="col-md-6 pl-6">
+                    <p class="copy"><img class="img-fluid" src="img/logo.svg"></p>
+                    <p class="copy">
                         For Client Service/Investor Relations, please contact:
                         CapitalSavvy Ltd<br>
-                        <img src="img/mail.png">invest@capitalsavvy.com <br>
-                        <img src="img/phone.png"> +256772123543
-                    </P> -->
+                        <img src="img/mail.png"> Mail: invest@capitalsavvy.com <br>
+                        <img src="img/phone.png"> Phone:  +256772123543
+                    </P>
                     <p class="copy">
+                        <strong>Address:</strong><br>
                         CapitalSavvy Ltd<br>
                         Suite 2C Ecobank Plaza,<br>
                         Plot 4, Parliament Avenue<br>
                         Kampala, Uganda.
                     </p>
                 </div>
-                <div class="col-md-3 pl-6 d-sm-none">
-                    <p class="copy">
-                        <a href="">Jobs</a><br>
-                        <a href="">Terms of Use</a><br>
-                        <a href="">Conduct</a><br>
-                        <a href="">Who We Are</a>
-                    </p>
-                </div>
-                <div class="col-md-4 pl-6">
-                    
-                    <p class="copy">
-                        <!-- For Client Service/Investor Relations, please contact:
-                        CapitalSavvy Ltd<br> -->
-                        Contacts:<br>
-                        <img src="img/mail.png"> invest@capitalsavvy.pro <br>
-                        <img src="img/phone.png"> +2567721235
-                    </P>
-                    <div class="social-links">
-                        <a href=""><img src="img/ln.png"></a>
-                        <a href=""><img src="img/tw.png"></a>
-                        <a href=""><img src="img/fb.png"></a>
-                        <a href=""><img src="img/ig.png"></a>
-                        <a href=""><img src="img/yt.png"></a>
-                    </div>
-                    
-                    <!-- <p class="copy">
-                        CapitalSavvy Ltd<br>
-                        Suite 2C Ecobank Plaza,<br>
-                        Plot 4, Parliament Avenue Kampala, Uganda.
-                    </p> -->
-                </div>
                 
+                <div class="col-md-6 right-col" id="contact">
+                    <div class="text">
+                        <h2 class="no-line">Get in Touch</h2>
+                    </div>
+
+                    <form action="contactform/contactform.php" method="post" role="form" class="contactForm" id="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name*" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="lname" name="lname" type="text" class="form-control" placeholder="Last Name*" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="email" name="email" type="text" class="form-control" placeholder="Email*" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="company" name="company" type="text" class="form-control" placeholder="Company">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea id="message" name="message" type="text" class="form-control" row="4" placeholder="Message*" required=""></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                                <small class="copy">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
+                            </div>
+                            <div class="col-md-12">
+                                
+                                <button name="send" class="" id="submit"></button>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="messages"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="row">
                 <p class="copy pl-6" style="color: #EBEBEB;padding-top:1em">© 2020 CapitalSavvy Ltd. All Rights reserved</p>
@@ -383,6 +286,12 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq"></script>
     
     <script src="investform/investform.js"></script>
+
+    
+    <script src="https://www.google.com/recaptcha/api.js?render=6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq" async></script>
+    
+    <script src="contactform/contactform.js" async></script>
+    
   
   </body>
 </html>

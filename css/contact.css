@@ -56,7 +56,7 @@ small.copy{
 form .col-md-6, form .col-md-12{
     margin-bottom: 0.5em;
 }
-#submit {
+#submit, #send {
     outline: none;
     height: 40px;
     text-align: center;
@@ -76,20 +76,20 @@ form .col-md-6, form .col-md-12{
     color: white;
     border-color: #B9915B;
 }
-#submit:hover {
+#submit:hover, #send:hover {
     color: white;
     background: #1ECD97;
     background: white;
     color: #B9915B;
   }
-		#submit:active {
+		#submit:active, #send:active {
             letter-spacing: 2px;
 		}
-		#submit:after {
+		#submit:after, #send:after {
             content: "SUBMIT";
 		}
 
-		#submit.onclick {
+		#submit.onclick, #send.onclick {
             width: 40px;
             background: white;
             border-color: #bbbbbb;
@@ -101,30 +101,30 @@ form .col-md-6, form .col-md-12{
             border-left-color: #B9915B;
             border-radius: 40px;
     }
-		#submit.onclick:after {
+		#submit.onclick:after, #send.onclick:after {
             content: "";
 		}
-		#submit.onclick:hover {
+		#submit.onclick:hover, #send.onclick:hover {
             color: #1ECD97;
 		background: white;
     }
     
-    #submit.done {
+    #submit.done, #send.done {
         font-size: 13px;
 		color: white;
 		background: #1ECD97;
     }
-    #submit.done:after {
+    #submit.done:after, #send.done:after {
         font-family: 'FontAwesome';
 		content: "Success!";
     }
     
-    #submit.fail {
+    #submit.fail, #send.fail {
         font-size: 13px;
 		color: white;
 		background: #cd1e2d;
     }
-    #submit.fail:after {
+    #submit.fail:after, #send.fail:after {
         font-family: 'FontAwesome';
 		content: "Please Retry";
     }

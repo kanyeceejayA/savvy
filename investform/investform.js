@@ -4,22 +4,22 @@ $(function () {
 // validator files are included in the download package
 // otherwise download from http://1000hz.github.io/bootstrap-validator
 
-// $('#contact-form').validator();
+// $('#invest-form').validator();
 
 
 
 
 // when the form is submitted
-$('#contact-form').on('submit', function (e) {
+$('#invest-form').on('submit', function (e) {
     console.log('form submited');
 
-    $( "#submit" ).addClass( "onclick", 1000);
+    $( "#send" ).addClass( "onclick", 1000);
  
     e.preventDefault();
 
     grecaptcha.ready(function () {
         grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'invest' }).then(function (token) {
-            var recaptchaResponse = document.getElementById('recaptchaResponse');
+            var recaptchaResponse = document.getElementById('recaptchaResponse2');
             recaptchaResponse.value = token;
         });
     });
@@ -45,22 +45,22 @@ $('#contact-form').on('submit', function (e) {
             
             // If we have messageAlert and messageText
             if (messageAlert && messageText) {
-                // inject the alert to .messages div in our form
-                // $('#contact-form').find('.messages').html(alertBox);
-                document.getElementById("messages").innerHTML = alertBox;
+                // inject the alert to .message div in our form
+                // $('#invest-form').find('.message').html(alertBox);
+                document.getElementById("message").innerHTML = alertBox;
                 // alert(alertBox);
 
                 // empty the form
                 if(data.type == 'success'){
                     console.log('it was a success');
-                    $('#contact-form')[0].reset();
+                    $('#invest-form')[0].reset();
 
-                    $( "#submit" ).removeClass( "onclick" );
-                    $( "#submit" ).addClass( "done", 450, callbacksubmit() );
+                    $( "#send" ).removeClass( "onclick" );
+                    $( "#send" ).addClass( "done", 450, callbacksubmit2() );
                 }
                 else{
-                    $( "#submit" ).removeClass( "onclick" );
-                    $( "#submit" ).addClass( "fail", 450, callbacksubmit() );   
+                    $( "#send" ).removeClass( "onclick" );
+                    $( "#send" ).addClass( "fail", 450, callbacksubmit2() );   
                 }
             }
         }
@@ -71,9 +71,9 @@ $('#contact-form').on('submit', function (e) {
 });
 
 
-function callbacksubmit() {
+function callbacksubmit2() {
 setTimeout(function() {
-    $( "#submit" ).removeClass( "done" );
-    $( "#submit" ).removeClass( "fail" );
+    $( "#send" ).removeClass( "done" );
+    $( "#send" ).removeClass( "fail" );
 }, 1500 );
 }
