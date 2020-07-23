@@ -47,7 +47,10 @@ color:#333646;
 		font-weight: 300;
 		padding: 0 91px;
 		color: #707070;
-	}
+    }
+    .dark .copy{
+        color:#B1B1B1;
+    }
 	.py-6{
 		padding:5em 0;
 	}
