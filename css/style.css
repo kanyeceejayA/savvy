@@ -244,6 +244,9 @@ color:#333646;
             color: #fff;
             text-align: left;
             margin-top: 45vh;
+            /* margin-left: auto; */
+            /* margin-right: auto; */
+            /* text-align: center; */
         }
         .banner-caption p{
             font-size: 24px;
