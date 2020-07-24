@@ -51,6 +51,19 @@ color:#333646;
     .dark .copy{
         color:#B1B1B1;
     }
+    .more{
+        display: none;
+    }
+    Button#toggle{
+        float: none;
+        display: block;
+        margin: auto;
+        margin-bottom: 1rem;
+        background: transparent;
+        color: #B1B1B1;
+        font-size: 14px;
+        border: 1px solid #B9915B;
+    }
 	.py-6{
 		padding:5em 0;
 	}

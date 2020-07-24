@@ -111,3 +111,17 @@
     // animated top scrolling
     $('body, html').animate({scrollTop: pos},'slow','easeInOutQuad');
   });
+
+  // Read More Function 
+  $("#toggle").click(function() {
+    var elem = $("#toggle").text();
+    if (elem == "▼ Read More") {
+      //Stuff to do when btn is in the read more state
+      $("#toggle").text("▲ Read Less");
+      $(".more").slideDown();
+    } else {
+      //Stuff to do when btn is in the read less state
+      $("#toggle").text("▼ Read More");
+      $(".more").slideUp();
+    }
+  });
