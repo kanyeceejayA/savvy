@@ -138,7 +138,12 @@ color:#333646;
 			border-bottom: 1px solid #B9915B;
 			padding-bottom: 1em;
 			padding-top: 1em;
-		}
+        }
+        .navbar-brand{
+            @media screen (max-width:){
+                
+            }
+        }
 		.navbar-dark .navbar-nav .nav-link{
 			color:white;
 			font-size: 14px;
