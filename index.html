@@ -122,6 +122,21 @@
 		</div>
 			
     </header>
+
+    <script>
+        // set heights to window on Safari
+        function messageHeight() {
+        // get my appropriate elements
+        const message = document.querySelector('.carousel-item');
+        console.log('curent height: '+message.clientHeight);
+        // set their height based on the window
+        message.style.height = window.innerHeight;
+        console.log('New height: '+message.style.height);
+        };
+        messageHeight() // called to initially set the height
+        window.addEventListener('resize', messageHeight); // called to set height on change
+    </script>
+   
     
     <!-- Page Content -->
     <!-- About Section  -->
