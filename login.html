@@ -36,7 +36,7 @@
                     <div class="login-heading d-xs-block d-md-none">
                       <h2>Welcome Back!</h2> <p>Sign in to Continue to your account</p>
                   </div>
-                    <form>
+                    <form id="login-form" type="post">
                       <div class="form-label-group">
                         <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
                         <label for="username">Username</label>
@@ -56,9 +56,10 @@
                       <a href="" style="float:right" class="mt-0">Forgot Password</a>
                       </div>
                       </div>
-      
                       
-                      <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase mb-2 mt-5 col-md-5" type="submit">Login</button>
+                      <div id="messages"></div>
+                      
+                      <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase mb-2 mt-5 col-md-5" type="submit" id="login">Login</button>
                       
                     </form>
                   </div>
@@ -78,6 +79,14 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        
+    <script>
+      var alertBox = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Couldn\'t find your CapitalSavvy Account! </div>';
+      
+      $('#login-form').on('submit', function (e) {
+          console.log('form submited');
+          e.preventDefault();
+          document.getElementById("messages").innerHTML = alertBox;
+      });   
+    </script>      
   </body>
 </html>
