@@ -266,12 +266,6 @@ color:#333646;
             margin-left:0;
             margin-right:0;
         }
-        .carousel-indicators{
-            opacity:0.3;
-        }
-        .carousel-indicators .active{
-            opacity:0.6;
-        }
         
     /* banner caption  */
         .banner-caption {
