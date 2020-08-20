@@ -141,7 +141,7 @@ color:#333646;
         }
         
 		.navbar-dark .navbar-nav .nav-link{
-			color:white;
+			color: #EBEBEB;
 			font-size: 14px;
 			line-height: 38px;
 			padding-right: 1.5em;
@@ -268,7 +268,7 @@ color:#333646;
             z-index: 10;
             padding-top: 20px;
             padding-bottom: 20px;
-            color: #fff;
+            color: #ebebeb;
             text-align: left;
             margin-top: 45vh;
             /* margin-left: auto; */
