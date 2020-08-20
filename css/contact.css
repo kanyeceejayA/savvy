@@ -19,23 +19,30 @@ h2.no-line::before{
 input.form-control, textarea.form-control {
     border: 0;
     outline: 0;
-    background: white;
-    border: 1px solid #ABACAC;
+    border: 1px solid #B1B1B1;
     border-radius: 0px;
     padding-bottom: 0.5rem;
     font-weight: 300;
+    font-size: 14px;
+    color: white;
     margin: 0.2em 0;
+    background-color: transparent;
 }
 input.form-control:focus, textarea.form-control:focus{
-    border: 1px solid #ABACAC;
+    border: 1px solid #B9915B;
+    color:white;
     box-shadow: 0 0 0 0.2rem rgba(185,145,91,.25);
+    background-color: transparent;
     
+}
+input.form-control::placeholder, textarea.form-control::placeholder{
+    color:#B1B1B1;
 }
 label {
     color: #707070;
 }
 small.copy{
-    font-size: unset;
+    font-size: 12px;
     display: block;
     padding: 0;
 }

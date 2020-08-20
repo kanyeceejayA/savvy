@@ -516,12 +516,12 @@ color:#333646;
 	footer p.copy{
         padding: 0 1em;
         line-height: 1.5em;
-        font-size: 1rem;
+        font-size: 14px;
         color:#B1B1B1;
     }
 
     footer .logo{
-        padding: 1em 1em;
+        width:50%;
     }
 	footer .btn{
         /* display: block; */
