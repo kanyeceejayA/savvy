@@ -421,7 +421,7 @@ color:#333646;
     #team p{
         text-align: left;
         font-size: 1.2em;
-        color: white;
+        color: #ebebeb;
         /* margin: 3em auto; */
         text-decoration: none;
         width: max-content;
@@ -438,7 +438,10 @@ color:#333646;
     }
     #team p .btn{
         float:none;
-        color:white;
+        color: #ebebeb;
+        text-transform: capitalize;
+        font-size: 12px;
+        padding: .5rem 1rem;
     }
     #team img{
         /* max-height: 400px; */
