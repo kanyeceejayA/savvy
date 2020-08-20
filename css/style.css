@@ -196,7 +196,7 @@ color:#333646;
 
         .top-menu.navbar-dark .navbar-nav .nav-link{
             color:white;
-            font-size: 14px;
+            font-size: 10px;
             line-height: 38px;
             padding-right: 1em;
             padding-left: 1em;
@@ -211,7 +211,7 @@ color:#333646;
         .top-menu.navbar-dark .navbar-nav .nav-link.invest{
             background-color: #333646;
             color:#fff;
-            font-size: 12px;
+            font-size: 10px;
             text-transform: uppercase;
         }
         .top-menu.navbar-dark .navbar-nav .nav-link.invest:hover{
