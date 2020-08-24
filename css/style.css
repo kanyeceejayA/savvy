@@ -116,9 +116,7 @@ color:#333646;
     }
     #cards2 .card{
         border:0px;
-    }
-    .card-img-top{
-    	/* background-color:#1c6572; */
+        background-color: #1c6572;
     }
     #cards2 .card:hover{
     	background-color:#155460;
@@ -126,11 +124,11 @@ color:#333646;
     #cards2 .card-body{
         background-color: #155460;
     }
-    #cards2 .card-body:hover{
+    #cards2 .card:hover .card-body{
         background-color: #B9915B;
         /* color:white!important; */
     }
-    #cards2 .card-body:hover h3{
+    #cards2 .card:hover .card-body h3{
         color:white;
     }
     
