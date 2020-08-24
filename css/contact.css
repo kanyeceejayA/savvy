@@ -24,16 +24,13 @@ input.form-control, textarea.form-control {
     padding-bottom: 0.5rem;
     font-weight: 300;
     font-size: 14px;
-    color: white;
     margin: 0.2em 0;
     background-color: transparent;
 }
 input.form-control:focus, textarea.form-control:focus{
     border: 0.2px solid #B9915B;
-    color:white;
     box-shadow: 0 0 0 0.2rem rgba(185,145,91,.25);
     background-color: transparent;
-    
 }
 input.form-control::placeholder, textarea.form-control::placeholder{
     color:#B1B1B1;

@@ -62,14 +62,25 @@
   function slide(id){
     let target = $('#'+id);
 
-    $(".profile:not(#"+id+")").slideUp('fast', function(){
+    // $(".profile:not(#"+id+")").slideUp('fast', function(){
 
-          $(target).slideDown('fast');
-          $('html, body').animate({
-            scrollTop: $(target).offset().top
-          }, 'slow', 'easeInOutQuad');
+    //       $(target).slideDown('fast');
+    //       $('html, body').animate({
+    //         scrollTop: $(target).offset().top
+    //       }, 'slow', 'easeInOutQuad');
 
-    });  
+    // });  
+
+    $(".profile:not(#"+id+")").hide(1, function(){
+
+      $(target).show(10, function(){
+        $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 'slow', 'easeInOutQuad');
+
+      });
+
+});  
 
     
   }
