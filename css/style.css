@@ -117,6 +117,12 @@ color:#333646;
     #cards2 .card{
         border:0px;
     }
+    .card-img-top{
+    	/* background-color:#1c6572; */
+    }
+    #cards2 .card:hover{
+    	background-color:#155460;
+    }
     #cards2 .card-body{
         background-color: #155460;
     }
