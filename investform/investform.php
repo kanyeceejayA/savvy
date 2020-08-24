@@ -39,7 +39,7 @@ $recaptcha = json_decode($recaptcha);
 $from = 'CapitalSavvy Contact Form <site@chi-bnode1.websitehostserver.net>';
 
 // an email address that will receive the email with the output of the form
-$sendTo = 'invest@capitalsavvy.pro';
+$sendTo = 'info@capitalsavvy.pro';
 
 // subject of the email
 $subject = 'New message from CapitalSavvy Website: '.$_POST['email'];
