@@ -154,7 +154,7 @@ color:#333646;
 			color: #EBEBEB;
 			font-size: 14px;
 			line-height: 38px;
-			fo: 100px;
+			letter-spacing: 1;
 			padding-right: 1.5em;
 			padding-left: 1.5em;
 		}
@@ -287,9 +287,13 @@ color:#333646;
             /* text-align: center; */
         }
         .banner-caption p{
-            font-size: 72px;
-            font-weight: 400;
+            font-size: 64px;
+            font-weight: 100;
             line-height: 1.2;
+            letter-spacing: 1.5;
+        }
+        .banner-caption span{
+        	letter-spacing:1.5;
         }
     /* End of baner caption  */
 

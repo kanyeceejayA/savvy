@@ -27,7 +27,7 @@ $('#contact-form').on('submit', function (e) {
 
     var url = "contactform/contactform.php";
 
-    // POST values in the background the the script URL
+    // POST values in the background the script URL
     $.ajax({
         type: "POST",
         url: url,
