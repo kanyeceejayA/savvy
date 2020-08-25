@@ -493,9 +493,6 @@ color:#333646;
         color: white;
         cursor: pointer;
     }
-    .media:hover .overlay {
-        opacity: 1;
-    }
 
     /* profiles  */
     .profile {

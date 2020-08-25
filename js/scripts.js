@@ -61,6 +61,7 @@
 
   function slide(id){
     let target = $('#'+id);
+    let overlay = $('.'+id);
 
     // $(".profile:not(#"+id+")").slideUp('fast', function(){
 
@@ -70,13 +71,22 @@
     //       }, 'slow', 'easeInOutQuad');
 
     // });  
+    overlay.fadeOut();
+    $(".overlay:not(."+id+")").fadeIn();
 
     $(".profile:not(#"+id+")").hide(1, function(){
 
       $(target).show(10, function(){
-        $('html, body').animate({
-          scrollTop: $(target).offset().top
-        }, 'slow', 'easeInOutQuad');
+
+        if ($(window).width() < 1200){
+          $('html, body').animate({
+            scrollTop: $(target).offset().top
+          }, 'slow', 'easeInOutQuad');
+        }else{
+          $('html, body').animate({
+            scrollTop: $(overlay).offset().top
+          }, 'slow', 'easeInOutQuad');
+        }
 
       });
 
