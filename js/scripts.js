@@ -1,4 +1,4 @@
-// Scrol to top button
+// Scroll to top button
 
   mybutton = document.getElementById("TopBtn");
 
@@ -21,44 +21,6 @@
 
  //Slide Sections
 
-  // function slide(id){
-  //   let target = $('#'+id);
-
-  //   $(".profile:not(#"+id+")").slideUp('fast', function(){
-  //     $(target).slideDown('slow');
-  //     $('html, body').animate({
-  //       scrollTop: $(target).offset().top
-  //     }, 'slow', 'easeInOutQuad');
-
-  //   });  
-
-  // }
-
-  // function slide(id){
-  //   let target = $('#'+id);
-
-  //   $(".profile:not(#"+id+")").slideUp('fast', function(){
-  //     if(id != 'reginald'){
-  //       $(target).slideDown('slow');
-  //       $('html, body').animate({
-  //         scrollTop: $(target).offset().top
-  //       }, 'slow', 'easeInOutQuad');
-  //     }
-  //     else{
-  //         $(target).slideDown('fast', function(){
-  //           $('html, body').animate({
-  //             scrollTop: $(target).offset().top
-  //           }, 'slow', 'easeInOutQuad');
-  //         });
-          
-  //     }
-
-  //   });  
-
-    
-  // }
-
-
   function slide(id){
     let target = $('#'+id);
     let overlay = $('.'+id);
@@ -70,7 +32,9 @@
     //         scrollTop: $(target).offset().top
     //       }, 'slow', 'easeInOutQuad');
 
-    // });  
+    // });
+
+
     overlay.fadeOut();
     $(".overlay:not(."+id+")").fadeIn();
 
@@ -90,10 +54,9 @@
 
       });
 
-});  
-
+    });
+  } 
     
-  }
 
   function slide2(id){
     let target = $('#'+id);

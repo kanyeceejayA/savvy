@@ -430,6 +430,7 @@ color:#333646;
     /* our team  */
     #team{
         background-color: #F7F7F7;
+        padding-bottom: 1em;
     }
     #team p{
         text-align: left;
@@ -457,18 +458,21 @@ color:#333646;
         padding: .5rem 1rem;
     }
     #team img{
-        /* max-height: 400px; */
+        max-height: 300px;
         max-width: 100%;
     }
-    #team .col-md-4{
+    #team .col-md-3{
         max-width: max-content;
         padding: 0;
         margin: 15px;
-        transition: transform .5s;
+        transition: transform .1s;
     }
-    #team .col-md-4:hover{
+    #team .col-md-3:hover{
         transform: scale(1.01);
         z-index: 2;
+    }
+    #team .col-md-3:hover .overlay{
+    	opacity:0;
     }
     .links{
         text-align: center;
@@ -502,6 +506,7 @@ color:#333646;
     .profile {
         background-color: #F7F7F7;
         display: none;
+        padding-top: 0;
     }
     .profile h2{
         color:black;
@@ -534,7 +539,7 @@ color:#333646;
     }
 
     footer .logo{
-        width:50%;
+        width: 50%;
     }
 	footer .btn{
         /* display: block; */
@@ -625,6 +630,9 @@ color:#333646;
         #team .col-md-6{
             margin:0 auto;
             width: 80%;
+        }
+        #team .col-md-3{
+            margin:15px auto;
         }
         .overlay{
             opacity: 1;
