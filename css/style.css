@@ -146,9 +146,8 @@ color:#333646;
     /*  Navbar  */
 		.navbar .container{
 			border-bottom: 1px solid #B9915B;
-			padding-bottom: 1em;
-			padding-top: 1em;
-        }
+			padding: 1em 0;
+			}
         
 		.navbar-dark .navbar-nav .nav-link{
 			color: #EBEBEB;
@@ -236,6 +235,8 @@ color:#333646;
         }
         nav.navbar:not(.top-menu){
             margin-top:38px;
+            /* padding-left: 15px; */
+            /* padding-right: 15px; */
         }
 
 /*#############   Banner    ######################*/
@@ -636,7 +637,7 @@ color:#333646;
             width: 80%;
         }
         #team .col-md-3{
-            margin:15px auto;
+            margin: 15px auto!important;
         }
         .overlay{
             opacity: 1;
