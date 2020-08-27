@@ -31,7 +31,8 @@
     
     $(".profile:not(#"+id+")").hide(1, function(){
 
-      $(target).slideDown('slow', function(){
+      $(target).slideDown('slow');
+      //  function(){
 
         if ($(window).width() < 1200){
           $('html, body').animate({
@@ -43,7 +44,7 @@
           }, 'slow', 'easeInOutQuad');
         }
 
-      });
+      // });
 
     });
   } 
