@@ -23,21 +23,12 @@
 
   function slide(id){
     let target = $('#'+id);
-    let overlay = $('.'+id);
+    let overlay = $('.'+id+' > .overlay');
 
-    // $(".profile:not(#"+id+")").slideUp('fast', function(){
-
-    //       $(target).slideDown('fast');
-    //       $('html, body').animate({
-    //         scrollTop: $(target).offset().top
-    //       }, 'slow', 'easeInOutQuad');
-
-    // });
-
-
-    overlay.fadeOut();
-    $(".overlay:not(."+id+")").fadeIn();
-
+    overlay.animate({opacity: 0}, 500);
+    // $(":not(."+id+") >.overlay").show();
+    $(":not(."+id+") >.overlay").animate({opacity: 1}, 500);
+    
     $(".profile:not(#"+id+")").hide(1, function(){
 
       $(target).show(10, function(){
@@ -48,7 +39,7 @@
           }, 'slow', 'easeInOutQuad');
         }else{
           $('html, body').animate({
-            scrollTop: $(overlay).offset().top
+            scrollTop: $('.'+id).offset().top
           }, 'slow', 'easeInOutQuad');
         }
 
