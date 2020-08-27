@@ -631,6 +631,11 @@ color:#333646;
         .pl-6{
             padding-left: 1em!important;
         }
+        /* Service  */
+        .service .row{
+            padding-left:0;
+            padding-right: 0;
+        }
         /* team  */
         #team .col-md-6{
             margin:0 auto;
