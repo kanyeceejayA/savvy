@@ -476,7 +476,7 @@ color:#333646;
         z-index: 2;
     }
     #team .col-md-3:hover .overlay{
-    	opacity:0;
+    	opacity: 0!important;
     }
     .links{
         text-align: center;
