@@ -36,7 +36,7 @@ $recaptcha = json_decode($recaptcha);
  */
 
 // an email address that will be in the From field of the email.
-$from = 'CapitalSavvy Contact Form <site@chi-bnode1.websitehostserver.net>';
+$from = 'CapitalSavvy Website <site@chi-bnode1.websitehostserver.net>';
 
 // an email address that will receive the email with the output of the form
 $sendTo = 'info@capitalsavvy.pro';
@@ -75,7 +75,7 @@ try
     // if($recaptcha->score <= 0.5) throw new \Exception('REcaptcha Response= '.$recaptcha_response);
 
             
-    $emailText = "New Message\t Score:".$recaptcha->score."\n";
+    $emailText = "New Message\n";
 
     foreach ($_POST as $key => $value) {
         // If the field exists in the $fields array, include it in the email 
@@ -98,6 +98,10 @@ try
     }else{
         $okMessage .= ' (Not on Live Server) <br> email Text: '.$emailText;
     }
+    //Save Reachouts to file
+    $fp = fopen('contact_log', 'a');//opens file in append mode  
+    fwrite($fp,"Date:".date("d/m/y")."\n"."time:".date("h:i:sa")."\n". $emailText. "\n\n");  
+    fclose($fp);
 
     $responseArray = array('type' => 'success', 'message' => $okMessage);
 }

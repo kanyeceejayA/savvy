@@ -1,4 +1,7 @@
 .htaccess
 contactform/env.php
+contactform/contact_log
+investform/env.php
+investform/invest_log
 
 #pull link https://capitalsavvy.pro:2083/cpsess2403066553/frontend/paper_lantern/version_control/index.html#/manage/%252Fhome%252Flasource%252Fpublic_html%252Fcapitalsavvy.pro/deploy

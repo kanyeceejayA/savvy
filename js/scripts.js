@@ -40,7 +40,7 @@
           }, 'slow', 'easeInOutQuad');
         }else{
           $('html, body').animate({
-            scrollTop: $('.'+id).offset().top
+            scrollTop: $('.'+id).offset().topA
           }, 'slow', 'easeInOutQuad');
         }
 
