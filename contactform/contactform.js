@@ -1,13 +1,9 @@
-$(function () {
-
-// init the validator
-// validator files are included in the download package
-// otherwise download from http://1000hz.github.io/bootstrap-validator
-
-// $('#contact-form').validator();
-
-
-
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'contact' }).then(function (token) {
+            var recaptchaResponse = document.getElementById('recaptchaResponse');
+            recaptchaResponse.value = token;
+        });
+    });
 
 // when the form is submitted
 $('#contact-form').on('submit', function (e) {
@@ -17,12 +13,7 @@ $('#contact-form').on('submit', function (e) {
  
     e.preventDefault();
 
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'contact' }).then(function (token) {
-            var recaptchaResponse = document.getElementById('recaptchaResponse');
-            recaptchaResponse.value = token;
-        });
-    });
+    
     
 
     var url = "contactform/contactform.php";
@@ -68,7 +59,6 @@ $('#contact-form').on('submit', function (e) {
     return false;
 
 })
-});
 
 
 function callbacksubmit() {
@@ -76,4 +66,9 @@ setTimeout(function() {
     $( "#submit" ).removeClass( "done" );
     $( "#submit" ).removeClass( "fail" );
 }, 1500 );
+
+grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'contact' }).then(function (token) {
+    var recaptchaResponse = document.getElementById('recaptchaResponse');
+    recaptchaResponse.value = token;
+});
 }

@@ -1,10 +1,9 @@
-$(function () {
-
-// init the validator
-// validator files are included in the download package
-// otherwise download from http://1000hz.github.io/bootstrap-validator
-
-// $('#invest-form').validator();
+grecaptcha.ready(function () {
+    grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'invest' }).then(function (token) {
+        var recaptchaResponse = document.getElementById('recaptchaResponse2');
+        recaptchaResponse.value = token;
+    });
+});
 
 
 
@@ -17,14 +16,7 @@ $('#invest-form').on('submit', function (e) {
  
     e.preventDefault();
 
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'invest' }).then(function (token) {
-            var recaptchaResponse = document.getElementById('recaptchaResponse2');
-            recaptchaResponse.value = token;
-        });
-    });
     
-
     var url = "investform/investform.php";
 
     // POST values in the background the the script URL
@@ -68,7 +60,6 @@ $('#invest-form').on('submit', function (e) {
     return false;
 
 })
-});
 
 
 function callbacksubmit2() {
@@ -76,4 +67,9 @@ setTimeout(function() {
     $( "#send" ).removeClass( "done" );
     $( "#send" ).removeClass( "fail" );
 }, 1500 );
+
+grecaptcha.execute('6LePM7AZAAAAAKapK_1K211nv8PmD-zhzhL2l6Sq', { action: 'invest' }).then(function (token) {
+    var recaptchaResponse = document.getElementById('recaptchaResponse2');
+    recaptchaResponse.value = token;
+});
 }

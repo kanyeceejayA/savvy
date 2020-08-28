@@ -69,7 +69,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 try
 {
 
-    if(count($_POST) == 0) throw new \Exception('3MPT-Y34');
+    if(count($_POST) == 0) throw new \Exception('Form Empty-Y34');
 
     if($recaptcha->score <= 0.5) throw new \Exception('SP-M45-'.$recaptcha->score);
     // if($recaptcha->score <= 0.5) throw new \Exception('REcaptcha Response= '.$recaptcha_response);
