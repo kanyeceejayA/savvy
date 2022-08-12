@@ -73,8 +73,7 @@ color:#333646;
 	   min-height: 347;
 	   border-radius: 0px;
 	   color:#909090;
-
-   }
+	  }
    #cards1{
 	   margin-top:-20vh;
    }
@@ -142,6 +141,36 @@ color:#333646;
 		/* padding: 5em; */
 	/* } */
 
+    #cards3{
+        margin-top: -30vh;
+        /* background-color: #333646; */
+    }
+    #cards3 .card{
+        border:0px;
+        background-color: #1c6572;
+        min-height: 0;
+        cursor: pointer;
+    }
+    #cards3 .card:hover{
+    	background-color:#155460;
+    }
+    #cards3 .card-body{
+        background-color: #155460;
+    }
+    #cards3 .card:hover .card-body{
+        background-color: #B9915B;
+        /* color:white!important; */
+    }
+    #cards3 .card:hover .card-body h3{
+        color:white;
+    }
+    
+    #cards3 .card-body h3{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        FONT-VARIANT: JIS04;
+        padding: 0px 0px 0px 30px;
+    }
 
     /*  Navbar  */
 		.navbar .container{
