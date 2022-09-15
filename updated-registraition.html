@@ -1,0 +1,140 @@
+<div class="modal" id="register" style="visibility: hidden;">
+    <div class="modal-bg modal-exit"></div>
+    <div class="modal-container" style="height: 600px;">
+        <div class="introForm" >
+            <h2>Register</h2>
+
+            <p style="padding:10px 20px 10px;"> The first cohort of the Blockchain Innovation Program is fully Sponsored by its Partners. However, an application fee of USD 50 applies. This fee will be refunded to unsuccessful applicants. The fee has also been waived for university students. Before you continue, ensure that you have your one-page CV ready in a pdf format.</p>
+            <button id="showForm" onclick="toggleQuicket()" class="startRegistration gotoQuicket"> Continue</button>
+            &nbsp; <button id="showForm" onclick="toggleStudentForm()" class="startRegistration gotoStudentForm"> Students - Continue Here </button>
+        </div>
+
+        <div class="quicketForm" style="display: none;">
+            <h2> Application  </h2>
+			<small style="text-align:center;"><i>Please note that the application fee is waived for university students. If you are a university student, <a href="#" onclick="toggleStudentForm()">click here</a> to submit your application.</i></small>
+            <br><br>
+			<iframe src="https://www.quicket.co.ug/embed.aspx?productid=184344&productname=blockchain-innovation-program&embed=true&v=2" frameborder="0" scrolling="yes" width="100%" height="600"></iframe>
+        </div>
+
+        <div class="studentForm" style="display: none;">
+            <h2> Application - Students</h2>
+            <small><i>Please note that this form is only for university students. If you are not a student, <a href="#" onclick="toggleQuicket()">click here</a> to pay the application fee and apply.</i></small>
+            <br><br>
+			[contact-form-7 id="1142" title="Sign Up Form - Students"]
+        </div>
+        <button class="modal-close modal-exit">X</button>
+    </div>
+</div>
+
+
+<!-- MODAL STYLES -->
+<style>
+	.litho-main-title-wrap{
+	display:none!important;
+	}
+	.eventContent h2 a{
+	font-weight: 600;
+	}
+	.modal {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+	.modal.open {
+	visibility: visible!Important;
+	opacity: 1;
+	transition-delay: 0s;
+	}
+	.modal-bg {
+	position: absolute;
+	background: rgba(0,0,0,0.7);
+	width: 100%;
+	height: 100%;
+	}
+	.modal-container {
+	border-radius: 10px;
+	background: #fff;
+	position: relative;
+	padding: 30px;
+	width:80%;
+	max-width: 80%;
+	max-height: 80%;
+	overflow-y: scroll;
+	scrollbar-width: none;  /* Firefox */
+	}
+	.modal-container::-webkit-scrollbar { 
+		display: none;  /* Safari and Chrome */
+	}
+	.modal-close {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	outline: none;
+	appearance: none;
+	color: red;
+	background: none;
+	border: 0px;
+	font-weight: bold;
+	cursor: pointer;
+	}
+	@media screen and (max-width:696px) {
+	.elementor-kit-6 h1, .elementor-kit-6 h2{
+	font-size: 36px;
+	}
+	}
+</style>
+<script>
+	function modalsFunction() {
+		const modals = document.querySelectorAll('.registerModalOpen');
+		
+		modals.forEach(function (trigger) {
+		trigger.addEventListener('click', function (event) {
+			event.preventDefault();
+			console.log('AKBR Opening modal');
+			// const modal = document.getElementById(trigger.dataset.modal);
+			const modal = document.getElementById('register');
+			modal.classList.add('open');
+			const exits = modal.querySelectorAll('.modal-exit');
+			exits.forEach(function (exit) {
+			exit.addEventListener('click', function (event) {
+				event.preventDefault();
+				modal.classList.remove('open');
+			});
+			});
+		});
+		});
+	}
+
+    function toggleQuicket(){
+        qform = document.querySelector('.quicketForm');
+        sform = document.querySelector('.studentForm');
+        iform = document.querySelector('.introForm');
+        qform.style.display = 'block';
+        iform.style.display = 'none';
+        sform.style.display = 'none';
+    }
+    function toggleStudentForm(){
+        sform = document.querySelector('.studentForm');
+        qform = document.querySelector('.quicketForm');
+        iform = document.querySelector('.introForm');
+        sform.style.display = 'block';
+        iform.style.display = 'none';
+        qform.style.display = 'none';
+    }
+    
+	document.addEventListener("DOMContentLoaded", function() {
+		modalsFunction();
+		if(window.location.href.indexOf('#register') > -1){
+			document.querySelector('.registerModalOpen').click();
+		}
+	});
+</script>		
+
