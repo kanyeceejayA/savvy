@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+        display: none !important;
+        opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+        display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+
+
+        
+        
+        td.speaker_desc{
+            text-align: left;
+            padding: 10px;
+            width: 70%;
+            vertical-align: top;
+            }
+
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+    <!-- Reset list spacing because Outlook ignores much of our inline CSS. -->
+    <!--[if mso]>
+    <style type="text/css">
+        ul,
+        ol {
+            margin: 0 !important;
+        }
+        li {
+            margin-left: 30px !important;
+        }
+        li.list-item-first {
+            margin-top: 0 !important;
+        }
+        li.list-item-last {
+            margin-bottom: 10px !important;
+        }
+    </style>
+    <![endif]-->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td-primary:hover,
+        .button-a-primary:hover {
+            background: #ffffff !important;
+            border-color: #f6214b !important;
+            color: #f6214b !important;
+        }
+        .stack-column-center .divider{
+            border-right: 1px solid #e2e2e2;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+
+            .email-container {
+                width: 100% !important;
+                margin: auto !important;
+            }
+
+            /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+            .column {
+                width: 100%;
+            }
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid {
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+            .stack-column-center .divider{
+                border-right: none;
+                border-bottom: 1px solid #e2e2e2;
+            }
+
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+            /* What it does: Adjust typography on small screens to improve readability */
+            .email-container p {
+                font-size: 15px !important;
+            }
+
+            
+
+            td.speaker{
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+            td.speaker > img{
+                margin: 0 auto;
+            }
+            td.speaker{
+                margin-bottom: 10px;
+            }
+
+            td.speaker_desc{
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+
+        }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- BIP Additions -->
+    <!-- <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+    </style> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #002247;">
+    <center style="width: 100%; background-color: #002247;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #002247;">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Email Body : BEGIN -->
+        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto;max-width: 600px; background-color: #ffffff;" class="email-container">
+            <!-- Top Bar - START -->
+            <!-- <tr>
+                <td style="background: #00368c; height: auto; padding: 10px;"><a href="https://bsvblockchain.org/" target="_blank">
+                    <img src="https://content.app-us1.com/dMpgR/2021/09/23/0214f1df-3e3d-4acb-8c0f-e9f22bdb9442.png?id=6704784" height="40" style="margin-left: 5%;" />
+                </a>
+                </td>
+            </tr> -->
+            <!-- Top Bar - END -->
+
+            <!-- Hero Image, Flush : BEGIN -->
+            <tr>
+                <td style="background-color: #ffffff;padding-bottom: 20px;">
+                    <a href="https://bip.capitalsavvy.pro" target="_blank" style="text-decoration: none;">
+                        <!-- <img src="https://content.app-us1.com/dMpgR/2022/08/24/22ebe0e1-bd21-49e3-8a11-af1138cc0241.jpeg?id=15059682" width="600" height="auto" alt="Introducing the Blockchain Innovation Programme | Starting in Uganda, Africa on October 3, 2022 | Organised by Capital Savvy | Powered by BSV Academy" style="width: 100%; max-width: 600px; height: auto;" class="g-img"> -->
+                        <img src='https://content.app-us1.com/B0O2w/2022/08/30/2b6871f3-914d-4651-ba53-0f103ad62726.png?id=15198862' width="600" height="auto" alt="Introducing the Blockchain Innovation Programme | Starting in Uganda, Africa on October 3, 2022 | Organised by Capital Savvy | Powered by BSV Academy" style="width: 100%; max-width: 600px; height: auto;" class="g-img" />
+                        <!-- <img src="https://bip.capitalsavvy.pro/wp-content/uploads/2022/08/bip-email-new-header.png" width="600" height="auto" alt="Introducing the Blockchain Innovation Programme | Starting in Uganda, Africa on October 3, 2022 | Organised by Capital Savvy | Powered by BSV Academy" style="width: 100%; max-width: 600px; height: auto;" class="g-img"> -->
+                    </a>
+                </td>
+            </tr>
+            <!-- Hero Image, Flush : END -->
+            <!-- 1 Column Text + Button : BEGIN -->
+            <tr>
+                <td style="background-color: #ffffff;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                    <!-- headline -->
+                        <td align="center" class="pl5 pr5" style="padding-left:10%; padding-right:10%; padding-bottom: 10px;">
+                            <h1 style="color: #6e6e6e;font-family: Inter , sans-serif;font-size: 2.5em;font-weight: 300; letter-spacing:normal;line-height: 1.2; margin:0; padding:0;">Welcome to BIP2022 </h1>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 10%; font-family: 'Ubuntu', sans-serif; font-size: 14px; line-height: 20px; color: #000000; text-align: left;">
+                                <p style="margin: 0 0 20px; text-align: justify;">Hello %FIRSTNAME%,</p>
+                                
+                                <p style="margin: 0 0 20px; text-align: justify;">Congratulations! You have been accepted to be part of the first Cohort of the Blockchain Innovation Program.</p>
+                                <p style="margin: 0 0 10px; text-align: justify;">As next steps, you are invited to a breakfast meeting at the Golden Tulip Hotel on Monday, 3rd October 2022 from 9:00 am to 12 Noon. 
+                                </p>
+                                <p style="margin: 0 0 20px; text-align: justify;">At the meeting, we will share your log-in details for the curriculum portal and share insights on what to expect from the program in the next 10 weeks.
+                                </p>
+                                <p style="margin: 0 0 20px; text-align: justify;">This program has been fully sponsored by the BSV Blockchain Association, The Dojo and CapitalSavvy. The curriculum has been powered by the BSV Academy.
+                                </p>
+                                <p style="margin: 0 0 20px; text-align: justify;">We look forward to sharing more insights on Monday at the breakfast meet.</p>
+                                <p style="margin: 0 0 20px; text-align: justify;">Regards, </p>
+                                <p style="margin: 0 0 20px; text-align: justify;">The Team,<br>The Blockchain Innovation Program</p>
+
+                                
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <!-- First call to action -->
+            <tr>
+                <td style="background-color: #333333;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                    <!-- headline -->
+                        <td align="center" class="pli5 pr5" style="padding-left:10%; padding-right:10%; padding-bottom: 10px;padding-top: 60px;">
+                            <h1 style="color: #ffffff;font-family: Inter , sans-serif;font-size: 1.5em;font-weight: 300; letter-spacing:normal;line-height: 1.2; margin:0; padding:0;">Learn. Build. Network. Be Inspired.</h1>
+                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- button div, part of CTA  -->
+            <tr>
+                <td style="background-color: #333333;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        
+                        <tr>
+                            <td style="padding: 20px 10px 60px;">
+                                <!-- Button : BEGIN -->
+                                <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
+                                    <tr>
+                                    <td class="button-td button-td-primary" style="border-radius: 5px; border-radius: 5px;background: #f6214b;">
+                                        <a class="button-a button-a-primary" href="https://bip.capitalsavvy.pro" style="background: #f6214b; border: 1px solid #f6214b; border-radius: 0px; font-family: 'Ubuntu', sans-serif; font-size: 14px; line-height: 15px; text-decoration: none; padding: 13px 25px; color: #ffffff; display: block; text-align: center;" target="_blank">
+                                            Learn More
+                                            <img src="https://content.app-us1.com/B0O2w/2022/08/30/72f8273f-eb85-470e-aeb7-435b97bc88c6.png" width="30px">
+                                        </a>
+                                    </td>
+                                    </tr>
+                                </table>
+                                <!-- Button : END -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+                <!-- Organisers for SECTION  -->
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <!-- small headline -->
+                            <td align="center" class="pl5 pr5" style="padding-left:10%; padding-right:10%; padding-bottom: 10px;padding-top: 60px;border-top:1px solid #cccccc;">
+                                <h2 style="color: #000000;font-family: Inter , sans-serif;font-size: 1.2em;font-weight: 500;letter-spacing: 11px;line-height: 1.2; margin:0; padding:0;text-transform: uppercase;">ORGANISERS</h2>
+                            </td>
+                            </tr>
+                        </table>
+
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+    
+    
+                            <tr>
+                                <!-- Image banner pink -->
+                                <td align="center" class="pl5 pr5" style="padding-left:5%; padding-right:5%; padding-bottom: 10px;">
+                                <a href="https://bsvblockchain.org/" target="_blank">
+                                        <img src="https://bip.capitalsavvy.pro/wp-content/uploads/2022/08/BSV-Blockchain-Logo.png" width="100%">
+                                    </a>
+                                </td>
+                                <!-- BlockDojo -->
+                                <td align="center" class="pl5 pr5" style="padding-left:5%; padding-right:5%; padding-bottom: 10px;">
+                                    <a href="https://blockdojo.io" target="_blank">
+                                        <img src="https://bip.capitalsavvy.pro/wp-content/uploads/2022/08/Logo_Dark@2x.png" width="100%">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!-- CapitalSavvy -->
+                                <td align="center" class="pl5 pr5" style="padding-left:5%; padding-right:5%; padding-bottom: 10px;">
+                                    <a href="https://capitalsavvy.pro" target="_blank">
+                                        <img src="https://bip.capitalsavvy.pro/wp-content/uploads/2022/08/logo-light2.png" width="100%">
+                                    </a>
+                                    <!-- <img src="https://bip.capitalsavvy.pro/wp-content/uploads/2022/08/tagline-new.svg" width="100%"> -->
+                                </td>
+                                
+                                <!-- BSV Academy -->
+                                <td align="center" class="pl5 pr5" style="padding-left:5%; padding-right:5%; padding-bottom: 10px;">
+                                    <p style="margin: 0px; text-align: left;font-family: 'Roboto', sans-serif; font-size: 12px; line-height: 20px; color: #cccccc; float: left;">
+                                        Powered by:
+                                    </p>
+                                    <img src="https://bip.capitalsavvy.pro/wp-content/uploads/2022/08/bsv-academy-logo.png" width="100%">
+                                </td>
+                            </tr>
+                        </table>
+    
+                    </td>
+                </tr>
+    
+
+
+            <!-- END content  -->
+            <tr>
+                    <td style="background-color: #000000; color: #cccccc; text-align: center;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="background-color: #010101;padding: 20px 10%;">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td style="padding: 20px 20px 5px 0px; font-family: 'Ubuntu', sans-serif; font-size: 12px; line-height: 15px; text-align: left; color: #cccccc;font-weight: 600;">
+                                                Contact us
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        <td style="padding: 5px 20px 20px 0px; font-family: 'Ubuntu', sans-serif; font-size: 12px; line-height: 15px; text-align: left; color: #cccccc;">
+                                            Email: <a href="mailto:info@capitalsavvy.pro" style="color: #ccc;" target="_blank">info@capitalsavvy.pro</a>
+                                            <br>
+                                            Tel: +256-752-265-760<br>
+                                            &nbsp;<br>
+                                            &nbsp;<br>
+                                            &nbsp;
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="background-color: #010101;">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td style="padding: 20px 20px 5px 0px; font-family: 'Ubuntu', sans-serif; font-size: 12px; line-height: 15px; text-align: left; color: #cccccc;font-weight: 600;">
+                                                Address
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        <td style="padding: 5px 20px 20px 0px; font-family: 'Ubuntu', sans-serif; font-size: 12px; line-height: 15px; text-align: left; color: #cccccc;">
+                                            CapitalSavvy<br>
+                                            Suite 2C Ecobank Plaza<br>
+                                            Plot 4, Parliamentary Avenue<br>
+                                            Kampala, Uganda.<br>
+                                            Tel: +256-752-265-760
+                                        </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                
+
+
+                            <tr>
+                                <td style="padding-bottom: 40px; padding-top: 20px;font-family: 'Ubuntu', sans-serif; font-size: 12px; text-align: center; color: #888888;">
+                                    <span style="font-size:10px; line-height:15px;">%SENDER-INFO-SINGLELINE%</span><br>
+                                    <a href="%UNSUBSCRIBELINK%" style="font-size:10px; line-height:15px; text-decoration: none; color:#888888">Manage your preferences/Unsubscribe</a> | <a href="https://capitalsavvy.pro/privacy-policy" style="font-size:10px; line-height:15px; text-decoration: none; color:#888888">Privacy Policy</a>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                        </tr></table></td></tr></table>
+            <!-- 1 Column Text : END -->
+        <!-- Email Body : END -->
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
