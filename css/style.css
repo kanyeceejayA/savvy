@@ -278,15 +278,15 @@ color:#333646;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        background-image: url('/img/banner.png');  /* fallback colour. Make sure this is just one solid colour. */
-        background-image: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner.jpg');
-        background-image: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner.jpg');
+        background-image: url('../img/banner.png');  /* fallback colour. Make sure this is just one solid colour. */
+        background-image: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('../img/banner.jpg');
+        background-image: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('../img/banner.jpg');
         background-position: bottom;
     }
 
     .carousel-item#bn2{
-        background: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('/img/banner2.jpg');
-        background: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('/img/banner2.jpg');
+        background: -webkit-linear-gradient(rgba(51,54,70, 0.64), rgba(51,54,70, 0.64)),url('../img/banner2.jpg');
+        background: linear-gradient(rgba(51,54,70,0.64), rgba(51,54,70, 0.64)),url('../img/banner2.jpg');
         background-position: bottom;
         background-size: cover;
     }
@@ -414,7 +414,7 @@ color:#333646;
         line-height: 38px;
     }
     .service .btn::after{
-        content: url('../img/arrow.png');
+        content: url('..../img/arrow.png');
         display: inline-block;
         position: relative;
         padding-left: 10px;
