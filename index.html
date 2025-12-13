@@ -376,7 +376,8 @@
 
     <!-- Team section  -->
     <section class="py-6" style="background-color: #F7F7F7;">
-        <section class="teamSection" id="team">
+        <!-- DESKTOP VERSION - Interactive grid -->
+        <section class="teamSection team-desktop" id="team">
             <div class="container">
                 <h2 class="heading" onclick='$(".profile").slideUp("slow")'>Our Team</h2>
                 <div class="row justify-content-center">
@@ -404,7 +405,7 @@
                 </div>
         </section>
 
-        <section class=" profile" id="reginald">
+        <section class="profile team-desktop" id="reginald">
             <div class="container">
                 <div class="row">
                     <h2 class="heading col-md-8">Reginald Tumusiime<br>
@@ -434,7 +435,7 @@
             </div>
         </section>
 
-        <section class=" profile" id="bronsonProfile">
+        <section class="profile team-desktop" id="bronsonProfile">
             <div class="container">
                 <div class="row">
                     <h2 class="heading col-md-8">Bronson Bakunga<br>
@@ -457,7 +458,7 @@
             </div>
         </section>
 
-        <section class="teamSection" id="team2">
+        <section class="teamSection team-desktop" id="team2">
             <div class="container">
                 <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-6 media ezerethProfile" onclick='slide("ezerethProfile")'>
@@ -488,7 +489,7 @@
             </div>
         </section>
 
-        <section class=" profile" id="ezerethProfile">
+        <section class="profile team-desktop" id="ezerethProfile">
             <div class="container">
                 <div class="row">
                     <h2 class="heading col-md-8">Ezereth Nakakande<br>
@@ -514,7 +515,7 @@
             </div>
         </section>
 
-        <section class=" profile" id="jonathanProfile">
+        <section class="profile team-desktop" id="jonathanProfile">
             <div class="container">
                 <div class="row">
                     <h2 class="heading col-md-8">Jonathan Gyewava<br>
@@ -539,6 +540,95 @@
             </div>
         </section>
 
+        <!-- MOBILE VERSION - Interactive image→profile layout -->
+        <section class="team-mobile">
+            <div class="container">
+                <h2 class="heading" onclick='$(".profile-mobile").slideUp("slow")'>Our Team</h2>
+
+                <!-- Reginald -->
+                <div class="media-mobile reginald-mobile" onclick="slideMobile('reginald-mobile')">
+                    <img src="img/reginaldprofile.jpg" alt="Reginald Tumusiime">
+                    <div class="overlay-mobile">
+                        <p><strong>Reginald Tumusiime</strong><br>
+                            <button onclick="slideMobile('reginald-mobile')" class="btn">Read About Reginald</button><br>
+                            <span class="position">Founder & CEO</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-mobile" id="reginald-mobile">
+                    <h3 class="member-name">Reginald Tumusiime</h3>
+                    <p class="position">Founder & CEO</p>
+                    <p class="copy">Reginald is a Founder & CEO of CapitalSavvy.</p>
+                    <p class="copy">His experience is in banking and finance at leading financial institutions.</p>
+                    <p class="copy">Prior to founding CapitalSavvy, he was the Manager Capital, Stanbic Bank. And before that, he was the Regional Head Business Clients Leads Management, for the Standard Chartered Bank Africa Regional Office, where he was in charge of big data analytics solutions for the Business Banking Client Segment across the 8 markets of Kenya, Uganda, Tanzania, Ghana, Zambia, Zimbabwe, Botswana and Nigeria.</p>
+                    <p class="copy">He also worked in different functions within StanChart Uganda such as Finance where he took on different transformational projects, Retail Segments where he was in charge of Segment Proposition for the premium segment – where Wealth Management was a key pillar.</p>
+                    <p class="copy">He is also a co-founder of Blockchain AG, a leading Blockchain and emerging technologies firm in Uganda.</p>
+                    <p class="copy">Reginald holds a BSc in Statistics (Hons), and is currently pursuing the Chartered Financial Analyst (CFA) program.</p>
+                </div>
+
+                <!-- Bronson -->
+                <div class="media-mobile bronson-mobile" onclick="slideMobile('bronson-mobile')">
+                    <img src="img/bronsonprofile.jpg" alt="Bronson Bakunga">
+                    <div class="overlay-mobile">
+                        <p><strong>Bronson Bakunga</strong><br>
+                            <button onclick="slideMobile('bronson-mobile')" class="btn">Read About Bronson</button><br>
+                            <span class="position">Chief Technology Officer</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-mobile" id="bronson-mobile">
+                    <h3 class="member-name">Bronson Bakunga</h3>
+                    <p class="position">Chief Technology Officer</p>
+                    <p class="copy">Bronson is the Chief Technology Officer of CapitalSavvy.</p>
+                    <p class="copy">He is a machine learning engineer with expertise in artificial intelligence, software engineering, and system architecture. His experience spans full-stack development and the implementation of scalable technology solutions.</p>
+                    <p class="copy">Prior to joining CapitalSavvy, Bronson served as a Junior Software Engineer at AfroFleet Technologies in South Africa, where he led the end-to-end development of a mission-critical logistics platform. He architected and implemented both frontend and backend systems, pioneering technical innovations that reduced development time and improved system reliability.</p>
+                    <p class="copy">Bronson holds a Bachelor of Engineering in Computer Software Engineering from Makerere University and a Master of Science in Computer Science from Universiti Teknologi Malaysia. He is passionate about leveraging technology to build robust solutions that drive business value.</p>
+                </div>
+
+                <!-- Ezereth -->
+                <div class="media-mobile ezereth-mobile" onclick="slideMobile('ezereth-mobile')">
+                    <img src="img/ezerethProfile.jpg" alt="Ezereth Nakakande">
+                    <div class="overlay-mobile">
+                        <p><strong>Ezereth Nakakande</strong><br>
+                            <button onclick="slideMobile('ezereth-mobile')" class="btn">Read About Ezereth</button><br>
+                            <span class="position">Accounting Officer</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-mobile" id="ezereth-mobile">
+                    <h3 class="member-name">Ezereth Nakakande</h3>
+                    <p class="position">Accounting Officer</p>
+                    <p class="copy">Ezereth is the Accounting Officer at CapitalSavvy. She joined CapitalSavvy on the Junior Analyst Program, in 2024.</p>
+                    <p class="copy">Prior to joining CapitalSavvy, she held an internship at the Central Bank of Uganda in the accounts department. She also notably participated in the practical skills development program at Grant Thorton - a leading audit and accounting firm, in the first cohort as a member of the pioneer class.</p>
+                    <p class="copy">She enrolled in the Chartered Financial Analyst (CFA) Program in 2024, where she successfully completed Level 1 as of January 2025, and is currently a Level 2 Candidate. In addition, she holds a bachelor's degree in accounting and finance from Uganda Christian University Mukono - Uganda.</p>
+                    <p class="copy">Ezereth is credited for her strong integrity, professionalism and interpersonal skills as she supports various functions of the business.</p>
+                </div>
+
+                <!-- Jonathan -->
+                <div class="media-mobile jonathan-mobile" onclick="slideMobile('jonathan-mobile')">
+                    <img src="img/jonathanProfile.jpg" alt="Jonathan Gyewava">
+                    <div class="overlay-mobile">
+                        <p><strong>Jonathan Gyewava</strong><br>
+                            <button onclick="slideMobile('jonathan-mobile')" class="btn">Read About Jonathan</button><br>
+                            <span class="position">Investment Associate</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-mobile" id="jonathan-mobile">
+                    <h3 class="member-name">Jonathan Gyewava</h3>
+                    <p class="position">Investment Associate</p>
+                    <p class="copy">Jonathan is an Investment Associate at CapitalSavvy, where he joined as a Junior Analyst in 2024. He is also a project lead of KitePesa, a payments innovation project in the firm's Innovation Lab – leveraging Blockchain Technology to tokenize the Uganda Shillings in form of a UGXC token.</p>
+                    <p class="copy">As an Investment Associate at CapitalSavvy, he supports the Portfolio Managers in the SME lending segment, as a Credit Analyst. Jonathan contributing to the reworking of credit policies to align with the evolving regulatory environment for private lenders in Uganda.</p>
+                    <p class="copy">Prior to joining CapitalSavvy, he worked as a Business Analyst at Paylater Uganda, a company providing hire purchase credit solutions to retail consumers.</p>
+                    <p class="copy">He enrolled in the Chartered Financial Analyst (CFA) program in 2024, where he successfully completed Level I as of January 2025 and holds the FMVA® designation. In addition, he holds a bachelor's degree in commerce with a Double Major in Finance and Management Science from Strathmore University with First Class Honours.</p>
+                </div>
+
+            </div>
+        </section>
 
     </section>
 

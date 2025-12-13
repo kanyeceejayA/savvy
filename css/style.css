@@ -463,6 +463,14 @@ color:#333646;
         background-color: #F7F7F7;
         padding-bottom: 1em;
     }
+
+    /* Desktop/Mobile version toggle */
+    .team-desktop {
+        display: block;
+    }
+    .team-mobile {
+        display: none;
+    }
     .teamSection p{
         text-align: left;
         font-size: 1.2em;
@@ -484,7 +492,7 @@ color:#333646;
         font-size: 14px;
         line-height: 3;
     }
-    .teamSection p .btn{
+    .teamSection p .btn, .team-mobile p .btn{
         float:none;
         color: #ebebeb;
         text-transform: capitalize;
@@ -703,5 +711,103 @@ color:#333646;
         max-height: none;
         width: 100%;
         max-width: unset;;
+        }
+
+        /* Switch to mobile version */
+        .team-desktop {
+            display: none !important;
+        }
+        .team-mobile {
+            display: block !important;
+        }
+
+        /* Mobile interactive team member styling */
+        .media-mobile {
+            position: relative;
+            display: block;
+            margin: 2rem auto;
+            max-width: 80%;
+            cursor: pointer;
+        }
+
+        .media-mobile img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .overlay-mobile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(51, 54, 70, 0.75);
+            z-index: 1;
+            transition: all 0.5s cubic-bezier(.16, .68, .43, .99);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .overlay-mobile p {
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .overlay-mobile strong {
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+/* 
+        .overlay-mobile .btn {
+            margin: 0.75rem 0;
+            padding: 0.5rem 1rem;
+            background: white;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s;
+        } */
+
+        .overlay-mobile .position {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        /* Mobile profile sections (hidden by default) */
+        .profile-mobile {
+            display: none;
+            background: white;
+            padding: 1.5rem;
+            margin: 0 auto 2rem;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .profile-mobile .member-name {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-mobile .position {
+            display: block;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .profile-mobile .copy {
+            padding: 0 0.5rem;
+            margin-bottom: 0.75rem;
+            text-align: left;
         }
     }

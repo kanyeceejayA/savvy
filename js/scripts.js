@@ -63,9 +63,26 @@
       }, 'slow', 'easeInOutQuad');
 
 
-    });  
+    });
 
-    
+
+  }
+
+  // Mobile slide function for linear profile layout
+  function slideMobile(id){
+    let target = $('#'+id);
+    let overlay = $('.'+id+' > .overlay-mobile');
+
+    overlay.animate({opacity: 0}, 500);
+    $(":not(."+id+") > .overlay-mobile").animate({opacity: 1}, 500);
+
+    $(".profile-mobile:not(#"+id+")").slideUp('slow', function(){
+      $(target).slideDown('slow', function(){
+        $('html, body').animate({
+          scrollTop: $(target).offset().top - 20
+        }, 'medium', 'easeInOutQuad');
+      });
+    });
   }
 
   //smooth scroll
