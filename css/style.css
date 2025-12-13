@@ -459,11 +459,11 @@ color:#333646;
 
 
     /* our team  */
-    #team{
+    .teamSection{
         background-color: #F7F7F7;
         padding-bottom: 1em;
     }
-    #team p{
+    .teamSection p{
         text-align: left;
         font-size: 1.2em;
         color: #ebebeb;
@@ -484,14 +484,14 @@ color:#333646;
         font-size: 14px;
         line-height: 3;
     }
-    #team p .btn{
+    .teamSection p .btn{
         float:none;
         color: #ebebeb;
         text-transform: capitalize;
         font-size: 12px;
         padding: .5rem 1rem;
     }
-    #team img{
+    .teamSection img{
         /* max-height: 300px; */
         max-width: 100%;
         /* max-width: unset; */
@@ -499,25 +499,25 @@ color:#333646;
         height: auto;
         display: block;
     }
-    #team .col-md-3,
-    #team .col-md-6{
+    .teamSection .col-md-3,
+    .teamSection .col-md-6{
         max-width: max-content;
         padding: 0;
         margin: 15px;
         transition: transform .1s;
     }
-    #team .col-md-3:hover,
-    #team .col-md-6:hover,
-    #team .col-lg-6:hover{
+    .teamSection .col-md-3:hover,
+    .teamSection .col-md-6:hover,
+    .teamSection .col-lg-6:hover{
         transform: scale(1.01);
         z-index: 2;
     }
-    #team .col-md-3:hover .overlay,
-    #team .col-md-6:hover .overlay,
-    #team .col-lg-6:hover .overlay{
+    .teamSection .col-md-3:hover .overlay,
+    .teamSection .col-md-6:hover .overlay,
+    .teamSection .col-lg-6:hover .overlay{
     	opacity: 0!important;
     }
-    #team .media{
+    .teamSection .media{
         position: relative;
         display: inline-block;
     }
@@ -681,24 +681,24 @@ color:#333646;
             padding-right: 0;
         }
         /* team  */
-        #team .col-md-6{
+        .teamSection .col-md-6{
             margin:auto;
             width: 80%;
         }
-        #team .col-md-3, #team .col-md-6{
+        .teamSection .col-md-3, .teamSection .col-md-6{
             margin: 15px auto!important;
         }
         .overlay{
             opacity: 1;
         }
-        #team p{
+        .teamSection p{
             margin:1em auto;
         }
 
         footer .social-links{
             position: relative;
         }
-        #team img{
+        .teamSection img{
         /* max-height: 500px; */
         max-height: none;
         width: 100%;

@@ -34,15 +34,18 @@
       $(target).slideDown('slow');
       //  function(){
 
-        if ($(window).width() < 1200){
-          $('html, body').animate({
+      $('html, body').animate({
             scrollTop: $(target).offset().top
-          }, 'slow', 'easeInOutQuad');
-        }else{
-          $('html, body').animate({
-            scrollTop: $('.'+id).offset().topA
-          }, 'slow', 'easeInOutQuad');
-        }
+          }, 'medium', 'easeInOutQuad');
+        // if ($(window).width() < 1200){
+        //   $('html, body').animate({
+        //     scrollTop: $(target).offset().top
+        //   }, 'slow', 'easeInOutQuad');
+        // }else{
+        //   $('html, body').animate({
+        //     scrollTop: $('.'+id).offset().topA
+        //   }, 'slow', 'easeInOutQuad');
+        // }
 
       // });
 
