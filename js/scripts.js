@@ -26,28 +26,16 @@
     let overlay = $('.'+id+' > .overlay');
 
     overlay.animate({opacity: 0}, 500);
-    // $(":not(."+id+") >.overlay").show();
     $(":not(."+id+") >.overlay").animate({opacity: 1}, 500);
-    
+
     $(".profile:not(#"+id+")").hide(1, function(){
 
-      $(target).slideDown('slow');
-      //  function(){
-
-      $('html, body').animate({
-            scrollTop: $(target).offset().top
-          }, 'medium', 'easeInOutQuad');
-        // if ($(window).width() < 1200){
-        //   $('html, body').animate({
-        //     scrollTop: $(target).offset().top
-        //   }, 'slow', 'easeInOutQuad');
-        // }else{
-        //   $('html, body').animate({
-        //     scrollTop: $('.'+id).offset().topA
-        //   }, 'slow', 'easeInOutQuad');
-        // }
-
-      // });
+      $(target).slideDown('medium', function(){
+        // Scroll only AFTER the slideDown animation is complete
+        $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 'medium', 'easeInOutQuad');
+      });
 
     });
   } 
