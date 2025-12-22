@@ -31,10 +31,18 @@
     $(".profile:not(#"+id+")").hide(1, function(){
 
       $(target).slideDown('medium', function(){
+        // Stop any ongoing scroll animations on user interaction
+        $('html, body').on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+          $('html, body').stop();
+        });
+
         // Scroll only AFTER the slideDown animation is complete
         $('html, body').animate({
           scrollTop: $(target).offset().top
-        }, 'medium', 'easeInOutQuad');
+        }, 600, 'easeInOutQuad', function(){
+          // Remove the event listeners after animation completes
+          $('html, body').off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+        });
       });
 
     });
@@ -66,9 +74,17 @@
 
     $(".profile-mobile:not(#"+id+")").slideUp('slow', function(){
       $(target).slideDown('slow', function(){
+        // Stop any ongoing scroll animations on user interaction
+        $('html, body').on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+          $('html, body').stop();
+        });
+
         $('html, body').animate({
           scrollTop: $(target).offset().top - 20
-        }, 'medium', 'easeInOutQuad');
+        }, 600, 'easeInOutQuad', function(){
+          // Remove the event listeners after animation completes
+          $('html, body').off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+        });
       });
     });
   }
