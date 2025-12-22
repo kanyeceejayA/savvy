@@ -377,6 +377,7 @@
     <!-- Team section  -->
     <section class="py-6" style="background-color: #F7F7F7;">
         <!-- DESKTOP VERSION - Interactive grid -->
+        <!-- Row 1: Reginald + Awel -->
         <section class="teamSection team-desktop" id="team">
             <div class="container">
                 <h2 class="heading" onclick='$(".profile").slideUp("slow")'>Our Team</h2>
@@ -391,13 +392,12 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-6 media bronsonProfile" onclick="slide('bronsonProfile')">
-                        <img src="img/bronsonprofile.jpg">
+                    <div class="col-md-6 col-lg-6 media awelProfile" onclick="slide('awelProfile')">
+                        <img src="img/AwelProfile.jpg">
                         <div class="overlay">
-                            <p><strong>Bronson Bakunga</strong><br>
-                                <button onclick="slide('bronsonProfile')" class="btn" id="newMemberBtn">Read About
-                                    Bronson</button> <br>
-                                <span class="position">Chief Technology Officer</span>
+                            <p><strong>Awel Uwihanganye</strong><br>
+                                <button onclick="slide('awelProfile')" class="btn">Read About Awel</button> <br>
+                                <span class="position">Associate Director of Programmes</span>
                             </p>
                         </div>
                     </div>
@@ -435,6 +435,49 @@
             </div>
         </section>
 
+        <section class="profile team-desktop" id="awelProfile">
+            <div class="container">
+                <div class="row">
+                    <h2 class="heading col-md-8">Awel Uwihanganye<br>
+                        <span class="position">Associate Director of Programmes</span>
+                    </h2>
+                </div>
+
+                <p class="copy">Awel is the Founder and Senior Director at Leo Africa Institute, and most recently the CEO of Makerere University's Centennial Celebrations (Makerere At 100 Project).</p>
+                <p class="copy">Awel is an accomplished social entrepreneur and leader, who is passionate about ideas, and how that translates into positive change in Africa.</p>
+                <p class="copy">Awel joins the Advisory Board as Associate Director of Programmes with extensive experience both in the public and private sectors, which is an invaluable addition to the team. We look forward to working with him to scale our vision of being the leading technology centric finance firm across the region, and Africa.</p>
+
+            </div>
+        </section>
+
+        <!-- Row 2: Bronson + Mark -->
+        <section class="teamSection team-desktop" id="team2">
+            <div class="container">
+                <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-6 media bronsonProfile" onclick="slide('bronsonProfile')">
+                    <img src="img/bronsonprofile.jpg">
+                    <div class="overlay">
+                        <p><strong>Bronson Bakunga</strong><br>
+                            <button onclick="slide('bronsonProfile')" class="btn">Read About Bronson</button> <br>
+                            <span class="position">Chief Technology Officer</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 media markProfile" onclick="slide('markProfile')">
+                    <img src="img/MarkProfile.jpg">
+                    <div class="overlay">
+                        <p><strong>Mark Luwaga</strong><br>
+                            <button onclick="slide('markProfile')" class="btn">Read About Mark</button> <br>
+                            <span class="position">Chief Financial Officer</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
         <section class="profile team-desktop" id="bronsonProfile">
             <div class="container">
                 <div class="row">
@@ -458,18 +501,34 @@
             </div>
         </section>
 
-        <section class="teamSection team-desktop" id="team2">
+        <section class="profile team-desktop" id="markProfile">
+            <div class="container">
+                <div class="row">
+                    <h2 class="heading col-md-8">Mark Luwaga<br>
+                        <span class="position">Chief Financial Officer</span>
+                    </h2>
+                </div>
+
+                <p class="copy">Mark Luwaga, the Chief Financial Officer (CFO) of Capitalsavvy Limited is a seasoned finance executive with over 14 years' experience in financial strategy & management, corporate finance & investments, risk management & compliance, operational & cost efficiency, accounting & reporting (GAAP & IFRS), technology & digital transformation (including AI-driven analytics), and leadership & strategic decision-making to ensure sustained growth and profitability.</p>
+                <p class="copy">Mark's expertise spans both the U.S. and Pan-African financial markets, where he has worked in corporate finance, investment advisory, and financial consulting for multinational corporations and local enterprises across healthcare, gambling & betting, manufacturing, and retail & e-commerce. His deep understanding of IFRS, GAAP, financial compliance, and strategic planning makes him a key driver of Capitalsavvy's success.</p>
+                <p class="copy">Mark holds a Bachelor of Statistics degree from Makerere University and a Master of Business Administration (MBA) with a Finance concentration from Johnson and Wales University in Rhode Island, United States. He is also a member of the Association of Chartered Certified Accountants (ACCA), having been admitted in July 2018.</p>
+                <p class="copy">Passionate about leveraging technology and data-driven insights, Mark continues to drive financial efficiency and strategic growth, positioning Capitalsavvy Limited as a leader in the financial sector.</p>
+
+            </div>
+        </section>
+
+        <!-- Row 3: Nalugwa + Jonathan -->
+        <section class="teamSection team-desktop" id="team3">
             <div class="container">
                 <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-6 media ezerethProfile" onclick='slide("ezerethProfile")'>
-                    <img src="img/ezerethProfile.jpg">
+                <div class="col-md-6 col-lg-6 media alexandraProfile" onclick='slide("alexandraProfile")'>
+                    <img src="img/alexandraProfile.jpg">
                     <div class="overlay">
                         <p>
-                            <strong>Ezereth Nakakande</strong><br>
-                            <button onclick='slide("ezerethProfile")' class="btn" id="annaBtn">Read About
-                                Ezereth</button>
+                            <strong>Nalugwa Alexandra</strong><br>
+                            <button onclick='slide("alexandraProfile")' class="btn">Read About Alexandra</button>
                             <br>
-                            <span class="position">Accounting Officer</span>
+                            <span class="position">Portfolio Manager</span>
                         </p>
                     </div>
                 </div>
@@ -478,9 +537,69 @@
                     <img src="img/jonathanProfile.jpg">
                     <div class="overlay">
                         <p><strong>Jonathan Gyewava</strong><br>
-                            <button onclick="slide('jonathanProfile')" class="btn" id="jonathanProfilebtn">Read About
-                                Jonathan</button> <br>
+                            <button onclick="slide('jonathanProfile')" class="btn">Read About Jonathan</button> <br>
                             <span class="position">Investment Associate</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+        <section class="profile team-desktop" id="alexandraProfile">
+            <div class="container">
+                <div class="row">
+                    <h2 class="heading col-md-8">Nalugwa Alexandra<br>
+                        <span class="position">Portfolio Manager</span>
+                    </h2>
+                </div>
+
+                <p class="copy">Alexandra serves as the Portfolio Manager for the firm's SME Growth Fund and has been with CapitalSavvy since June 2025.</p>
+                <p class="copy">As a Portfolio Manager, Alexandra brings a wealth of experience in operations and leadership gained at Stanbic Bank, where she honed her practical skills in people management and team influence. Coupled with her deep passion for people and attention to detail, she leverages this expertise to drive results. Her commitment to excellence and focus on supporting sustainable business growth align seamlessly with CapitalSavvy's strategic vision.</p>
+                <p class="copy">She is in the final stages of her MBA at the University of East London, having successfully completed four modules and currently undertaking the Business Simulation module. She also holds a Bachelor of Commerce in Accounting from Makerere University.</p>
+                <p class="copy">She is driven by a strong desire to contribute to impactful financial solutions, support inclusive growth, and continuously build expertise within the financial services for SMES.</p>
+
+            </div>
+        </section>
+
+        <section class="profile team-desktop" id="jonathanProfile">
+            <div class="container">
+                <div class="row">
+                    <h2 class="heading col-md-8">Jonathan Gyewava<br>
+                        <span class="position">Investment Associate</span>
+                    </h2>
+                </div>
+
+                <p class="copy">Jonathan is an Investment Associate at CapitalSavvy, where he joined as a Junior Analyst
+                    in 2024. He is also a project lead of KitePesa, a payments innovation project in the firm's
+                    Innovation Lab – leveraging Blockchain Technology to tokenize the Uganda Shillings in form of a UGXC
+                    token. </p>
+                <p class="copy">As an Investment Associate at CapitalSavvy, he supports the Portfolio Managers in the
+                    SME lending segment, as a Credit Analyst. Jonathan contributing to the reworking of credit policies
+                    to align with the evolving regulatory environment for private lenders in Uganda. </p>
+                <p class="copy">Prior to joining CapitalSavvy, he worked as a Business Analyst at Paylater Uganda, a
+                    company providing hire purchase credit solutions to retail consumers. </p>
+                <p class="copy">He enrolled in the Chartered Financial Analyst (CFA) program in 2024, where he
+                    successfully completed Level I as of January 2025 and holds the FMVA® designation. In addition, he
+                    holds a bachelor's degree in commerce with a Double Major in Finance and Management Science from
+                    Strathmore University with First Class Honours.</p>
+
+            </div>
+        </section>
+
+        <!-- Row 4: Ezereth (alone) -->
+        <section class="teamSection team-desktop" id="team4">
+            <div class="container">
+                <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-6 media ezerethProfile" onclick='slide("ezerethProfile")'>
+                    <img src="img/ezerethProfile.jpg">
+                    <div class="overlay">
+                        <p>
+                            <strong>Ezereth Nakakande</strong><br>
+                            <button onclick='slide("ezerethProfile")' class="btn">Read About Ezereth</button>
+                            <br>
+                            <span class="position">Accounting Officer</span>
                         </p>
                     </div>
                 </div>
@@ -515,92 +634,6 @@
             </div>
         </section>
 
-        <section class="profile team-desktop" id="jonathanProfile">
-            <div class="container">
-                <div class="row">
-                    <h2 class="heading col-md-8">Jonathan Gyewava<br>
-                        <span class="position">Investment Associate</span>
-                    </h2>
-                </div>
-
-                <p class="copy">Jonathan is an Investment Associate at CapitalSavvy, where he joined as a Junior Analyst
-                    in 2024. He is also a project lead of KitePesa, a payments innovation project in the firm’s
-                    Innovation Lab – leveraging Blockchain Technology to tokenize the Uganda Shillings in form of a UGXC
-                    token. </p>
-                <p class="copy">As an Investment Associate at CapitalSavvy, he supports the Portfolio Managers in the
-                    SME lending segment, as a Credit Analyst. Jonathan contributing to the reworking of credit policies
-                    to align with the evolving regulatory environment for private lenders in Uganda. </p>
-                <p class="copy">Prior to joining CapitalSavvy, he worked as a Business Analyst at Paylater Uganda, a
-                    company providing hire purchase credit solutions to retail consumers. </p>
-                <p class="copy">He enrolled in the Chartered Financial Analyst (CFA) program in 2024, where he
-                    successfully completed Level I as of January 2025 and holds the FMVA® designation. In addition, he
-                    holds a bachelor’s degree in commerce with a Double Major in Finance and Management Science from
-                    Strathmore University with First Class Honours.</p>
-
-            </div>
-        </section>
-
-        <section class="teamSection team-desktop" id="team3">
-            <div class="container">
-                <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-6 media alexandraProfile" onclick='slide("alexandraProfile")'>
-                    <img src="img/alexandraProfile.jpg">
-                    <div class="overlay">
-                        <p>
-                            <strong>Nalugwa Alexandra</strong><br>
-                            <button onclick='slide("alexandraProfile")' class="btn">Read About Alexandra</button>
-                            <br>
-                            <span class="position">Portfolio Manager</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-6 media markProfile" onclick="slide('markProfile')">
-                    <img src="img/MarkProfile.jpg">
-                    <div class="overlay">
-                        <p><strong>Mark Luwaga</strong><br>
-                            <button onclick="slide('markProfile')" class="btn">Read About Mark</button> <br>
-                            <span class="position">Chief Financial Officer</span>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            </div>
-        </section>
-
-        <section class="profile team-desktop" id="alexandraProfile">
-            <div class="container">
-                <div class="row">
-                    <h2 class="heading col-md-8">Nalugwa Alexandra<br>
-                        <span class="position">Portfolio Manager</span>
-                    </h2>
-                </div>
-
-                <p class="copy">Alexandra serves as the Portfolio Manager for the firm's SME Growth Fund and has been with CapitalSavvy since June 2025.</p>
-                <p class="copy">As a Portfolio Manager, Alexandra brings a wealth of experience in operations and leadership gained at Stanbic Bank, where she honed her practical skills in people management and team influence. Coupled with her deep passion for people and attention to detail, she leverages this expertise to drive results. Her commitment to excellence and focus on supporting sustainable business growth align seamlessly with CapitalSavvy's strategic vision.</p>
-                <p class="copy">She is in the final stages of her MBA at the University of East London, having successfully completed four modules and currently undertaking the Business Simulation module. She also holds a Bachelor of Commerce in Accounting from Makerere University.</p>
-                <p class="copy">She is driven by a strong desire to contribute to impactful financial solutions, support inclusive growth, and continuously build expertise within the financial services for SMES.</p>
-
-            </div>
-        </section>
-
-        <section class="profile team-desktop" id="markProfile">
-            <div class="container">
-                <div class="row">
-                    <h2 class="heading col-md-8">Mark Luwaga<br>
-                        <span class="position">Chief Financial Officer</span>
-                    </h2>
-                </div>
-
-                <p class="copy">Mark Luwaga, the Chief Financial Officer (CFO) of Capitalsavvy Limited is a seasoned finance executive with over 14 years' experience in financial strategy & management, corporate finance & investments, risk management & compliance, operational & cost efficiency, accounting & reporting (GAAP & IFRS), technology & digital transformation (including AI-driven analytics), and leadership & strategic decision-making to ensure sustained growth and profitability.</p>
-                <p class="copy">Mark's expertise spans both the U.S. and Pan-African financial markets, where he has worked in corporate finance, investment advisory, and financial consulting for multinational corporations and local enterprises across healthcare, gambling & betting, manufacturing, and retail & e-commerce. His deep understanding of IFRS, GAAP, financial compliance, and strategic planning makes him a key driver of Capitalsavvy's success.</p>
-                <p class="copy">Mark holds a Bachelor of Statistics degree from Makerere University and a Master of Business Administration (MBA) with a Finance concentration from Johnson and Wales University in Rhode Island, United States. He is also a member of the Association of Chartered Certified Accountants (ACCA), having been admitted in July 2018.</p>
-                <p class="copy">Passionate about leveraging technology and data-driven insights, Mark continues to drive financial efficiency and strategic growth, positioning Capitalsavvy Limited as a leader in the financial sector.</p>
-
-            </div>
-        </section>
-
         <!-- MOBILE VERSION - Interactive image→profile layout -->
         <section class="team-mobile">
             <div class="container">
@@ -628,6 +661,25 @@
                     <p class="copy">Reginald holds a BSc in Statistics (Hons), and is currently pursuing the Chartered Financial Analyst (CFA) program.</p>
                 </div>
 
+                <!-- Awel -->
+                <div class="media-mobile awel-mobile" onclick="slideMobile('awel-mobile')">
+                    <img src="img/AwelProfile.jpg" alt="Awel Uwihanganye">
+                    <div class="overlay-mobile">
+                        <p><strong>Awel Uwihanganye</strong><br>
+                            <button onclick="slideMobile('awel-mobile')" class="btn">Read About Awel</button><br>
+                            <span class="position">Associate Director of Programmes</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-mobile" id="awel-mobile">
+                    <h3 class="member-name">Awel Uwihanganye</h3>
+                    <p class="position">Associate Director of Programmes</p>
+                    <p class="copy">Awel is the Founder and Senior Director at Leo Africa Institute, and most recently the CEO of Makerere University's Centennial Celebrations (Makerere At 100 Project).</p>
+                    <p class="copy">Awel is an accomplished social entrepreneur and leader, who is passionate about ideas, and how that translates into positive change in Africa.</p>
+                    <p class="copy">Awel joins the Advisory Board as Associate Director of Programmes with extensive experience both in the public and private sectors, which is an invaluable addition to the team. We look forward to working with him to scale our vision of being the leading technology centric finance firm across the region, and Africa.</p>
+                </div>
+
                 <!-- Bronson -->
                 <div class="media-mobile bronson-mobile" onclick="slideMobile('bronson-mobile')">
                     <img src="img/bronsonprofile.jpg" alt="Bronson Bakunga">
@@ -648,44 +700,24 @@
                     <p class="copy">Bronson holds a Bachelor of Engineering in Computer Software Engineering from Makerere University and a Master of Science in Computer Science from Universiti Teknologi Malaysia. He is passionate about leveraging technology to build robust solutions that drive business value.</p>
                 </div>
 
-                <!-- Ezereth -->
-                <div class="media-mobile ezereth-mobile" onclick="slideMobile('ezereth-mobile')">
-                    <img src="img/ezerethProfile.jpg" alt="Ezereth Nakakande">
+                <!-- Mark -->
+                <div class="media-mobile mark-mobile" onclick="slideMobile('mark-mobile')">
+                    <img src="img/MarkProfile.jpg" alt="Mark Luwaga">
                     <div class="overlay-mobile">
-                        <p><strong>Ezereth Nakakande</strong><br>
-                            <button onclick="slideMobile('ezereth-mobile')" class="btn">Read About Ezereth</button><br>
-                            <span class="position">Accounting Officer</span>
+                        <p><strong>Mark Luwaga</strong><br>
+                            <button onclick="slideMobile('mark-mobile')" class="btn">Read About Mark</button><br>
+                            <span class="position">Chief Financial Officer</span>
                         </p>
                     </div>
                 </div>
 
-                <div class="profile-mobile" id="ezereth-mobile">
-                    <h3 class="member-name">Ezereth Nakakande</h3>
-                    <p class="position">Accounting Officer</p>
-                    <p class="copy">Ezereth is the Accounting Officer at CapitalSavvy. She joined CapitalSavvy on the Junior Analyst Program, in 2024.</p>
-                    <p class="copy">Prior to joining CapitalSavvy, she held an internship at the Central Bank of Uganda in the accounts department. She also notably participated in the practical skills development program at Grant Thorton - a leading audit and accounting firm, in the first cohort as a member of the pioneer class.</p>
-                    <p class="copy">She enrolled in the Chartered Financial Analyst (CFA) Program in 2024, where she successfully completed Level 1 as of January 2025, and is currently a Level 2 Candidate. In addition, she holds a bachelor's degree in accounting and finance from Uganda Christian University Mukono - Uganda.</p>
-                    <p class="copy">Ezereth is credited for her strong integrity, professionalism and interpersonal skills as she supports various functions of the business.</p>
-                </div>
-
-                <!-- Jonathan -->
-                <div class="media-mobile jonathan-mobile" onclick="slideMobile('jonathan-mobile')">
-                    <img src="img/jonathanProfile.jpg" alt="Jonathan Gyewava">
-                    <div class="overlay-mobile">
-                        <p><strong>Jonathan Gyewava</strong><br>
-                            <button onclick="slideMobile('jonathan-mobile')" class="btn">Read About Jonathan</button><br>
-                            <span class="position">Investment Associate</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="profile-mobile" id="jonathan-mobile">
-                    <h3 class="member-name">Jonathan Gyewava</h3>
-                    <p class="position">Investment Associate</p>
-                    <p class="copy">Jonathan is an Investment Associate at CapitalSavvy, where he joined as a Junior Analyst in 2024. He is also a project lead of KitePesa, a payments innovation project in the firm's Innovation Lab – leveraging Blockchain Technology to tokenize the Uganda Shillings in form of a UGXC token.</p>
-                    <p class="copy">As an Investment Associate at CapitalSavvy, he supports the Portfolio Managers in the SME lending segment, as a Credit Analyst. Jonathan contributing to the reworking of credit policies to align with the evolving regulatory environment for private lenders in Uganda.</p>
-                    <p class="copy">Prior to joining CapitalSavvy, he worked as a Business Analyst at Paylater Uganda, a company providing hire purchase credit solutions to retail consumers.</p>
-                    <p class="copy">He enrolled in the Chartered Financial Analyst (CFA) program in 2024, where he successfully completed Level I as of January 2025 and holds the FMVA® designation. In addition, he holds a bachelor's degree in commerce with a Double Major in Finance and Management Science from Strathmore University with First Class Honours.</p>
+                <div class="profile-mobile" id="mark-mobile">
+                    <h3 class="member-name">Mark Luwaga</h3>
+                    <p class="position">Chief Financial Officer</p>
+                    <p class="copy">Mark Luwaga, the Chief Financial Officer (CFO) of Capitalsavvy Limited is a seasoned finance executive with over 14 years' experience in financial strategy & management, corporate finance & investments, risk management & compliance, operational & cost efficiency, accounting & reporting (GAAP & IFRS), technology & digital transformation (including AI-driven analytics), and leadership & strategic decision-making to ensure sustained growth and profitability.</p>
+                    <p class="copy">Mark's expertise spans both the U.S. and Pan-African financial markets, where he has worked in corporate finance, investment advisory, and financial consulting for multinational corporations and local enterprises across healthcare, gambling & betting, manufacturing, and retail & e-commerce. His deep understanding of IFRS, GAAP, financial compliance, and strategic planning makes him a key driver of Capitalsavvy's success.</p>
+                    <p class="copy">Mark holds a Bachelor of Statistics degree from Makerere University and a Master of Business Administration (MBA) with a Finance concentration from Johnson and Wales University in Rhode Island, United States. He is also a member of the Association of Chartered Certified Accountants (ACCA), having been admitted in July 2018.</p>
+                    <p class="copy">Passionate about leveraging technology and data-driven insights, Mark continues to drive financial efficiency and strategic growth, positioning Capitalsavvy Limited as a leader in the financial sector.</p>
                 </div>
 
                 <!-- Alexandra -->
@@ -708,24 +740,44 @@
                     <p class="copy">She is driven by a strong desire to contribute to impactful financial solutions, support inclusive growth, and continuously build expertise within the financial services for SMES.</p>
                 </div>
 
-                <!-- Mark -->
-                <div class="media-mobile mark-mobile" onclick="slideMobile('mark-mobile')">
-                    <img src="img/MarkProfile.jpg" alt="Mark Luwaga">
+                <!-- Jonathan -->
+                <div class="media-mobile jonathan-mobile" onclick="slideMobile('jonathan-mobile')">
+                    <img src="img/jonathanProfile.jpg" alt="Jonathan Gyewava">
                     <div class="overlay-mobile">
-                        <p><strong>Mark Luwaga</strong><br>
-                            <button onclick="slideMobile('mark-mobile')" class="btn">Read About Mark</button><br>
-                            <span class="position">Chief Financial Officer</span>
+                        <p><strong>Jonathan Gyewava</strong><br>
+                            <button onclick="slideMobile('jonathan-mobile')" class="btn">Read About Jonathan</button><br>
+                            <span class="position">Investment Associate</span>
                         </p>
                     </div>
                 </div>
 
-                <div class="profile-mobile" id="mark-mobile">
-                    <h3 class="member-name">Mark Luwaga</h3>
-                    <p class="position">Chief Financial Officer</p>
-                    <p class="copy">Mark Luwaga, the Chief Financial Officer (CFO) of Capitalsavvy Limited is a seasoned finance executive with over 14 years' experience in financial strategy & management, corporate finance & investments, risk management & compliance, operational & cost efficiency, accounting & reporting (GAAP & IFRS), technology & digital transformation (including AI-driven analytics), and leadership & strategic decision-making to ensure sustained growth and profitability.</p>
-                    <p class="copy">Mark's expertise spans both the U.S. and Pan-African financial markets, where he has worked in corporate finance, investment advisory, and financial consulting for multinational corporations and local enterprises across healthcare, gambling & betting, manufacturing, and retail & e-commerce. His deep understanding of IFRS, GAAP, financial compliance, and strategic planning makes him a key driver of Capitalsavvy's success.</p>
-                    <p class="copy">Mark holds a Bachelor of Statistics degree from Makerere University and a Master of Business Administration (MBA) with a Finance concentration from Johnson and Wales University in Rhode Island, United States. He is also a member of the Association of Chartered Certified Accountants (ACCA), having been admitted in July 2018.</p>
-                    <p class="copy">Passionate about leveraging technology and data-driven insights, Mark continues to drive financial efficiency and strategic growth, positioning Capitalsavvy Limited as a leader in the financial sector.</p>
+                <div class="profile-mobile" id="jonathan-mobile">
+                    <h3 class="member-name">Jonathan Gyewava</h3>
+                    <p class="position">Investment Associate</p>
+                    <p class="copy">Jonathan is an Investment Associate at CapitalSavvy, where he joined as a Junior Analyst in 2024. He is also a project lead of KitePesa, a payments innovation project in the firm's Innovation Lab – leveraging Blockchain Technology to tokenize the Uganda Shillings in form of a UGXC token.</p>
+                    <p class="copy">As an Investment Associate at CapitalSavvy, he supports the Portfolio Managers in the SME lending segment, as a Credit Analyst. Jonathan contributing to the reworking of credit policies to align with the evolving regulatory environment for private lenders in Uganda.</p>
+                    <p class="copy">Prior to joining CapitalSavvy, he worked as a Business Analyst at Paylater Uganda, a company providing hire purchase credit solutions to retail consumers.</p>
+                    <p class="copy">He enrolled in the Chartered Financial Analyst (CFA) program in 2024, where he successfully completed Level I as of January 2025 and holds the FMVA® designation. In addition, he holds a bachelor's degree in commerce with a Double Major in Finance and Management Science from Strathmore University with First Class Honours.</p>
+                </div>
+
+                <!-- Ezereth -->
+                <div class="media-mobile ezereth-mobile" onclick="slideMobile('ezereth-mobile')">
+                    <img src="img/ezerethProfile.jpg" alt="Ezereth Nakakande">
+                    <div class="overlay-mobile">
+                        <p><strong>Ezereth Nakakande</strong><br>
+                            <button onclick="slideMobile('ezereth-mobile')" class="btn">Read About Ezereth</button><br>
+                            <span class="position">Accounting Officer</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-mobile" id="ezereth-mobile">
+                    <h3 class="member-name">Ezereth Nakakande</h3>
+                    <p class="position">Accounting Officer</p>
+                    <p class="copy">Ezereth is the Accounting Officer at CapitalSavvy. She joined CapitalSavvy on the Junior Analyst Program, in 2024.</p>
+                    <p class="copy">Prior to joining CapitalSavvy, she held an internship at the Central Bank of Uganda in the accounts department. She also notably participated in the practical skills development program at Grant Thorton - a leading audit and accounting firm, in the first cohort as a member of the pioneer class.</p>
+                    <p class="copy">She enrolled in the Chartered Financial Analyst (CFA) Program in 2024, where she successfully completed Level 1 as of January 2025, and is currently a Level 2 Candidate. In addition, she holds a bachelor's degree in accounting and finance from Uganda Christian University Mukono - Uganda.</p>
+                    <p class="copy">Ezereth is credited for her strong integrity, professionalism and interpersonal skills as she supports various functions of the business.</p>
                 </div>
 
             </div>
