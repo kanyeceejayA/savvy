@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard | CapitalSavvy Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css?ver=1">
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div class="login-page" id="loginPage">
+        <div class="login-box">
+            <h1>CapitalSavvy</h1>
+            <p class="subtitle">Careers Admin Dashboard</p>
+            <form id="loginForm">
+                <input type="text" name="username" placeholder="Username" required autocomplete="username">
+                <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                <button type="submit">Sign In</button>
+            </form>
+            <p class="login-error" id="loginError">Invalid credentials</p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <h1><span>CapitalSavvy</span> &middot; Careers Dashboard</h1>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-bar" id="statsBar">
+            <div class="stat-card active" data-filter="All">
+                <div class="stat-num" id="statTotal">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-card" data-filter="New">
+                <div class="stat-num" id="statNew">0</div>
+                <div class="stat-label">New</div>
+            </div>
+            <div class="stat-card" data-filter="Reviewed">
+                <div class="stat-num" id="statReviewed">0</div>
+                <div class="stat-label">Reviewed</div>
+            </div>
+            <div class="stat-card" data-filter="Stage 1">
+                <div class="stat-num" id="statStage1">0</div>
+                <div class="stat-label">Stage 1</div>
+            </div>
+            <div class="stat-card" data-filter="Offered">
+                <div class="stat-num" id="statOffered">0</div>
+                <div class="stat-label">Offered</div>
+            </div>
+            <div class="stat-card" data-filter="Rejected">
+                <div class="stat-num" id="statRejected">0</div>
+                <div class="stat-label">Rejected</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search by name, email, or reference...">
+            <select id="statusFilter">
+                <option value="All">All Statuses</option>
+                <option value="New">New</option>
+                <option value="Reviewed">Reviewed</option>
+                <option value="Stage 1">Stage 1</option>
+                <option value="Stage 2">Stage 2</option>
+                <option value="Stage 3">Stage 3</option>
+                <option value="Offered">Offered</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <button class="export-btn" id="exportBtn">Export CSV</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Reference</th>
+                        <th>Status</th>
+                        <th>Experience</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="appTableBody">
+                    <tr><td colspan="6" class="empty-state"><p>No applications yet</p></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="paginationBar">
+            <button id="prevPage" disabled>&larr; Previous</button>
+            <span class="page-info" id="pageInfo">Page 1 of 1</span>
+            <button id="nextPage" disabled>Next &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Detail Panel -->
+    <div class="modal-overlay" id="detailOverlay">
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-header">
+                <div>
+                    <h2 id="detailName"></h2>
+                    <div class="ref" id="detailRef"></div>
+                </div>
+                <button class="close-btn" id="closeDetail">&times;</button>
+            </div>
+            <div class="detail-body" id="detailBody">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js?ver=1"></script>
+</body>
+</html>

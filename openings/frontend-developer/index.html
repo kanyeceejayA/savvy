@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apply: Frontend Developer | CapitalSavvy Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css?ver=20200828">
+    <link rel="stylesheet" href="../../css/contact.css?ver=20200828">
+    <link rel="stylesheet" href="../css/openings.css?ver=1">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <style>
+        .contact header{
+            background-image: url('../../img/header.jpg');
+            background-size: cover;
+            background-position: top;
+            color:#B9915B;
+            padding-top: 200px;
+        }
+    </style>
+</head>
+<body class="contact openings-page">
+
+    <!-- Top Menu -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-transparent fixed-top top-menu">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="topmenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#contact"><span style="color:#B9915B;">CONTACT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link invest" href="../../login">Investor Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../"><img class="img-fluid" src="../../img/logo.svg" alt="CapitalSavvy"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#SME">SME Growth Fund</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#ADVISORY">Advisory Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../#partnerships">Partnerships</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active invest" href="../../openings">Careers</a>
+                    </li>
+                    <li class="nav-item d-xs-block d-md-none">
+                        <a class="nav-link btn-alt" href="../../login">Investor Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header — matches invest-now.html style -->
+    <header class="py-6">
+        <div class="container">
+            <p style="margin-bottom:4px;"><a href="../" style="color:rgba(185,145,91,0.7);text-decoration:none;font-size:0.9rem;">&larr; All Openings</a></p>
+            <h2 class="heading">Frontend Developer Application</h2>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+        <div class="container">
+            <div class="progress-steps" id="progressSteps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Personal Info</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Education</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Skills</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <span class="step-label">Motivation</span>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-circle">5</div>
+                    <span class="step-label">Uploads</span>
+                </div>
+                <div class="progress-step" data-step="6">
+                    <div class="step-circle">6</div>
+                    <span class="step-label">Review</span>
+                </div>
+            </div>
+            <div class="progress-info" id="progressInfo">Step 1 of 6 &mdash; Personal Information</div>
+        </div>
+    </div>
+
+    <!-- Auto-save indicator -->
+    <div class="autosave-indicator" id="autosaveIndicator">&#10003; Draft saved</div>
+
+    <!-- Form -->
+    <div class="form-container">
+        <form id="applicationForm" novalidate enctype="multipart/form-data">
+
+        <!-- ==================== STEP 1: Personal Information ==================== -->
+        <div class="form-step active" data-step="1">
+            <h2>Personal Information</h2>
+            <p class="step-desc">Let's start with the basics. This helps us know who you are and how to reach you.</p>
+            <p class="required-legend"><span>*</span> Required field</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" data-validate="required" data-max="50">
+                        <label>First Name <span class="req">*</span></label>
+                        <input type="text" name="first_name" maxlength="50" required>
+                        <div class="error-msg">First name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" data-validate="required" data-max="50">
+                        <label>Last Name <span class="req">*</span></label>
+                        <input type="text" name="last_name" maxlength="50" required>
+                        <div class="error-msg">Last name is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" data-validate="email">
+                <label>Email Address <span class="req">*</span></label>
+                <input type="email" name="email" required>
+                <div class="error-msg">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group" data-validate="phone">
+                <label>Phone Number <span class="req">*</span></label>
+                <input type="tel" name="phone" placeholder="+256..." required>
+                <div class="error-msg">Please enter a valid phone number</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" data-validate="required">
+                        <label>Country of Residence <span class="req">*</span></label>
+                        <select name="country" required>
+                            <option value="">Select country</option>
+                            <option value="Uganda" selected>Uganda</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Tanzania">Tanzania</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="Burundi">Burundi</option>
+                            <option value="South Sudan">South Sudan</option>
+                            <option value="DR Congo">DR Congo</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="error-msg">Country is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" data-validate="required">
+                        <label>City / Town <span class="req">*</span></label>
+                        <input type="text" name="city" required>
+                        <div class="error-msg">City is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="gender">
+                    <option value="">Prefer not to say</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                </select>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>How did you hear about this role? <span class="req">*</span></label>
+                <select name="heard_about" id="heardAbout" required>
+                    <option value="">Select an option</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="University Notice Board">University Notice Board</option>
+                    <option value="Referral from Employee">Referral from Employee</option>
+                    <option value="Job Board">Job Board</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="CapitalSavvy Website">CapitalSavvy Website</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-msg">This field is required</div>
+            </div>
+
+            <div class="conditional-field" data-show-when="heard_about=Referral from Employee">
+                <div class="form-group">
+                    <label>Who referred you?</label>
+                    <input type="text" name="referral_name" placeholder="Name of the employee">
+                </div>
+            </div>
+
+            <div class="conditional-field" data-show-when="heard_about=Other">
+                <div class="form-group">
+                    <label>Please specify</label>
+                    <input type="text" name="heard_other" placeholder="How did you hear about us?">
+                </div>
+            </div>
+
+            <div class="form-nav">
+                <div></div>
+                <button type="button" class="btn-next" data-next="2">Continue &rarr;</button>
+            </div>
+        </div>
+
+        <!-- ==================== STEP 2: Education & Background ==================== -->
+        <div class="form-step" data-step="2">
+            <h2>Education &amp; Background</h2>
+            <p class="step-desc">Tell us about your academic qualifications and professional experience.</p>
+            <p class="required-legend"><span>*</span> Required field</p>
+
+            <div class="form-group" data-validate="required">
+                <label>Highest Level of Education <span class="req">*</span></label>
+                <select name="education_level" id="educationLevel" required>
+                    <option value="">Select level</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Self-Taught">Self-Taught</option>
+                    <option value="Currently Enrolled">Currently Enrolled</option>
+                </select>
+                <div class="error-msg">Education level is required</div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>University / Institution <span class="req">*</span></label>
+                <input type="text" name="institution" list="ugandaUniversities" required>
+                <datalist id="ugandaUniversities">
+                    <option value="Makerere University">
+                    <option value="Kyambogo University">
+                    <option value="Uganda Christian University">
+                    <option value="Makerere University Business School">
+                    <option value="Uganda Martyrs University">
+                    <option value="Kampala International University">
+                    <option value="Ndejje University">
+                    <option value="Busitema University">
+                    <option value="Gulu University">
+                    <option value="Mbarara University of Science and Technology">
+                    <option value="Nkumba University">
+                    <option value="Bishop Stuart University">
+                    <option value="Uganda Technology and Management University">
+                    <option value="Victoria University">
+                    <option value="Cavendish University Uganda">
+                </datalist>
+                <div class="error-msg">Institution is required</div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>Field of Study <span class="req">*</span></label>
+                <select name="field_of_study" id="fieldOfStudy" required>
+                    <option value="">Select field</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Software Engineering">Software Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Design">Design</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-msg">Field of study is required</div>
+            </div>
+
+            <div class="conditional-field" data-show-when="field_of_study=Other">
+                <div class="form-group">
+                    <label>Specify your field of study</label>
+                    <input type="text" name="field_other">
+                </div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>Graduation Year <span class="req">*</span></label>
+                <select name="graduation_year" id="graduationYear" required>
+                    <option value="">Select year</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="Not yet graduated">Not yet graduated</option>
+                </select>
+                <div class="error-msg">Graduation year is required</div>
+            </div>
+
+            <div class="conditional-field" data-show-when="graduation_year=Not yet graduated" data-also-when="education_level=Currently Enrolled">
+                <div class="form-group">
+                    <label>Expected Graduation Date</label>
+                    <input type="month" name="expected_graduation">
+                </div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>Years of Experience <span class="req">*</span></label>
+                <select name="years_experience" required>
+                    <option value="">Select experience</option>
+                    <option value="No professional experience">No professional experience</option>
+                    <option value="Less than 1 year">Less than 1 year</option>
+                    <option value="1-2 years">1-2 years</option>
+                    <option value="2+ years">2+ years</option>
+                </select>
+                <div class="error-msg">Experience level is required</div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>Current Employment Status <span class="req">*</span></label>
+                <select name="employment_status" id="employmentStatus" required>
+                    <option value="">Select status</option>
+                    <option value="Employed">Employed</option>
+                    <option value="Freelancing">Freelancing</option>
+                    <option value="Student">Student</option>
+                    <option value="Unemployed / Job Seeking">Unemployed / Job Seeking</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-msg">Employment status is required</div>
+            </div>
+
+            <div class="conditional-field" data-show-when="employment_status=Employed" data-also-when="employment_status=Freelancing">
+                <div class="form-group">
+                    <label>Current Role Title</label>
+                    <input type="text" name="current_role">
+                </div>
+            </div>
+
+            <div class="form-nav">
+                <button type="button" class="btn-prev" data-prev="1">&larr; Back</button>
+                <button type="button" class="btn-next" data-next="3">Continue &rarr;</button>
+            </div>
+        </div>
+
+        <!-- ==================== STEP 3: Technical Skills & Portfolio ==================== -->
+        <div class="form-step" data-step="3">
+            <h2>Technical Skills &amp; Portfolio</h2>
+            <p class="step-desc">Rate your comfort level with each technology. Be honest &mdash; we'll assess skills during the technical stage, not here. This helps us tailor the process to your level.</p>
+            <p class="required-legend"><span>*</span> Required field</p>
+
+            <h3 style="font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:12px;">Skills Self-Assessment</h3>
+
+            <div class="skills-list">
+                <div class="skill-row">
+                    <div class="skill-name">Figma (UI/UX Design)</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_figma" value="No experience" id="sf1"><label for="sf1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_figma" value="Beginner" id="sf2"><label for="sf2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_figma" value="Comfortable" id="sf3"><label for="sf3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_figma" value="Proficient" id="sf4"><label for="sf4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_figma" value="Advanced" id="sf5"><label for="sf5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">React.js</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_react" value="No experience" id="sr1"><label for="sr1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_react" value="Beginner" id="sr2"><label for="sr2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_react" value="Comfortable" id="sr3"><label for="sr3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_react" value="Proficient" id="sr4"><label for="sr4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_react" value="Advanced" id="sr5"><label for="sr5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">JavaScript (ES6+)</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_javascript" value="No experience" id="sj1"><label for="sj1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_javascript" value="Beginner" id="sj2"><label for="sj2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_javascript" value="Comfortable" id="sj3"><label for="sj3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_javascript" value="Proficient" id="sj4"><label for="sj4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_javascript" value="Advanced" id="sj5"><label for="sj5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">HTML &amp; CSS / Responsive</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_html_css" value="No experience" id="sh1"><label for="sh1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_html_css" value="Beginner" id="sh2"><label for="sh2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_html_css" value="Comfortable" id="sh3"><label for="sh3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_html_css" value="Proficient" id="sh4"><label for="sh4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_html_css" value="Advanced" id="sh5"><label for="sh5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">TypeScript</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_typescript" value="No experience" id="st1"><label for="st1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_typescript" value="Beginner" id="st2"><label for="st2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_typescript" value="Comfortable" id="st3"><label for="st3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_typescript" value="Proficient" id="st4"><label for="st4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_typescript" value="Advanced" id="st5"><label for="st5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">Next.js</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_nextjs" value="No experience" id="sn1"><label for="sn1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_nextjs" value="Beginner" id="sn2"><label for="sn2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_nextjs" value="Comfortable" id="sn3"><label for="sn3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_nextjs" value="Proficient" id="sn4"><label for="sn4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_nextjs" value="Advanced" id="sn5"><label for="sn5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">Tailwind CSS</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_tailwind" value="No experience" id="sw1"><label for="sw1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_tailwind" value="Beginner" id="sw2"><label for="sw2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_tailwind" value="Comfortable" id="sw3"><label for="sw3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_tailwind" value="Proficient" id="sw4"><label for="sw4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_tailwind" value="Advanced" id="sw5"><label for="sw5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">Git / GitHub</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_git" value="No experience" id="sg1"><label for="sg1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_git" value="Beginner" id="sg2"><label for="sg2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_git" value="Comfortable" id="sg3"><label for="sg3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_git" value="Proficient" id="sg4"><label for="sg4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_git" value="Advanced" id="sg5"><label for="sg5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">RESTful API Integration</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_rest_api" value="No experience" id="sa1"><label for="sa1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_rest_api" value="Beginner" id="sa2"><label for="sa2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_rest_api" value="Comfortable" id="sa3"><label for="sa3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_rest_api" value="Proficient" id="sa4"><label for="sa4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_rest_api" value="Advanced" id="sa5"><label for="sa5">Advanced</label></div>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-name">State Management</div>
+                    <div class="skill-options">
+                        <div class="skill-option"><input type="radio" name="skill_state_mgmt" value="No experience" id="sm1"><label for="sm1">No exp.</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_state_mgmt" value="Beginner" id="sm2"><label for="sm2">Beginner</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_state_mgmt" value="Comfortable" id="sm3"><label for="sm3">Comfortable</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_state_mgmt" value="Proficient" id="sm4"><label for="sm4">Proficient</label></div>
+                        <div class="skill-option"><input type="radio" name="skill_state_mgmt" value="Advanced" id="sm5"><label for="sm5">Advanced</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size:1rem;font-weight:500;color:var(--navy);margin:28px 0 12px;">Portfolio &amp; Links</h3>
+
+            <div class="form-group" data-validate="url-required">
+                <label>GitHub Profile URL <span class="req">*</span></label>
+                <input type="text" name="github_url" placeholder="github.com/yourusername" required>
+                <div class="error-msg">A valid GitHub URL is required</div>
+            </div>
+
+            <div class="form-group" data-validate="url">
+                <label>Figma Portfolio URL <span style="color:var(--gold);font-size:0.8rem;">(Strongly recommended)</span></label>
+                <input type="text" name="figma_url" placeholder="figma.com/...">
+                <div class="error-msg">Please enter a valid URL</div>
+            </div>
+
+            <div class="form-group" data-validate="url">
+                <label>Personal Website / Portfolio</label>
+                <input type="text" name="portfolio_url" placeholder="yoursite.com">
+                <div class="error-msg">Please enter a valid URL</div>
+            </div>
+
+            <div class="form-group" data-validate="url">
+                <label>LinkedIn Profile</label>
+                <input type="text" name="linkedin_url" placeholder="linkedin.com/in/yourname">
+                <div class="error-msg">Please enter a valid URL</div>
+            </div>
+
+            <div class="form-group" data-validate="url">
+                <label>Best Project URL</label>
+                <input type="text" name="best_project_url" placeholder="deployed project or demo URL">
+                <div class="error-msg">Please enter a valid URL</div>
+            </div>
+
+            <div class="form-group" data-validate="required" data-min="100" data-max="500">
+                <label>Describe your best project <span class="req">*</span></label>
+                <textarea name="best_project_desc" rows="4" minlength="100" maxlength="500" placeholder="What did you build, what technologies did you use, and what was your role?" required></textarea>
+                <div class="char-counter"><span class="count">0</span> / 500 characters (min 100)</div>
+                <div class="error-msg">Please describe your project (100-500 characters)</div>
+            </div>
+
+            <div class="form-nav">
+                <button type="button" class="btn-prev" data-prev="2">&larr; Back</button>
+                <button type="button" class="btn-next" data-next="4">Continue &rarr;</button>
+            </div>
+        </div>
+
+        <!-- ==================== STEP 4: Motivation & Culture Fit ==================== -->
+        <div class="form-step" data-step="4">
+            <h2>Motivation &amp; Culture Fit</h2>
+            <p class="step-desc">These questions help us understand your mindset, values, and alignment with CapitalSavvy's mission.</p>
+            <p class="required-legend"><span>*</span> Required field</p>
+
+            <div class="form-group" data-validate="required" data-min="150" data-max="800">
+                <label>Why are you excited about joining CapitalSavvy? <span class="req">*</span></label>
+                <textarea name="why_capitalsavvy" rows="4" minlength="150" maxlength="800" required></textarea>
+                <div class="char-counter"><span class="count">0</span> / 800 characters (min 150)</div>
+                <div class="error-msg">Please share why you're excited (150-800 characters)</div>
+            </div>
+
+            <div class="form-group" data-validate="required" data-min="150" data-max="800">
+                <label>Describe a time you learned a new technology or tool quickly. What was your approach? <span class="req">*</span></label>
+                <textarea name="learn_new_tech" rows="4" minlength="150" maxlength="800" required></textarea>
+                <div class="char-counter"><span class="count">0</span> / 800 characters (min 150)</div>
+                <div class="error-msg">Please describe your learning experience (150-800 characters)</div>
+            </div>
+
+            <div class="form-group" data-min="100" data-max="600">
+                <label>What does "good design" mean to you? Give a specific example from an app or website you admire.</label>
+                <textarea name="good_design" rows="3" maxlength="600"></textarea>
+                <div class="char-counter"><span class="count">0</span> / 600 characters</div>
+            </div>
+
+            <div class="form-group" data-validate="required" data-min="100" data-max="600">
+                <label>How do you handle feedback on your code or designs, especially when you disagree? <span class="req">*</span></label>
+                <textarea name="handle_feedback" rows="3" minlength="100" maxlength="600" required></textarea>
+                <div class="char-counter"><span class="count">0</span> / 600 characters (min 100)</div>
+                <div class="error-msg">Please share how you handle feedback (100-600 characters)</div>
+            </div>
+
+            <div class="form-group" data-min="100" data-max="600">
+                <label>What does the future of fintech in East Africa look like to you?</label>
+                <textarea name="future_fintech" rows="3" maxlength="600"></textarea>
+                <div class="char-counter"><span class="count">0</span> / 600 characters</div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>Are you comfortable with a hybrid work arrangement? <span class="req">*</span></label>
+                <select name="hybrid_preference" required>
+                    <option value="">Select an option</option>
+                    <option value="Yes - I prefer hybrid">Yes - I prefer hybrid</option>
+                    <option value="Yes - I can do hybrid">Yes - I can do hybrid</option>
+                    <option value="I prefer fully remote but can adapt">I prefer fully remote but can adapt</option>
+                    <option value="No - I need fully remote">No - I need fully remote</option>
+                </select>
+                <div class="error-msg">Please select your preference</div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>What is your earliest available start date? <span class="req">*</span></label>
+                <input type="date" name="start_date" required>
+                <div class="error-msg">Start date is required</div>
+            </div>
+
+            <div class="form-group" data-validate="required">
+                <label>Expected monthly salary range (UGX) <span class="req">*</span></label>
+                <select name="salary_range" required>
+                    <option value="">Select range</option>
+                    <option value="Below 1,000,000">Below 1,000,000</option>
+                    <option value="1,000,000 - 1,500,000">1,000,000 - 1,500,000</option>
+                    <option value="1,500,000 - 2,000,000">1,500,000 - 2,000,000</option>
+                    <option value="2,000,000 - 3,000,000">2,000,000 - 3,000,000</option>
+                    <option value="3,000,000+">3,000,000+</option>
+                    <option value="Open to discussion">Open to discussion</option>
+                </select>
+                <div class="error-msg">Salary expectation is required</div>
+            </div>
+
+            <div class="form-nav">
+                <button type="button" class="btn-prev" data-prev="3">&larr; Back</button>
+                <button type="button" class="btn-next" data-next="5">Continue &rarr;</button>
+            </div>
+        </div>
+
+        <!-- ==================== STEP 5: Uploads & Attachments ==================== -->
+        <div class="form-step" data-step="5">
+            <h2>Uploads &amp; Attachments</h2>
+            <p class="step-desc">Upload your CV, cover letter, and any portfolio samples. Drag and drop or click to browse.</p>
+            <p class="required-legend"><span>*</span> Required field</p>
+
+            <div class="form-group" data-validate="file-required">
+                <label>CV / Resume <span class="req">*</span></label>
+                <div class="upload-zone" data-accept=".pdf,.docx" data-max-size="5">
+                    <div class="upload-icon">&#128196;</div>
+                    <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
+                    <div class="upload-formats">PDF, DOCX &middot; Max 5MB</div>
+                    <input type="file" name="cv_file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                    <div class="file-info">
+                        <span class="file-name"></span>
+                        <button type="button" class="remove-file">&times; Remove</button>
+                    </div>
+                </div>
+                <div class="error-msg">CV / Resume is required</div>
+            </div>
+
+            <div class="form-group" data-validate="file-required">
+                <label>Cover Letter <span class="req">*</span></label>
+                <div class="upload-zone" data-accept=".pdf,.docx" data-max-size="5">
+                    <div class="upload-icon">&#128221;</div>
+                    <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
+                    <div class="upload-formats">PDF, DOCX &middot; Max 5MB</div>
+                    <input type="file" name="cover_letter_file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                    <div class="file-info">
+                        <span class="file-name"></span>
+                        <button type="button" class="remove-file">&times; Remove</button>
+                    </div>
+                </div>
+                <div class="error-msg">Cover letter is required</div>
+            </div>
+
+            <div class="form-group">
+                <label>Design Portfolio / Figma Samples <span style="color:var(--gold);font-size:0.8rem;">(Recommended)</span></label>
+                <div class="upload-helper figma-helper" style="display:none;">You already provided a Figma link in the previous step. You can skip this upload if you prefer.</div>
+                <div class="upload-zone" data-accept=".pdf,.png,.jpg,.jpeg" data-max-size="10">
+                    <div class="upload-icon">&#127912;</div>
+                    <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
+                    <div class="upload-formats">PDF, PNG, JPG &middot; Max 10MB</div>
+                    <input type="file" name="design_portfolio_file" accept=".pdf,.png,.jpg,.jpeg,image/png,image/jpeg,application/pdf">
+                    <div class="file-info">
+                        <span class="file-name"></span>
+                        <button type="button" class="remove-file">&times; Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Additional Work Samples</label>
+                <div class="upload-zone" data-accept=".pdf,.png,.zip" data-max-size="15">
+                    <div class="upload-icon">&#128206;</div>
+                    <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
+                    <div class="upload-formats">PDF, PNG, ZIP &middot; Max 15MB</div>
+                    <input type="file" name="additional_samples_file" accept=".pdf,.png,.zip,application/pdf,image/png,application/zip">
+                    <div class="file-info">
+                        <span class="file-name"></span>
+                        <button type="button" class="remove-file">&times; Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-nav">
+                <button type="button" class="btn-prev" data-prev="4">&larr; Back</button>
+                <button type="button" class="btn-next" data-next="6">Continue &rarr;</button>
+            </div>
+        </div>
+
+        <!-- ==================== STEP 6: Review & Submit ==================== -->
+        <div class="form-step" data-step="6">
+            <h2>Review &amp; Submit</h2>
+            <p class="step-desc">Please review your application details below. Click "Edit" to make changes to any section.</p>
+
+            <div id="reviewContent">
+                <!-- Populated by JS -->
+            </div>
+
+            <h3 style="font-size:1.05rem;font-weight:500;color:var(--navy);margin:28px 0 16px;">Agreements &amp; Declarations</h3>
+
+            <div class="agreement-item" data-validate="checkbox-required">
+                <input type="checkbox" name="privacy_consent" id="privacyConsent" value="1" required>
+                <label for="privacyConsent">I have read and agree to CapitalSavvy's Privacy Policy regarding the collection and processing of my personal data for recruitment purposes. <span class="req">*</span></label>
+            </div>
+
+            <div class="agreement-item" data-validate="checkbox-required">
+                <input type="checkbox" name="accuracy_declaration" id="accuracyDecl" value="1" required>
+                <label for="accuracyDecl">I confirm that all information provided in this application is true, complete, and accurate to the best of my knowledge. <span class="req">*</span></label>
+            </div>
+
+            <div class="agreement-item" data-validate="checkbox-required">
+                <input type="checkbox" name="communication_consent" id="commConsent" value="1" required>
+                <label for="commConsent">I consent to CapitalSavvy contacting me via email and phone regarding this application and future opportunities. <span class="req">*</span></label>
+            </div>
+
+            <div class="agreement-item">
+                <input type="checkbox" name="assessment_consent" id="assessConsent" value="1">
+                <label for="assessConsent">I understand that the selection process includes a take-home technical assessment (Figma + React/Next.js) and I am willing to participate.</label>
+            </div>
+
+            <div id="submitError" style="display:none;color:var(--error);text-align:center;padding:12px;margin-top:16px;font-size:0.9rem;background:rgba(205,30,45,0.05);border-radius:4px;"></div>
+
+            <div class="form-nav">
+                <button type="button" class="btn-prev" data-prev="5">&larr; Back</button>
+                <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
+            </div>
+        </div>
+
+        </form>
+
+        <!-- Confirmation Screen (hidden by default) -->
+        <div class="form-step confirmation" data-step="confirm" id="confirmationScreen">
+            <div class="check-icon">&#10003;</div>
+            <h2>Thank You for Applying!</h2>
+            <p>We've received your application for the <strong>Frontend Developer</strong> position at CapitalSavvy.</p>
+            <div class="ref-number" id="refNumber">CS-FD-XXXXXX</div>
+            <p>Please save your reference number for future correspondence. We aim to respond within <strong>5 business days</strong>.</p>
+            <p>A confirmation email has been sent to <strong id="confirmEmail"></strong>.</p>
+
+            <div class="process-steps">
+                <h4>Our Selection Process</h4>
+                <div class="process-step-item">
+                    <div class="step-num">1</div>
+                    <div>Application Review &mdash; We review your application, portfolio, and CV within 5 business days.</div>
+                </div>
+                <div class="process-step-item">
+                    <div class="step-num">2</div>
+                    <div>Technical Assessment &mdash; A take-home challenge combining Figma design and React/Next.js development.</div>
+                </div>
+                <div class="process-step-item">
+                    <div class="step-num">3</div>
+                    <div>Culture &amp; Values Conversation &mdash; A conversation with the team to assess mutual fit and alignment.</div>
+                </div>
+            </div>
+
+            <p style="margin-top:24px;"><a href="../" style="color:var(--gold);text-decoration:none;">&larr; Back to Careers</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="openings-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="../../img/logo-color.svg" alt="CapitalSavvy" style="height:28px;margin-bottom:12px;">
+                    <p>Suite 2C Ecobank Plaza, Plot 4, Parliament Avenue<br>Kampala, Uganda</p>
+                    <p>info@capitalsavvy.pro &middot; +256 752 265 760</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <p style="margin-top:12px;">
+                        <a href="../../">Home</a> &middot;
+                        <a href="../../#about">About</a> &middot;
+                        <a href="../../#team">Team</a> &middot;
+                        <a href="../../#contact">Contact</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-copy text-center">&copy; 2026 CapitalSavvy Ltd. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/easing.min.js"></script>
+    <script src="../../js/scripts.js?ver=20200828"></script>
+    <script src="../js/application-form.js?ver=1"></script>
+</body>
+</html>
