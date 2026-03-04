@@ -63,6 +63,15 @@ try {
         jsonResponse(['error' => 'You must agree to all required declarations'], 400);
     }
 
+    // --- Duplicate application check (one active application per email per role) ---
+    $position = 'Frontend Developer';
+    $dupStmt = $db->prepare("SELECT id FROM applications WHERE email = ? AND COALESCE(position,'Frontend Developer') = ? AND status NOT IN ('Rejected','Archived')");
+    $dupStmt->bindValue(1, $data['email'], SQLITE3_TEXT);
+    $dupStmt->bindValue(2, $position, SQLITE3_TEXT);
+    if ($dupStmt->execute()->fetchArray(SQLITE3_ASSOC)) {
+        jsonResponse(['error' => 'You already have an active application for this role. Please check your email for your reference number.'], 409);
+    }
+
     // --- Generate Reference ---
     $reference = generateReference();
 
@@ -144,7 +153,8 @@ try {
     }
 
     // --- Insert into Database ---
-    $columns = array_merge($fields, ['privacy_consent', 'accuracy_declaration', 'communication_consent', 'assessment_consent', 'cv_path', 'cover_letter_path', 'design_portfolio_path', 'additional_samples_path', 'reference_number']);
+    $columns = array_merge($fields, ['privacy_consent', 'accuracy_declaration', 'communication_consent', 'assessment_consent', 'cv_path', 'cover_letter_path', 'design_portfolio_path', 'additional_samples_path', 'position', 'reference_number']);
+    $data['position'] = $position;
     $data['reference_number'] = $reference;
 
     $placeholders = implode(', ', array_fill(0, count($columns), '?'));
@@ -168,6 +178,14 @@ try {
 
     // Notification to admin
     sendAdminNotification($applicantName, $data['email'], $reference);
+
+    // Mark draft as completed if token was provided
+    $draftToken = trim($_POST['draft_token'] ?? '');
+    if ($draftToken !== '') {
+        $clear = $db->prepare("UPDATE application_drafts SET completed_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE draft_token = ?");
+        $clear->bindValue(1, $draftToken, SQLITE3_TEXT);
+        $clear->execute();
+    }
 
     // --- Success ---
     jsonResponse([

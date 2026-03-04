@@ -1,19 +1,47 @@
 <?php
 // CapitalSavvy Openings - Configuration & Database Setup
 
+loadEnvFiles([
+    __DIR__ . '/../.env',
+    dirname(__DIR__, 2) . '/.env',
+]);
+
 // --- Configuration ---
 $RESEND_API_KEY = getenv('RESEND_API_KEY') ?: 'YOUR_RESEND_API_KEY_HERE';
-$ADMIN_EMAIL = 'info@capitalsavvy.pro';
-$FROM_EMAIL = 'CapitalSavvy Careers <careers@capitalsavvy.pro>';
+$ADMIN_EMAIL = getenv('ADMIN_EMAIL') ?: 'info@capitalsavvy.pro';
+$FROM_EMAIL = getenv('FROM_EMAIL') ?: 'CapitalSavvy Careers <careers@capitalsavvy.pro>';
 $SITE_URL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost');
 
-// Admin credentials (change these!)
-$ADMIN_USER = 'admin';
-$ADMIN_PASS = '$2y$10$YourHashedPasswordHere'; // Use password_hash('your_password', PASSWORD_DEFAULT)
-
 // Paths
-$DB_PATH = __DIR__ . '/../db/applications.sqlite';
+$DB_PATH = getenv('OPENINGS_DB_PATH') ?: (__DIR__ . '/../db/applications.sqlite');
 $UPLOAD_DIR = __DIR__ . '/../uploads/';
+
+function loadEnvFiles($paths) {
+    foreach ($paths as $path) {
+        if (!is_readable($path)) {
+            continue;
+        }
+        $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        if (!is_array($lines)) {
+            continue;
+        }
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if ($line === '' || strpos($line, '#') === 0 || strpos($line, '=') === false) {
+                continue;
+            }
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+            $value = trim($value, "\"'");
+            if ($key !== '' && getenv($key) === false) {
+                putenv($key . '=' . $value);
+                $_ENV[$key] = $value;
+                $_SERVER[$key] = $value;
+            }
+        }
+    }
+}
 
 // --- Database ---
 function getDB() {
@@ -35,8 +63,6 @@ function initDB($db) {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         reference_number TEXT UNIQUE NOT NULL,
         status TEXT DEFAULT 'New',
-
-        -- Step 1: Personal Information
         first_name TEXT NOT NULL,
         last_name TEXT NOT NULL,
         email TEXT NOT NULL,
@@ -47,8 +73,6 @@ function initDB($db) {
         heard_about TEXT NOT NULL,
         referral_name TEXT,
         heard_other TEXT,
-
-        -- Step 2: Education & Background
         education_level TEXT NOT NULL,
         institution TEXT NOT NULL,
         field_of_study TEXT NOT NULL,
@@ -58,8 +82,6 @@ function initDB($db) {
         years_experience TEXT NOT NULL,
         employment_status TEXT NOT NULL,
         current_role TEXT,
-
-        -- Step 3: Technical Skills & Portfolio
         skill_figma TEXT,
         skill_react TEXT,
         skill_javascript TEXT,
@@ -76,8 +98,6 @@ function initDB($db) {
         linkedin_url TEXT,
         best_project_url TEXT,
         best_project_desc TEXT NOT NULL,
-
-        -- Step 4: Motivation & Culture Fit
         why_capitalsavvy TEXT NOT NULL,
         learn_new_tech TEXT NOT NULL,
         good_design TEXT,
@@ -86,27 +106,85 @@ function initDB($db) {
         hybrid_preference TEXT NOT NULL,
         start_date TEXT NOT NULL,
         salary_range TEXT NOT NULL,
-
-        -- Step 5: Uploads
         cv_path TEXT,
         cover_letter_path TEXT,
         design_portfolio_path TEXT,
         additional_samples_path TEXT,
-
-        -- Step 6: Agreements
         privacy_consent INTEGER NOT NULL DEFAULT 0,
         accuracy_declaration INTEGER NOT NULL DEFAULT 0,
         communication_consent INTEGER NOT NULL DEFAULT 0,
         assessment_consent INTEGER DEFAULT 0,
-
-        -- Meta
         internal_notes TEXT,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )");
+
+    $db->exec("CREATE TABLE IF NOT EXISTS admin_accounts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL,
+        email TEXT,
+        role TEXT NOT NULL DEFAULT 'admin',
+        active INTEGER NOT NULL DEFAULT 1,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )");
+
+    $db->exec("CREATE TABLE IF NOT EXISTS application_drafts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        draft_token TEXT UNIQUE NOT NULL,
+        email TEXT,
+        reference_hint TEXT,
+        current_step INTEGER NOT NULL DEFAULT 1,
+        draft_json TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        completed_at DATETIME
+    )");
+
+    $db->exec("CREATE TABLE IF NOT EXISTS application_emails (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        application_id INTEGER NOT NULL,
+        template TEXT NOT NULL DEFAULT 'custom',
+        subject TEXT,
+        personal_note TEXT,
+        sent_by TEXT,
+        sent_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )");
+
+    ensureColumnExists($db, 'applications', 'updated_at', "ALTER TABLE applications ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP");
+    ensureColumnExists($db, 'admin_accounts', 'active', "ALTER TABLE admin_accounts ADD COLUMN active INTEGER NOT NULL DEFAULT 1");
+    ensureColumnExists($db, 'applications', 'position', "ALTER TABLE applications ADD COLUMN position TEXT NOT NULL DEFAULT 'Frontend Developer'");
+    seedDefaultAdmin($db);
+}
+
+function ensureColumnExists($db, $table, $column, $alterSql) {
+    $res = $db->query("PRAGMA table_info($table)");
+    while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+        if (isset($row['name']) && $row['name'] === $column) {
+            return;
+        }
+    }
+    $db->exec($alterSql);
+}
+
+function seedDefaultAdmin($db) {
+    $countRes = $db->querySingle("SELECT COUNT(*) FROM admin_accounts");
+    if (intval($countRes) > 0) {
+        return;
+    }
+    $stmt = $db->prepare("INSERT INTO admin_accounts (username, password_hash, email, role, active) VALUES (?, ?, ?, 'admin', 1)");
+    $stmt->bindValue(1, 'admin', SQLITE3_TEXT);
+    $stmt->bindValue(2, password_hash('Kampala2Masaka', PASSWORD_DEFAULT), SQLITE3_TEXT);
+    $stmt->bindValue(3, $GLOBALS['ADMIN_EMAIL'], SQLITE3_TEXT);
+    $stmt->execute();
 }
 
 // --- Helpers ---
+function getAllowedStatuses() {
+    return ['New', 'Reviewed', 'Stage 1', 'Stage 2', 'Stage 3', 'Offered', 'Rejected', 'Archived'];
+}
+
 function generateReference() {
     $prefix = 'CS-FD';
     $date = date('ymd');
@@ -118,7 +196,7 @@ function sanitize($input) {
     if (is_array($input)) {
         return array_map('sanitize', $input);
     }
-    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars(trim((string) $input), ENT_QUOTES, 'UTF-8');
 }
 
 function jsonResponse($data, $code = 200) {
@@ -129,8 +207,10 @@ function jsonResponse($data, $code = 200) {
 }
 
 function requireAdmin() {
-    session_start();
-    if (empty($_SESSION['admin_logged_in'])) {
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    if (empty($_SESSION['admin_logged_in']) || empty($_SESSION['admin_user_id'])) {
         jsonResponse(['error' => 'Unauthorized'], 401);
     }
 }

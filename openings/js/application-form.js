@@ -6,10 +6,15 @@
     'use strict';
 
     const STORAGE_KEY = 'cs_fd_application_draft';
+    const CLOUD_DRAFT_KEY = 'cs_fd_cloud_draft_token';
+    const DRAFT_API = '../api/draft.php';
     const STEP_NAMES = ['', 'Personal Information', 'Education & Background', 'Technical Skills & Portfolio', 'Motivation & Culture Fit', 'Uploads & Attachments', 'Review & Submit'];
     let currentStep = 1;
     const totalSteps = 6;
     let autoSaveTimer = null;
+    let cloudSaveTimer = null;
+    let cloudDraftToken = '';
+    let cloudSaveHasRun = false;
 
     // === Initialization ===
     document.addEventListener('DOMContentLoaded', function() {
@@ -20,7 +25,10 @@
         initNavigation();
         initStartDate();
         initURLFields();
+        injectSaveButtons();
+        initSaveModal();
         loadDraft();
+        loadCloudDraft();
         updateProgress();
     });
 
@@ -60,6 +68,54 @@
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             submitApplication();
+        });
+    }
+
+    function injectSaveButtons() {
+        document.querySelectorAll('.form-nav').forEach(function(nav) {
+            if (nav.querySelector('.btn-save')) return;
+            var save = document.createElement('button');
+            save.type = 'button';
+            save.className = 'btn-save';
+            save.textContent = 'Save & Continue Later';
+            save.addEventListener('click', function() {
+                saveDraft(true);
+            });
+            var nextBtn = nav.querySelector('.btn-next, .btn-submit');
+            if (nextBtn) {
+                nav.insertBefore(save, nextBtn);
+            } else {
+                nav.appendChild(save);
+            }
+        });
+    }
+
+    function initSaveModal() {
+        if (document.getElementById('saveInfoModal')) return;
+        var modal = document.createElement('div');
+        modal.id = 'saveInfoModal';
+        modal.className = 'save-modal';
+        modal.innerHTML = '<div class="save-modal-card">' +
+            '<h3>Draft Saved</h3>' +
+            '<p>Your application has been saved in this browser. After step 1, a cloud draft link is also saved so you can continue later.</p>' +
+            '<input type="text" id="resumeDraftLink" readonly>' +
+            '<div class="save-modal-actions">' +
+            '<button type="button" id="copyDraftLinkBtn">Copy Link</button>' +
+            '<button type="button" id="closeDraftModalBtn">Close</button>' +
+            '</div></div>';
+        document.body.appendChild(modal);
+        document.getElementById('closeDraftModalBtn').addEventListener('click', function() {
+            modal.classList.remove('active');
+        });
+        document.getElementById('copyDraftLinkBtn').addEventListener('click', function() {
+            var input = document.getElementById('resumeDraftLink');
+            input.select();
+            document.execCommand('copy');
+        });
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
         });
     }
 
@@ -378,24 +434,11 @@
         }
     }
 
-    // === Auto-Save to localStorage ===
-    function saveDraft() {
+    // === Auto-Save to localStorage + cloud after step 1 ===
+    function saveDraft(showModal) {
         clearTimeout(autoSaveTimer);
         autoSaveTimer = setTimeout(function() {
-            var form = document.getElementById('applicationForm');
-            var data = {};
-            // Save text/select fields
-            form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="month"], select, textarea').forEach(function(el) {
-                if (el.name) data[el.name] = el.value;
-            });
-            // Save radio buttons
-            form.querySelectorAll('input[type="radio"]:checked').forEach(function(el) {
-                data[el.name] = el.value;
-            });
-            // Save checkboxes
-            form.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
-                data[el.name] = el.checked;
-            });
+            var data = collectDraftData();
             data._step = currentStep;
             data._savedAt = new Date().toISOString();
 
@@ -403,7 +446,103 @@
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
                 showAutoSave();
             } catch(e) { /* localStorage full or unavailable */ }
+
+            scheduleCloudSave(data, !!showModal);
         }, 500);
+    }
+
+    function collectDraftData() {
+        var form = document.getElementById('applicationForm');
+        var data = {};
+        form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="month"], select, textarea').forEach(function(el) {
+            if (el.name) data[el.name] = el.value;
+        });
+        form.querySelectorAll('input[type="radio"]:checked').forEach(function(el) {
+            data[el.name] = el.value;
+        });
+        form.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+            data[el.name] = el.checked;
+        });
+        return data;
+    }
+
+    function hasCloudDraftPrerequisites(data) {
+        return !!(data.first_name && data.last_name && data.email && data.phone);
+    }
+
+    function scheduleCloudSave(data, showModal) {
+        if (!hasCloudDraftPrerequisites(data)) {
+            return;
+        }
+        clearTimeout(cloudSaveTimer);
+        cloudSaveTimer = setTimeout(function() {
+            saveCloudDraft(data, showModal);
+        }, showModal ? 0 : 800);
+    }
+
+    function saveCloudDraft(data, showModal) {
+        var fd = new FormData();
+        fd.append('action', 'save');
+        if (cloudDraftToken) {
+            fd.append('draft_token', cloudDraftToken);
+        }
+        fd.append('current_step', currentStep);
+        fd.append('email', data.email || '');
+        fd.append('reference_hint', (data.first_name || '') + ' ' + (data.last_name || ''));
+        fd.append('draft_json', JSON.stringify(data));
+
+        fetch(DRAFT_API, {
+            method: 'POST',
+            body: fd
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(resp) {
+            if (!resp || !resp.success) return;
+            if (resp.draft_token) {
+                cloudDraftToken = resp.draft_token;
+                localStorage.setItem(CLOUD_DRAFT_KEY, cloudDraftToken);
+                var hidden = document.querySelector('input[name="draft_token"]');
+                if (hidden) hidden.value = cloudDraftToken;
+            }
+            if (showModal || !cloudSaveHasRun) {
+                showSaveModal(resp.resume_url || '');
+            }
+            cloudSaveHasRun = true;
+        })
+        .catch(function() {
+            if (showModal) {
+                showSaveModal('');
+            }
+        });
+    }
+
+    function loadCloudDraft() {
+        var queryToken = new URLSearchParams(window.location.search).get('draft');
+        cloudDraftToken = queryToken || localStorage.getItem(CLOUD_DRAFT_KEY) || '';
+        if (!cloudDraftToken) return;
+
+        fetch(DRAFT_API + '?action=load&draft_token=' + encodeURIComponent(cloudDraftToken))
+            .then(function(res) { return res.json(); })
+            .then(function(resp) {
+                if (!resp || !resp.success || !resp.draft || !resp.draft.draft_json) return;
+                var cloudData = JSON.parse(resp.draft.draft_json);
+                applyDraftData(cloudData);
+                var step = parseInt(resp.draft.current_step || 1, 10);
+                if (step > 1 && step <= totalSteps) {
+                    goToStep(step);
+                }
+                var hidden = document.querySelector('input[name="draft_token"]');
+                if (hidden) hidden.value = cloudDraftToken;
+            })
+            .catch(function() { /* ignore */ });
+    }
+
+    function showSaveModal(resumeUrl) {
+        var modal = document.getElementById('saveInfoModal');
+        if (!modal) return;
+        var input = document.getElementById('resumeDraftLink');
+        input.value = resumeUrl || 'Cloud link will be available after you complete Step 1 required fields.';
+        modal.classList.add('active');
     }
 
     function loadDraft() {
@@ -411,32 +550,35 @@
             var raw = localStorage.getItem(STORAGE_KEY);
             if (!raw) return;
             var data = JSON.parse(raw);
-            var form = document.getElementById('applicationForm');
-
-            Object.keys(data).forEach(function(key) {
-                if (key.startsWith('_')) return;
-                var el = form.querySelector('[name="' + key + '"]');
-                if (!el) return;
-
-                if (el.type === 'checkbox') {
-                    el.checked = !!data[key];
-                } else if (el.type === 'radio') {
-                    var radio = form.querySelector('input[name="' + key + '"][value="' + data[key] + '"]');
-                    if (radio) radio.checked = true;
-                } else {
-                    el.value = data[key];
-                    // Trigger change for selects (conditional fields)
-                    if (el.tagName === 'SELECT') {
-                        el.dispatchEvent(new Event('change'));
-                    }
-                }
-            });
-
-            // Update char counters
-            form.querySelectorAll('textarea').forEach(function(ta) {
-                ta.dispatchEvent(new Event('input'));
-            });
+            applyDraftData(data);
+            if (data._step && data._step > 1 && data._step <= totalSteps) {
+                goToStep(parseInt(data._step, 10));
+            }
         } catch(e) { /* corrupt data, ignore */ }
+    }
+
+    function applyDraftData(data) {
+        var form = document.getElementById('applicationForm');
+        Object.keys(data).forEach(function(key) {
+            if (key.startsWith('_')) return;
+            var el = form.querySelector('[name="' + key + '"]');
+            if (!el) return;
+
+            if (el.type === 'checkbox') {
+                el.checked = !!data[key];
+            } else if (el.type === 'radio') {
+                var radio = form.querySelector('input[name="' + key + '"][value="' + data[key] + '"]');
+                if (radio) radio.checked = true;
+            } else {
+                el.value = data[key];
+                if (el.tagName === 'SELECT') {
+                    el.dispatchEvent(new Event('change'));
+                }
+            }
+        });
+        form.querySelectorAll('textarea').forEach(function(ta) {
+            ta.dispatchEvent(new Event('input'));
+        });
     }
 
     function showAutoSave() {
@@ -585,6 +727,9 @@
         form.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
             formData.set(cb.name, cb.checked ? '1' : '0');
         });
+        if (cloudDraftToken) {
+            formData.set('draft_token', cloudDraftToken);
+        }
 
         fetch('../api/submit.php', {
             method: 'POST',
@@ -597,6 +742,14 @@
             if (data.success) {
                 // Clear draft
                 localStorage.removeItem(STORAGE_KEY);
+                if (cloudDraftToken) {
+                    var clearFd = new FormData();
+                    clearFd.append('action', 'clear');
+                    clearFd.append('draft_token', cloudDraftToken);
+                    fetch(DRAFT_API, { method: 'POST', body: clearFd });
+                    localStorage.removeItem(CLOUD_DRAFT_KEY);
+                    cloudDraftToken = '';
+                }
                 // Show confirmation
                 document.getElementById('refNumber').textContent = data.reference;
                 document.getElementById('confirmEmail').textContent = val('email');

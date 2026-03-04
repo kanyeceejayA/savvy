@@ -3,122 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard | CapitalSavvy Careers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="admin.css?ver=1">
+    <title>Admin | CapitalSavvy Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css?ver=4">
     <link rel="shortcut icon" href="../favicon.ico">
 </head>
 <body>
 
-    <!-- Login Screen -->
-    <div class="login-page" id="loginPage">
-        <div class="login-box">
-            <h1>CapitalSavvy</h1>
-            <p class="subtitle">Careers Admin Dashboard</p>
-            <form id="loginForm">
-                <input type="text" name="username" placeholder="Username" required autocomplete="username">
-                <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
-                <button type="submit">Sign In</button>
-            </form>
-            <p class="login-error" id="loginError">Invalid credentials</p>
+<!-- ── Login ─────────────────────────────────────────────────── -->
+<div class="auth-page" id="loginPage">
+    <div class="auth-split">
+        <!-- Left brand panel -->
+        <div class="auth-brand-panel">
+            <div class="auth-brand-logo">CS</div>
+            <h1 class="auth-brand-name">CapitalSavvy</h1>
+            <p class="auth-brand-tagline">Careers Dashboard</p>
+            <p class="auth-brand-desc">Review applications, manage candidates, and move talent through your hiring pipeline.</p>
+            <div class="auth-brand-footer">&copy; Capital Savvy Ltd.</div>
+        </div>
+        <!-- Right form panel -->
+        <div class="auth-form-panel">
+            <div class="auth-form-inner">
+                <h2 class="auth-form-title">Welcome back</h2>
+                <p class="auth-form-sub">Sign in to your admin account</p>
+                <form id="loginForm" autocomplete="on">
+                    <div class="field-row">
+                        <label for="loginUser">Username</label>
+                        <input class="input-field" type="text" id="loginUser" name="username" placeholder="admin" required autocomplete="username">
+                    </div>
+                    <div class="field-row">
+                        <label for="loginPass">Password</label>
+                        <input class="input-field" type="password" id="loginPass" name="password" placeholder="••••••••" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-full" id="loginBtn">Sign In</button>
+                </form>
+                <p class="auth-error" id="loginError"></p>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Dashboard -->
-    <div class="dashboard" id="dashboard">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <h1><span>CapitalSavvy</span> &middot; Careers Dashboard</h1>
-            <button class="logout-btn" id="logoutBtn">Logout</button>
+<!-- ── App ───────────────────────────────────────────────────── -->
+<div class="app" id="dashboard">
+
+    <!-- Appbar -->
+    <header class="appbar">
+        <div class="appbar-brand">
+            <div class="appbar-logo">CS</div>
+            <span class="appbar-name">CapitalSavvy <span class="appbar-dim">Careers</span></span>
         </div>
-
-        <!-- Stats -->
-        <div class="stats-bar" id="statsBar">
-            <div class="stat-card active" data-filter="All">
-                <div class="stat-num" id="statTotal">0</div>
-                <div class="stat-label">Total</div>
-            </div>
-            <div class="stat-card" data-filter="New">
-                <div class="stat-num" id="statNew">0</div>
-                <div class="stat-label">New</div>
-            </div>
-            <div class="stat-card" data-filter="Reviewed">
-                <div class="stat-num" id="statReviewed">0</div>
-                <div class="stat-label">Reviewed</div>
-            </div>
-            <div class="stat-card" data-filter="Stage 1">
-                <div class="stat-num" id="statStage1">0</div>
-                <div class="stat-label">Stage 1</div>
-            </div>
-            <div class="stat-card" data-filter="Offered">
-                <div class="stat-num" id="statOffered">0</div>
-                <div class="stat-label">Offered</div>
-            </div>
-            <div class="stat-card" data-filter="Rejected">
-                <div class="stat-num" id="statRejected">0</div>
-                <div class="stat-label">Rejected</div>
-            </div>
+        <nav class="appbar-nav">
+            <button class="nav-pill active" data-tab="applications">Applications</button>
+            <button class="nav-pill" data-tab="accounts">Accounts</button>
+        </nav>
+        <div class="appbar-end">
+            <span class="appbar-user" id="appbarUser"></span>
+            <button class="btn btn-ghost-inv" id="logoutBtn">Sign out</button>
         </div>
+    </header>
 
-        <!-- Controls -->
-        <div class="controls">
-            <input type="text" id="searchInput" placeholder="Search by name, email, or reference...">
-            <select id="statusFilter">
-                <option value="All">All Statuses</option>
-                <option value="New">New</option>
-                <option value="Reviewed">Reviewed</option>
-                <option value="Stage 1">Stage 1</option>
-                <option value="Stage 2">Stage 2</option>
-                <option value="Stage 3">Stage 3</option>
-                <option value="Offered">Offered</option>
-                <option value="Rejected">Rejected</option>
-            </select>
-            <button class="export-btn" id="exportBtn">Export CSV</button>
-        </div>
+    <!-- ── Applications Tab ──────────────────────────────────── -->
+    <section class="pane active" id="applicationsTab">
 
-        <!-- Table -->
-        <div class="table-wrapper">
-            <table class="app-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Reference</th>
-                        <th>Status</th>
-                        <th>Experience</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody id="appTableBody">
-                    <tr><td colspan="6" class="empty-state"><p>No applications yet</p></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination" id="paginationBar">
-            <button id="prevPage" disabled>&larr; Previous</button>
-            <span class="page-info" id="pageInfo">Page 1 of 1</span>
-            <button id="nextPage" disabled>Next &rarr;</button>
-        </div>
-    </div>
-
-    <!-- Detail Panel -->
-    <div class="modal-overlay" id="detailOverlay">
-        <div class="detail-panel" id="detailPanel">
-            <div class="detail-header">
+        <!-- VIEW 1: Role Picker ──────────────────────────────── -->
+        <div id="rolePickerView" class="app-view">
+            <div class="view-hd">
                 <div>
-                    <h2 id="detailName"></h2>
-                    <div class="ref" id="detailRef"></div>
+                    <h2 class="view-title">Open Positions</h2>
+                    <p class="view-sub">Choose a role to review its applicants</p>
                 </div>
-                <button class="close-btn" id="closeDetail">&times;</button>
+                <button class="btn btn-icon" id="refreshRolesBtn" title="Refresh">
+                    <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                        <path d="M3.5 10a6.5 6.5 0 1 1 1.2 3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        <path d="M3.5 14.5v-4h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
-            <div class="detail-body" id="detailBody">
-                <!-- Populated by JS -->
+            <div class="role-grid" id="roleGrid">
+                <div class="tbl-empty">Loading roles…</div>
             </div>
         </div>
-    </div>
 
-    <script src="admin.js?ver=1"></script>
+        <!-- VIEW 2: Applicants ───────────────────────────────── -->
+        <div id="applicantsView" class="app-view hidden">
+
+            <!-- View header -->
+            <div class="av-hd">
+                <button class="btn btn-sm btn-ghost" id="backBtn">
+                    <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
+                        <path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    All Roles
+                </button>
+                <div class="av-role-info">
+                    <span class="av-role-name" id="avRoleName">—</span>
+                    <span class="av-role-count" id="avRoleCount"></span>
+                </div>
+                <div class="av-hd-r">
+                    <label class="archive-lbl">
+                        <input type="checkbox" id="showArchivedToggle">
+                        <span class="archive-track"><span class="archive-thumb"></span></span>
+                        <span>Show archived</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pipeline Chevrons -->
+            <div class="pipeline-wrap">
+                <div class="pip-main" id="pipMain">
+                    <button class="pip-chev active" data-filter="All">
+                        <div class="pip-num" id="statAll">—</div>
+                        <div class="pip-lbl">All</div>
+                    </button>
+                    <button class="pip-chev" data-filter="New">
+                        <div class="pip-num" id="statNew">—</div>
+                        <div class="pip-lbl">New</div>
+                    </button>
+                    <button class="pip-chev" data-filter="Reviewed">
+                        <div class="pip-num" id="statReviewed">—</div>
+                        <div class="pip-lbl">Reviewed</div>
+                    </button>
+                    <button class="pip-chev" data-filter="Stage 1">
+                        <div class="pip-num" id="statStage1">—</div>
+                        <div class="pip-lbl">Stage 1</div>
+                    </button>
+                    <button class="pip-chev" data-filter="Stage 2">
+                        <div class="pip-num" id="statStage2">—</div>
+                        <div class="pip-lbl">Stage 2</div>
+                    </button>
+                    <button class="pip-chev" data-filter="Stage 3">
+                        <div class="pip-num" id="statStage3">—</div>
+                        <div class="pip-lbl">Stage 3</div>
+                    </button>
+                    <button class="pip-chev pip-ok" data-filter="Offered">
+                        <div class="pip-num" id="statOffered">—</div>
+                        <div class="pip-lbl">Offered</div>
+                    </button>
+                </div>
+                <div class="pip-specials">
+                    <button class="pip-pill pip-danger" data-filter="Rejected">
+                        <div class="pip-num" id="statRejected">—</div>
+                        <div class="pip-lbl">Rejected</div>
+                    </button>
+                    <button class="pip-pill pip-archive hidden" data-filter="Archived" id="pipArchived">
+                        <div class="pip-num" id="statArchived">—</div>
+                        <div class="pip-lbl">Archived</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="toolbar-l">
+                    <div class="search-wrap">
+                        <svg class="search-ico" viewBox="0 0 20 20" fill="none">
+                            <circle cx="8.5" cy="8.5" r="5" stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M13 13l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search name, email, reference…">
+                    </div>
+                </div>
+                <div class="toolbar-r">
+                    <div class="col-menu-wrap" id="colMenuWrap">
+                        <button class="btn btn-outline btn-sm" id="colMenuBtn">
+                            <svg viewBox="0 0 20 20" fill="none" width="13" height="13">
+                                <path d="M3 6h14M6 10h8M9 14h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                            Columns
+                        </button>
+                        <div class="col-menu hidden" id="colMenu"></div>
+                    </div>
+                    <button class="btn btn-icon" id="refreshBtn" title="Refresh">
+                        <svg viewBox="0 0 20 20" fill="none" width="15" height="15">
+                            <path d="M3.5 10a6.5 6.5 0 1 1 1.2 3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            <path d="M3.5 14.5v-4h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="exportBtn">
+                        <svg viewBox="0 0 20 20" fill="none" width="13" height="13">
+                            <path d="M10 3v9M6.5 8.5l3.5 3.5 3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 15h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        Export CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-shell">
+                <table class="apps-table" id="appTable">
+                    <thead>
+                        <tr>
+                            <th class="th-chk">
+                                <label class="chk-wrap" title="Select all">
+                                    <input type="checkbox" id="selectAll">
+                                    <span class="chk-box"></span>
+                                </label>
+                            </th>
+                            <th class="th-sort" data-sort="name">
+                                Applicant <span class="sort-ico">↕</span>
+                            </th>
+                            <th data-col="role">Role</th>
+                            <th class="th-sort" data-sort="status" data-col="status">
+                                Status <span class="sort-ico">↕</span>
+                            </th>
+                            <th class="th-sort" data-sort="experience" data-col="experience">
+                                Exp. <span class="sort-ico">↕</span>
+                            </th>
+                            <th data-col="reference">Reference</th>
+                            <th class="th-sort" data-sort="date" data-col="applied">
+                                Applied <span class="sort-ico">↕</span>
+                            </th>
+                            <th data-col="salary" class="col-hidden">Salary</th>
+                            <th data-col="phone" class="col-hidden">Phone</th>
+                            <th data-col="education" class="col-hidden">Education</th>
+                            <th data-col="github" class="col-hidden">GitHub</th>
+                            <th data-col="portfolio" class="col-hidden">Portfolio</th>
+                            <th data-col="linkedin" class="col-hidden">LinkedIn</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appTableBody">
+                        <tr><td colspan="13" class="tbl-empty">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pager">
+                <button class="btn btn-sm" id="prevPage" disabled>← Prev</button>
+                <span class="pager-info" id="pageInfo">Page 1 of 1</span>
+                <button class="btn btn-sm" id="nextPage" disabled>Next →</button>
+            </div>
+
+        </div><!-- /applicantsView -->
+    </section>
+
+    <!-- ── Accounts Tab ──────────────────────────────────────── -->
+    <section class="pane" id="accountsTab">
+        <div class="accounts-grid">
+            <div class="card">
+                <h3 class="card-h">Create Account</h3>
+                <form id="createAccountForm" class="form-stack">
+                    <input class="input-field" type="text" name="username" placeholder="Username (min 3 chars)" required minlength="3">
+                    <input class="input-field" type="email" name="email" placeholder="Email (optional)">
+                    <input class="input-field" type="password" name="password" placeholder="Password (min 8 chars)" required minlength="8">
+                    <button class="btn btn-gold" type="submit">Create Account</button>
+                </form>
+                <p class="form-msg" id="createAccountMsg"></p>
+            </div>
+            <div class="card">
+                <h3 class="card-h">Change My Password</h3>
+                <form id="changePasswordForm" class="form-stack">
+                    <input class="input-field" type="password" name="current_password" placeholder="Current password" required>
+                    <input class="input-field" type="password" name="new_password" placeholder="New password (min 8 chars)" required minlength="8">
+                    <button class="btn btn-gold" type="submit">Update Password</button>
+                </form>
+                <p class="form-msg" id="changePasswordMsg"></p>
+            </div>
+        </div>
+        <div class="card acct-card">
+            <h3 class="card-h">All Accounts</h3>
+            <div class="table-shell">
+                <table class="apps-table">
+                    <thead>
+                        <tr><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th>Created</th></tr>
+                    </thead>
+                    <tbody id="accountTableBody">
+                        <tr><td colspan="5" class="tbl-empty">No accounts</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</div><!-- /.app -->
+
+<!-- ── Floating Bulk Bar ─────────────────────────────────────── -->
+<div class="bulk-bar hidden" id="bulkBar">
+    <div class="bulk-l">
+        <span class="bulk-badge" id="bulkCount">0</span>
+        <span class="bulk-dim">selected</span>
+    </div>
+    <div class="bulk-actions">
+        <select class="sel-sm" id="bulkStatus">
+            <option value="">Move to stage…</option>
+            <option value="New">New</option>
+            <option value="Reviewed">Reviewed</option>
+            <option value="Stage 1">Stage 1</option>
+            <option value="Stage 2">Stage 2</option>
+            <option value="Stage 3">Stage 3</option>
+            <option value="Offered">Offered</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+        <button class="btn btn-sm btn-inv" id="bulkStatusBtn">Move</button>
+        <div class="bulk-sep"></div>
+        <button class="btn btn-sm btn-archive" id="bulkArchiveBtn">
+            <svg viewBox="0 0 20 20" fill="none" width="13" height="13">
+                <path d="M3 6h14v11H3zM3 3h14v3H3z" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M8 10h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Archive
+        </button>
+        <div class="bulk-sep"></div>
+        <button class="btn btn-sm btn-inv" id="bulkEmailBtn">
+            <svg viewBox="0 0 20 20" fill="none" width="12" height="12">
+                <path d="M2 4h16v12H2z" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M2 4l8 7 8-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Send Email
+        </button>
+    </div>
+    <button class="bulk-clear" id="clearSelBtn" title="Clear selection">✕ Clear</button>
+</div>
+
+<!-- ── Enhanced Email Modal ───────────────────────────────────── -->
+<div class="overlay hidden" id="emailModal">
+    <div class="modal-box modal-lg">
+        <div class="modal-head">
+            <h3>Send Email</h3>
+            <button class="close-btn" id="closeEmailModal">×</button>
+        </div>
+        <div class="modal-body em-body">
+            <div class="em-to-row">
+                <span class="em-label-inline">To:</span>
+                <div class="em-recipients" id="emRecipients">—</div>
+            </div>
+            <div class="field-row">
+                <label class="em-label" for="emTemplate">Template</label>
+                <select class="input-field" id="emTemplate">
+                    <option value="next_stage">Next Stage — invite to next round</option>
+                    <option value="on_hold">On Hold — application under review</option>
+                    <option value="rejection">Rejection — not moving forward</option>
+                </select>
+            </div>
+            <div class="em-section">
+                <div class="em-label">Preview</div>
+                <div class="em-preview" id="emPreview"></div>
+            </div>
+            <div class="field-row">
+                <label class="em-label" for="emPersonalNote">Personal note <span class="em-opt">(optional — appended to the email)</span></label>
+                <textarea class="input-field" id="emPersonalNote" rows="3" placeholder="Add a personal message that will be included in the email…"></textarea>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn btn-ghost" id="cancelEmailModal">Cancel</button>
+            <button class="btn btn-gold" id="sendEmailModalBtn">
+                Send to <span id="emCount">1</span> applicant
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ── Status Confirm Modal ───────────────────────────────────── -->
+<div class="overlay hidden" id="statusConfirmModal">
+    <div class="modal-box modal-sm">
+        <div class="modal-head">
+            <h3 id="statusConfirmTitle">Confirm Status Change</h3>
+            <button class="close-btn" id="closeStatusConfirm">×</button>
+        </div>
+        <div class="modal-body" style="padding-top:4px">
+            <p class="confirm-msg" id="statusConfirmMsg"></p>
+        </div>
+        <div class="modal-foot">
+            <button class="btn btn-ghost" id="cancelStatusConfirm">Cancel</button>
+            <button class="btn btn-gold" id="confirmStatusBtn">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── Application Detail Panel ──────────────────────────────── -->
+<div class="overlay hidden" id="detailOverlay">
+    <div class="detail-panel" id="detailPanel">
+        <div class="dp-topbar">
+            <div class="dp-who">
+                <div class="dp-avatar" id="dpAvatar">AB</div>
+                <div class="dp-meta">
+                    <h2 id="detailName">—</h2>
+                    <div class="dp-ref" id="detailRef">—</div>
+                </div>
+            </div>
+            <button class="close-btn" id="closeDetail">×</button>
+        </div>
+        <div class="dp-pipeline" id="dpPipeline"></div>
+        <div class="dp-tabs" id="dpTabs">
+            <button class="dp-tab active" data-dtab="profile">Profile</button>
+            <button class="dp-tab" data-dtab="background">Background</button>
+            <button class="dp-tab" data-dtab="portfolio">Portfolio</button>
+            <button class="dp-tab" data-dtab="motivation">Motivation</button>
+            <button class="dp-tab" data-dtab="files">Files</button>
+            <button class="dp-tab" data-dtab="notes">Notes</button>
+            <button class="dp-tab" data-dtab="emails">Emails</button>
+        </div>
+        <div class="dp-body" id="detailBody"></div>
+    </div>
+</div>
+
+<!-- ── File Preview ───────────────────────────────────────────── -->
+<div class="overlay hidden" id="previewOverlay">
+    <div class="preview-panel">
+        <div class="preview-topbar">
+            <span id="previewTitle" class="preview-name">File Preview</span>
+            <div style="display:flex;gap:8px;align-items:center">
+                <a class="btn btn-sm btn-navy" id="previewDownloadBtn" href="#" target="_blank" rel="noopener">Download</a>
+                <button class="close-btn" id="closePreview">×</button>
+            </div>
+        </div>
+        <div class="preview-body" id="previewBody"></div>
+    </div>
+</div>
+
+<!-- ── Toasts ─────────────────────────────────────────────────── -->
+<div class="toast-area" id="toastArea"></div>
+
+<script src="admin.js?ver=4"></script>
 </body>
 </html>
