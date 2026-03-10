@@ -173,8 +173,8 @@ try {
     // --- Send Emails ---
     $applicantName = $data['first_name'] . ' ' . $data['last_name'];
 
-    // Confirmation to applicant
-    sendConfirmationEmail($data['email'], $applicantName, $reference);
+    // Confirmation + application summary to applicant
+    sendConfirmationEmail($data['email'], $data, $reference);
 
     // Notification to admin
     sendAdminNotification($applicantName, $data['email'], $reference);

@@ -136,7 +136,7 @@ function emailWrapper($contentHtml) {
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right:14px;vertical-align:middle;">
-                  <img src="' . $logo . '" alt="CapitalSavvy" width="44" height="44" style="display:block;width:44px;height:44px;">
+                  <img src="' . $logo . '" alt="CapitalSavvy" width="300" height="44" style="display:block;width:300px;height:44px;">
                 </td>
                 <td style="vertical-align:middle;">
                   <span style="font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:700;color:#1E2540;letter-spacing:-0.3px;">CapitalSavvy</span><br>
@@ -177,16 +177,78 @@ function emailWrapper($contentHtml) {
 </html>';
 }
 
-function sendConfirmationEmail($email, $name, $reference) {
-    $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-    $safeRef  = htmlspecialchars($reference, ENT_QUOTES, 'UTF-8');
+function sendConfirmationEmail($email, $data, $reference) {
+    $firstName = $data['first_name'] ?? '';
+    $lastName  = $data['last_name']  ?? '';
+    $safeName  = htmlspecialchars($firstName . ' ' . $lastName, ENT_QUOTES, 'UTF-8');
+    $safeRef   = htmlspecialchars($reference, ENT_QUOTES, 'UTF-8');
+
+    // ── Helper: build a summary section (label/value rows) ──────────
+    $sectionStyle = 'margin:0 0 24px;border-collapse:collapse;width:100%;';
+    $hdStyle      = 'padding:10px 14px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#6B7B99;background-color:#F5F6FA;border-bottom:1px solid #E2E7F0;width:38%;vertical-align:top;text-transform:uppercase;letter-spacing:0.8px;';
+    $valStyle     = 'padding:10px 14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#1E2540;background-color:#FAFBFD;border-bottom:1px solid #E2E7F0;vertical-align:top;';
+
+    $row = function($label, $value) use ($hdStyle, $valStyle) {
+        if ($value === '' || $value === null) return '';
+        return '<tr><td style="' . $hdStyle . '">' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '</td>'
+             . '<td style="' . $valStyle . '">' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '</td></tr>';
+    };
+
+    // Skills: collect ticked ones
+    $skillMap = [
+        'skill_figma' => 'Figma', 'skill_react' => 'React',
+        'skill_javascript' => 'JavaScript', 'skill_html_css' => 'HTML/CSS',
+        'skill_typescript' => 'TypeScript', 'skill_nextjs' => 'Next.js',
+        'skill_tailwind' => 'Tailwind CSS', 'skill_git' => 'Git',
+        'skill_rest_api' => 'REST APIs', 'skill_state_mgmt' => 'State Management'
+    ];
+    $skills = [];
+    foreach ($skillMap as $key => $label) {
+        if (!empty($data[$key])) $skills[] = $label;
+    }
+    $skillsText = $skills ? implode(', ', $skills) : '';
+
+    // ── Build sections ───────────────────────────────────────────────
+    $personal = '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="' . $sectionStyle . '">'
+        . $row('Full Name',   $firstName . ' ' . $lastName)
+        . $row('Email',       $data['email'] ?? '')
+        . $row('Phone',       $data['phone'] ?? '')
+        . $row('Location',    trim(($data['city'] ?? '') . ', ' . ($data['country'] ?? ''), ', '))
+        . $row('Gender',      $data['gender'] ?? '')
+        . $row('Heard About', $data['heard_about'] ?? '')
+        . '</table>';
+
+    $education = '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="' . $sectionStyle . '">'
+        . $row('Education',   $data['education_level'] ?? '')
+        . $row('Institution', $data['institution'] ?? '')
+        . $row('Field',       $data['field_of_study'] ?? '')
+        . $row('Graduated',   $data['graduation_year'] ?? '')
+        . '</table>';
+
+    $experience = '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="' . $sectionStyle . '">'
+        . $row('Experience',  $data['years_experience'] ?? '')
+        . $row('Employment',  $data['employment_status'] ?? '')
+        . $row('Current Role',$data['current_role'] ?? '')
+        . $row('Skills',      $skillsText)
+        . '</table>';
+
+    $preferences = '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="' . $sectionStyle . '">'
+        . $row('Salary Range',    $data['salary_range'] ?? '')
+        . $row('Start Date',      $data['start_date'] ?? '')
+        . $row('Work Preference', $data['hybrid_preference'] ?? '')
+        . $row('GitHub',          $data['github_url'] ?? '')
+        . $row('Portfolio',       $data['portfolio_url'] ?? '')
+        . $row('LinkedIn',        $data['linkedin_url'] ?? '')
+        . '</table>';
+
+    $secHead = '<p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#1C6572;text-transform:uppercase;letter-spacing:1px;">';
 
     $body = '
 <p style="margin:0 0 18px;">Dear <strong style="color:#1E2540;">' . $safeName . '</strong>,</p>
-<p style="margin:0 0 18px;">Thank you for applying for the <strong>Frontend Developer</strong> position at CapitalSavvy. We have successfully received your application.</p>
+<p style="margin:0 0 20px;">Thank you for applying for the <strong>Frontend Developer</strong> position at CapitalSavvy. We have received your application and a copy of your submission is below for your records.</p>
 
 <!-- Reference box -->
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:4px 0 24px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 28px;">
   <tr>
     <td bgcolor="#FBF7F1" style="background-color:#FBF7F1;border-left:4px solid #B9915B;padding:16px 20px;">
       <p style="margin:0 0 5px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#9A7A47;text-transform:uppercase;letter-spacing:1.2px;">Your Reference Number</p>
@@ -195,36 +257,45 @@ function sendConfirmationEmail($email, $name, $reference) {
   </tr>
 </table>
 
-<p style="margin:0 0 18px;">Please save this reference number — quote it in any future correspondence with us.</p>
+<!-- Summary -->
+<p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#1E2540;">Your Application Summary</p>
+' . $secHead . 'Personal Information</p>' . $personal
+. $secHead . 'Education</p>' . $education
+. $secHead . 'Experience &amp; Skills</p>' . $experience
+. $secHead . 'Preferences &amp; Links</p>' . $preferences . '
+
+<!-- Divider -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:4px 0 24px;">
+  <tr><td style="border-top:1px solid #E2E7F0;font-size:0;line-height:0;">&nbsp;</td></tr>
+</table>
 
 <p style="margin:0 0 12px;font-size:16px;font-weight:700;color:#1E2540;">What Happens Next?</p>
-<p style="margin:0 0 16px;">We aim to respond within <strong>5 business days</strong>. Our process has three stages:</p>
+<p style="margin:0 0 16px;font-size:14px;">We aim to respond within <strong>5 business days</strong>. Our process has three stages:</p>
 
-<!-- Steps -->
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 8px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 24px;">
   <tr>
-    <td width="32" valign="top" style="padding-top:2px;">
+    <td width="32" valign="top" style="padding-top:1px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-        <td width="24" height="24" align="center" bgcolor="#1C6572" style="background-color:#1C6572;border-radius:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#ffffff;">1</td>
+        <td width="24" height="24" align="center" bgcolor="#1C6572" style="background-color:#1C6572;border-radius:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#fff;">1</td>
       </tr></table>
     </td>
     <td style="padding-left:10px;padding-bottom:12px;font-size:14px;color:#3D4456;"><strong>Application Review</strong> &mdash; We review your application, portfolio, and CV.</td>
   </tr>
   <tr>
-    <td width="32" valign="top" style="padding-top:2px;">
+    <td width="32" valign="top" style="padding-top:1px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-        <td width="24" height="24" align="center" bgcolor="#1C6572" style="background-color:#1C6572;border-radius:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#ffffff;">2</td>
+        <td width="24" height="24" align="center" bgcolor="#1C6572" style="background-color:#1C6572;border-radius:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#fff;">2</td>
       </tr></table>
     </td>
     <td style="padding-left:10px;padding-bottom:12px;font-size:14px;color:#3D4456;"><strong>Technical Assessment</strong> &mdash; A take-home challenge combining Figma design and React/Next.js development.</td>
   </tr>
   <tr>
-    <td width="32" valign="top" style="padding-top:2px;">
+    <td width="32" valign="top" style="padding-top:1px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-        <td width="24" height="24" align="center" bgcolor="#1C6572" style="background-color:#1C6572;border-radius:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#ffffff;">3</td>
+        <td width="24" height="24" align="center" bgcolor="#1C6572" style="background-color:#1C6572;border-radius:12px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#fff;">3</td>
       </tr></table>
     </td>
-    <td style="padding-left:10px;padding-bottom:12px;font-size:14px;color:#3D4456;"><strong>Culture &amp; Values Conversation</strong> &mdash; A conversation with the team to assess mutual fit.</td>
+    <td style="padding-left:10px;padding-bottom:0;font-size:14px;color:#3D4456;"><strong>Culture &amp; Values Conversation</strong> &mdash; A conversation with the team to assess mutual fit.</td>
   </tr>
 </table>
 
