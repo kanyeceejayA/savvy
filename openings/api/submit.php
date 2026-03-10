@@ -176,8 +176,8 @@ try {
     // Confirmation + application summary to applicant
     sendConfirmationEmail($data['email'], $data, $reference);
 
-    // Notification to admin
-    sendAdminNotification($applicantName, $data['email'], $reference);
+    // Notification to admin. COMMENTED OUT BECAUSE NOT NEEDED NOW
+    // sendAdminNotification($applicantName, $data['email'], $reference);
 
     // Mark draft as completed if token was provided
     $draftToken = trim($_POST['draft_token'] ?? '');

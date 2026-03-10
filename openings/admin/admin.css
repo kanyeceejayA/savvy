@@ -645,6 +645,14 @@ textarea.input-field { resize: vertical; min-height: 80px; }
 .dp-val a { color: var(--teal); text-decoration: none; }
 .dp-val a:hover { text-decoration: underline; }
 
+/* Skill radar */
+.skl-list { display: flex; flex-direction: column; gap: 7px; }
+.skl-row  { display: grid; grid-template-columns: 88px 1fr 90px; align-items: center; gap: 8px; }
+.skl-name  { font-size: .82rem; font-weight: 500; color: var(--navy); }
+.skl-track { height: 6px; background: #eef0f6; border-radius: 4px; overflow: hidden; }
+.skl-fill  { height: 100%; border-radius: 4px; transition: width .35s ease; }
+.skl-level { font-size: .77rem; color: var(--muted); text-align: right; }
+
 /* Files */
 .file-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
 .file-btn {

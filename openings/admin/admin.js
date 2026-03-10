@@ -830,23 +830,18 @@
                     app.referral_name ? ['Referral', app.referral_name] : null,
                     app.heard_other   ? ['Other Source', app.heard_other] : null
                 ]);
-                break;
-            case 'background':
                 html += sec('Education', [
                     ['Level', app.education_level], ['Institution', app.institution],
-                    ['Field', app.field_of_study], ['Graduation', app.graduation_year],
-                    app.expected_graduation ? ['Expected', app.expected_graduation] : null
+                    ['Field', app.field_of_study],
+                    app.field_other ? ['Field (Other)', app.field_other] : null,
+                    ['Graduation', app.graduation_year],
+                    app.expected_graduation ? ['Expected Graduation', app.expected_graduation] : null
                 ]);
                 html += sec('Work', [
                     ['Experience', app.years_experience], ['Employment', app.employment_status],
                     app.current_role ? ['Current Role', app.current_role] : null
                 ]);
-                var skillNames = { skill_figma:'Figma', skill_react:'React', skill_javascript:'JavaScript',
-                    skill_html_css:'HTML/CSS', skill_typescript:'TypeScript', skill_nextjs:'Next.js',
-                    skill_tailwind:'Tailwind', skill_git:'Git', skill_rest_api:'REST API', skill_state_mgmt:'State Mgmt' };
-                var skills = [];
-                Object.keys(skillNames).forEach(function (k) { if (app[k]) skills.push([skillNames[k], app[k]]); });
-                if (skills.length) html += sec('Skills', skills);
+                html += renderSkillRadar(app);
                 break;
             case 'portfolio':
                 html += sec('Links', [
@@ -946,6 +941,86 @@
                     }).catch(function () { toast('Request failed.', 'err'); });
             });
         }
+    }
+
+    function renderSkillRadar(app) {
+        var skills = [
+            { key: 'skill_figma',       label: 'Figma' },
+            { key: 'skill_react',       label: 'React' },
+            { key: 'skill_javascript',  label: 'JavaScript' },
+            { key: 'skill_html_css',    label: 'HTML/CSS' },
+            { key: 'skill_typescript',  label: 'TypeScript' },
+            { key: 'skill_nextjs',      label: 'Next.js' },
+            { key: 'skill_tailwind',    label: 'Tailwind' },
+            { key: 'skill_git',         label: 'Git' },
+            { key: 'skill_rest_api',    label: 'REST API' },
+            { key: 'skill_state_mgmt',  label: 'State Mgmt' }
+        ];
+        var levelMap = { 'No experience': 0, 'Beginner': 1, 'Comfortable': 2, 'Proficient': 3, 'Advanced': 4 };
+        var n = skills.length;
+        var cx = 160, cy = 160, R = 95;
+
+        function pt(i, frac) {
+            var angle = i * (2 * Math.PI / n) - Math.PI / 2;
+            return {
+                x: parseFloat((cx + frac * R * Math.cos(angle)).toFixed(2)),
+                y: parseFloat((cy + frac * R * Math.sin(angle)).toFixed(2))
+            };
+        }
+
+        // Grid rings
+        var rings = '';
+        [0.25, 0.5, 0.75, 1].forEach(function (frac) {
+            var pts = skills.map(function (_, i) { var p = pt(i, frac); return p.x + ',' + p.y; }).join(' ');
+            rings += '<polygon points="' + pts + '" fill="none" stroke="#dde3ef" stroke-width="1"/>';
+        });
+
+        // Axes
+        var axes = '';
+        skills.forEach(function (_, i) {
+            var p = pt(i, 1);
+            axes += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p.x + '" y2="' + p.y + '" stroke="#dde3ef" stroke-width="1"/>';
+        });
+
+        // Data polygon & dots
+        var dataPoints = skills.map(function (s, i) {
+            var level = levelMap[app[s.key]] !== undefined ? levelMap[app[s.key]] : 0;
+            return pt(i, level / 4);
+        });
+        var dataPoly = dataPoints.map(function (p) { return p.x + ',' + p.y; }).join(' ');
+        var dots = dataPoints.map(function (p) {
+            return '<circle cx="' + p.x + '" cy="' + p.y + '" r="3" fill="#1a6ec0" stroke="#fff" stroke-width="1.5"/>';
+        }).join('');
+
+        // Labels
+        var labels = '';
+        skills.forEach(function (s, i) {
+            var p = pt(i, 1.35);
+            var anchor = Math.abs(p.x - cx) < 6 ? 'middle' : (p.x > cx ? 'start' : 'end');
+            labels += '<text x="' + p.x + '" y="' + (p.y + 4) + '" text-anchor="' + anchor +
+                '" font-size="10" fill="#4a5a7a" font-family="Arial,sans-serif">' + s.label + '</text>';
+        });
+
+        var svg = '<svg width="100%" viewBox="0 0 320 320" style="display:block;max-width:280px;margin:8px auto 16px">' +
+            rings + axes +
+            '<polygon points="' + dataPoly + '" fill="rgba(26,110,192,0.13)" stroke="#1a6ec0" stroke-width="2" stroke-linejoin="round"/>' +
+            dots + labels + '</svg>';
+
+        // Bar list
+        var bars = skills.map(function (s) {
+            var val   = app[s.key] || '—';
+            var level = levelMap[app[s.key]] !== undefined ? levelMap[app[s.key]] : -1;
+            var pct   = level >= 0 ? (level / 4 * 100).toFixed(0) : 0;
+            var fillColor = level <= 0 ? '#d0d8e8' : level === 1 ? '#f0a040' : level === 2 ? '#40a0f0' : level === 3 ? '#40c080' : '#1a6ec0';
+            return '<div class="skl-row">' +
+                '<span class="skl-name">' + esc(s.label) + '</span>' +
+                '<div class="skl-track"><div class="skl-fill" style="width:' + pct + '%;background:' + fillColor + '"></div></div>' +
+                '<span class="skl-level">' + esc(val) + '</span>' +
+                '</div>';
+        }).join('');
+
+        return '<div class="dp-section"><h4>Competencies</h4>' + svg +
+            '<div class="skl-list">' + bars + '</div></div>';
     }
 
     function sec(title, rows) {
