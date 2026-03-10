@@ -365,6 +365,33 @@ textarea.input-field { resize: vertical; min-height: 80px; }
 }
 .sel-sm option { color: var(--text); background: var(--white); }
 
+/* Filter bar */
+.filter-bar {
+    background: var(--white); border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line); padding: 10px 20px;
+}
+.filter-bar-body {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;
+}
+.fb-field { display: flex; flex-direction: column; gap: 3px; }
+.fb-field label {
+    font-size: 10px; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .05em; white-space: nowrap;
+}
+.fb-select {
+    padding: 6px 8px; border: 1px solid var(--line); border-radius: var(--radius);
+    font-size: 12px; font-family: inherit; color: var(--text);
+    background: var(--white); cursor: pointer; min-width: 120px;
+    transition: border-color .14s;
+}
+.fb-select:focus { outline: none; border-color: var(--gold); }
+.fb-select.is-active { border-color: var(--gold); background: var(--gold-light); font-weight: 500; }
+.filter-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--gold); color: #fff; border-radius: 10px;
+    min-width: 16px; height: 16px; font-size: 10px; padding: 0 4px; font-weight: 600;
+}
+
 /* Column menu */
 .col-menu-wrap { position: relative; }
 .col-menu {
@@ -677,9 +704,10 @@ textarea.input-field { resize: vertical; min-height: 80px; }
 }
 .toast {
     background: var(--navy); color: #fff; border-radius: var(--radius);
-    padding: 11px 16px; font-size: .84rem; max-width: 340px;
+    padding: 11px 16px; font-size: .84rem; max-width: 400px;
     box-shadow: var(--shadow-lg); animation: toastIn .2s ease;
-    pointer-events: all; display: flex; align-items: center; gap: 8px;
+    pointer-events: all; display: flex; align-items: flex-start; gap: 8px;
+    word-break: break-word; line-height: 1.45;
 }
 @keyframes toastIn {
     from { transform: translateX(20px); opacity: 0; }

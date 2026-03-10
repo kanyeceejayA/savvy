@@ -40,6 +40,9 @@
     var currentUser   = '';
     var emailModalIds   = [];
     var pendingStatusFn = null;
+    var columnFilters   = {};
+    var filterBarOpen   = false;
+    var filterBarLoaded = false;
 
     // Visible columns (toggleable)
     var colVisible = { role: true, status: true, experience: true, reference: true, applied: true, salary: false, phone: false, education: false, github: false, portfolio: false, linkedin: false };
@@ -152,6 +155,19 @@
             if (currentRole !== 'All') p += '&position=' + enc(currentRole);
             if (showArchived) p += '&show_archived=1';
             window.location.href = API + p;
+        });
+
+        // Filter bar
+        document.getElementById('filterBtn').addEventListener('click', toggleFilterBar);
+        document.getElementById('clearFiltersBtn').addEventListener('click', clearAllFilters);
+        document.querySelectorAll('.fb-select').forEach(function (sel) {
+            sel.addEventListener('change', function () {
+                var col = this.dataset.col;
+                if (this.value) { columnFilters[col] = this.value; } else { delete columnFilters[col]; }
+                syncFilterBadge();
+                currentPage = 1;
+                loadApplications();
+            });
         });
 
         // Column menu toggle
@@ -419,6 +435,9 @@
         if (currentRole !== 'All')   p += '&position=' + enc(currentRole);
         if (currentSearch)           p += '&search=' + enc(currentSearch);
         if (showArchived)            p += '&show_archived=1';
+        Object.keys(columnFilters).forEach(function (k) {
+            if (columnFilters[k]) p += '&filter_' + enc(k) + '=' + enc(columnFilters[k]);
+        });
 
         document.getElementById('appTableBody').innerHTML = '<tr><td colspan="13" class="tbl-empty">Loading…</td></tr>';
 
@@ -655,6 +674,57 @@
                 btn.disabled = false;
                 btn.innerHTML = 'Send to <span id="emCount">' + emailModalIds.length + '</span> applicant' + (emailModalIds.length !== 1 ? 's' : '');
             });
+    }
+
+    // ── Filter Bar ────────────────────────────────────────────────
+    function toggleFilterBar() {
+        filterBarOpen = !filterBarOpen;
+        document.getElementById('filterBar').classList.toggle('hidden', !filterBarOpen);
+        if (filterBarOpen && !filterBarLoaded) {
+            filterBarLoaded = true;
+            loadFilterOptions();
+        }
+    }
+
+    function loadFilterOptions() {
+        var cols = ['years_experience', 'education_level', 'salary_range', 'employment_status', 'gender', 'country', 'heard_about'];
+        cols.forEach(function (col) {
+            fetch(API + '?action=distinct_values&col=' + enc(col))
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    if (!d.values) return;
+                    var sel = document.getElementById('fb_' + col);
+                    if (!sel) return;
+                    var cur = columnFilters[col] || '';
+                    d.values.forEach(function (v) {
+                        var opt = document.createElement('option');
+                        opt.value = v;
+                        opt.textContent = v;
+                        if (v === cur) opt.selected = true;
+                        sel.appendChild(opt);
+                    });
+                });
+        });
+    }
+
+    function clearAllFilters() {
+        columnFilters = {};
+        document.querySelectorAll('.fb-select').forEach(function (sel) { sel.value = ''; });
+        syncFilterBadge();
+        currentPage = 1;
+        loadApplications();
+    }
+
+    function syncFilterBadge() {
+        var count = Object.keys(columnFilters).length;
+        var badge = document.getElementById('filterBadge');
+        badge.textContent = count;
+        badge.classList.toggle('hidden', count === 0);
+        document.getElementById('filterBtn').classList.toggle('btn-gold', count > 0);
+        document.getElementById('filterBtn').classList.toggle('btn-outline', count === 0);
+        document.querySelectorAll('.fb-select').forEach(function (sel) {
+            sel.classList.toggle('is-active', !!sel.value);
+        });
     }
 
     // ── Status Confirm ─────────────────────────────────────────────
@@ -1009,8 +1079,12 @@
         var el = document.createElement('div');
         el.className = 'toast' + (type ? ' ' + type : '');
         el.textContent = msg;
+        el.title = 'Click to dismiss';
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', function () { el.remove(); });
         area.appendChild(el);
-        setTimeout(function () { el.remove(); }, 4000);
+        // Errors stay longer (10s) so there's time to read the full message
+        setTimeout(function () { if (el.parentNode) el.remove(); }, type === 'err' ? 10000 : 4000);
     }
 
     function toastWithAction(msg, actionLabel, onAction) {

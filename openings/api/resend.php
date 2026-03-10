@@ -4,44 +4,101 @@
  * Sends emails via the Resend API (https://resend.com/docs/api-reference/emails/send-email)
  */
 
+/**
+ * Returns ['ok' => true] on success or ['ok' => false, 'error' => 'HTTP 422: message'] on failure.
+ */
 function sendViaResend($to, $subject, $htmlBody) {
-    global $RESEND_API_KEY, $FROM_EMAIL;
+    global $RESEND_API_KEY, $FROM_EMAIL, $REPLY_TO_EMAIL;
 
     if ($RESEND_API_KEY === 'YOUR_RESEND_API_KEY_HERE') {
-        // API key not configured — log but don't fail
         error_log('[CapitalSavvy] Resend API key not configured. Email to ' . $to . ' not sent.');
-        return false;
+        return ['ok' => false, 'error' => 'Resend API key not configured'];
     }
 
-    $payload = json_encode([
-        'from' => $FROM_EMAIL,
-        'to' => [$to],
+    $data = [
+        'from'    => $FROM_EMAIL,
+        'to'      => [$to],
         'subject' => $subject,
-        'html' => $htmlBody
-    ]);
+        'html'    => $htmlBody
+    ];
+    if (!empty($REPLY_TO_EMAIL)) {
+        $data['reply_to'] = [$REPLY_TO_EMAIL];
+    }
 
-    $ch = curl_init('https://api.resend.com/emails');
-    curl_setopt_array($ch, [
+    return _resendPost('https://api.resend.com/emails', $data);
+}
+
+/**
+ * Sends multiple emails in one request via the Resend batch API.
+ * $messages = [['to'=>'...', 'subject'=>'...', 'html'=>'...'], ...]
+ * Returns ['ok' => true] on success or ['ok' => false, 'error' => '...'] on failure.
+ */
+function sendBatchViaResend($messages) {
+    global $RESEND_API_KEY, $FROM_EMAIL, $REPLY_TO_EMAIL;
+
+    if ($RESEND_API_KEY === 'YOUR_RESEND_API_KEY_HERE') {
+        return ['ok' => false, 'error' => 'Resend API key not configured'];
+    }
+
+    $batch = array_map(function ($m) use ($FROM_EMAIL, $REPLY_TO_EMAIL) {
+        $item = [
+            'from'    => $FROM_EMAIL,
+            'to'      => [$m['to']],
+            'subject' => $m['subject'],
+            'html'    => $m['html']
+        ];
+        if (!empty($REPLY_TO_EMAIL)) {
+            $item['reply_to'] = [$REPLY_TO_EMAIL];
+        }
+        return $item;
+    }, $messages);
+
+    return _resendPost('https://api.resend.com/emails/batch', $batch);
+}
+
+/** Internal: POST JSON to a Resend endpoint and return a result array. */
+function _resendPost($url, $body) {
+    global $RESEND_API_KEY, $CURL_CA_BUNDLE;
+
+    $payload = json_encode($body);
+    $ch      = curl_init($url);
+    $opts    = [
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => $payload,
-        CURLOPT_HTTPHEADER => [
+        CURLOPT_POST           => true,
+        CURLOPT_POSTFIELDS     => $payload,
+        CURLOPT_HTTPHEADER     => [
             'Authorization: Bearer ' . $RESEND_API_KEY,
             'Content-Type: application/json'
         ],
-        CURLOPT_TIMEOUT => 10
-    ]);
+        CURLOPT_TIMEOUT        => 15
+    ];
+    // On Windows/WAMP, curl has no built-in CA bundle. Point it at cacert.pem
+    // via CURL_CA_BUNDLE in .env (download from https://curl.se/ca/cacert.pem).
+    if (!empty($CURL_CA_BUNDLE) && file_exists($CURL_CA_BUNDLE)) {
+        $opts[CURLOPT_CAINFO] = $CURL_CA_BUNDLE;
+    }
+    curl_setopt_array($ch, $opts);
 
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $response  = curl_exec($ch);
+    $curlErr   = curl_error($ch);
+    $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    if ($httpCode >= 200 && $httpCode < 300) {
-        return true;
+    if ($curlErr) {
+        error_log('[CapitalSavvy] Resend curl error: ' . $curlErr);
+        return ['ok' => false, 'error' => 'Network error: ' . $curlErr];
     }
 
-    error_log('[CapitalSavvy] Resend API error (' . $httpCode . '): ' . $response);
-    return false;
+    if ($httpCode >= 200 && $httpCode < 300) {
+        return ['ok' => true];
+    }
+
+    $decoded = json_decode($response, true);
+    $msg     = $decoded['message'] ?? $response;
+    $name    = isset($decoded['name']) ? ' [' . $decoded['name'] . ']' : '';
+    $detail  = 'HTTP ' . $httpCode . $name . ': ' . $msg;
+    error_log('[CapitalSavvy] Resend API error — ' . $detail);
+    return ['ok' => false, 'error' => $detail];
 }
 
 function sendConfirmationEmail($email, $name, $reference) {

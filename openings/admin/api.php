@@ -89,6 +89,10 @@ switch ($action) {
         requireAdminSession();
         getEmailLog();
         break;
+    case 'distinct_values':
+        requireAdminSession();
+        getDistinctValues();
+        break;
     default:
         jsonResponse(['error' => 'Unknown action'], 400);
 }
@@ -192,6 +196,14 @@ function listApplications() {
         $sp = '%' . $search . '%';
         $params = array_merge($params, [$sp, $sp, $sp, $sp]);
     }
+    $filterCols = ['years_experience', 'education_level', 'salary_range', 'employment_status', 'gender', 'country', 'heard_about'];
+    foreach ($filterCols as $col) {
+        $val = trim($_GET['filter_' . $col] ?? '');
+        if ($val !== '') {
+            $where[] = "$col = ?";
+            $params[] = $val;
+        }
+    }
     $whereStr = count($where) > 0 ? ' WHERE ' . implode(' AND ', $where) : '';
     $orderStr = ' ORDER BY ' . $sort_by . ' ' . $sort_dir;
 
@@ -226,6 +238,21 @@ function listApplications() {
         'page' => $page,
         'pages' => max(1, ceil($total / $limit))
     ]);
+}
+
+function getDistinctValues() {
+    $col = trim($_GET['col'] ?? '');
+    $allowed = ['years_experience', 'education_level', 'salary_range', 'employment_status', 'gender', 'country', 'heard_about'];
+    if (!in_array($col, $allowed)) {
+        jsonResponse(['error' => 'Invalid column'], 400);
+    }
+    $db = getDB();
+    $res = $db->query("SELECT DISTINCT $col FROM applications WHERE $col IS NOT NULL AND TRIM($col) != '' ORDER BY $col ASC");
+    $values = [];
+    while ($row = $res->fetchArray(SQLITE3_NUM)) {
+        $values[] = $row[0];
+    }
+    jsonResponse(['values' => $values]);
 }
 
 function getRoles() {
@@ -427,32 +454,57 @@ function bulkEmail() {
     foreach ($ids as $i => $id) {
         $stmt->bindValue($i + 1, $id, SQLITE3_INTEGER);
     }
-    $results = $stmt->execute();
+    $res = $stmt->execute();
+    $apps = [];
+    while ($row = $res->fetchArray(SQLITE3_ASSOC)) $apps[] = $row;
+
+    if (empty($apps)) {
+        jsonResponse(['error' => 'No applications found'], 400);
+    }
 
     $sentBy = $_SESSION['admin_username'] ?? 'admin';
-    $sent = 0;
-    $failed = [];
-    while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+
+    // Build email payloads
+    $messages = [];
+    foreach ($apps as $row) {
         $emailData = buildEmailTemplate($template, $row, $customSubject, $customBody, $personalNote);
-        if (sendViaResend($row['email'], $emailData['subject'], $emailData['html'])) {
-            $sent++;
-            $log = $db->prepare("INSERT INTO application_emails (application_id, template, subject, personal_note, sent_by) VALUES (?, ?, ?, ?, ?)");
-            $log->bindValue(1, intval($row['id']), SQLITE3_INTEGER);
-            $log->bindValue(2, $template, SQLITE3_TEXT);
-            $log->bindValue(3, $emailData['subject'], SQLITE3_TEXT);
-            $log->bindValue(4, $personalNote, SQLITE3_TEXT);
-            $log->bindValue(5, $sentBy, SQLITE3_TEXT);
-            $log->execute();
-        } else {
-            $failed[] = $row['email'];
+        $messages[] = [
+            'to'      => $row['email'],
+            'subject' => $emailData['subject'],
+            'html'    => $emailData['html'],
+            'app_id'  => intval($row['id'])
+        ];
+    }
+
+    // Single send → normal API; multiple → batch API
+    if (count($messages) === 1) {
+        $m = $messages[0];
+        $result = sendViaResend($m['to'], $m['subject'], $m['html']);
+        if (!$result['ok']) {
+            jsonResponse(['success' => false, 'error' => $result['error']]);
+        }
+    } else {
+        $batchInput = array_map(function ($m) {
+            return ['to' => $m['to'], 'subject' => $m['subject'], 'html' => $m['html']];
+        }, $messages);
+        $result = sendBatchViaResend($batchInput);
+        if (!$result['ok']) {
+            jsonResponse(['success' => false, 'error' => $result['error']]);
         }
     }
 
-    jsonResponse([
-        'success' => true,
-        'sent' => $sent,
-        'failed' => $failed
-    ]);
+    // Log all sent emails
+    foreach ($messages as $m) {
+        $log = $db->prepare("INSERT INTO application_emails (application_id, template, subject, personal_note, sent_by) VALUES (?, ?, ?, ?, ?)");
+        $log->bindValue(1, $m['app_id'], SQLITE3_INTEGER);
+        $log->bindValue(2, $template, SQLITE3_TEXT);
+        $log->bindValue(3, $m['subject'], SQLITE3_TEXT);
+        $log->bindValue(4, $personalNote, SQLITE3_TEXT);
+        $log->bindValue(5, $sentBy, SQLITE3_TEXT);
+        $log->execute();
+    }
+
+    jsonResponse(['success' => true, 'sent' => count($messages), 'failed' => []]);
 }
 
 function getEmailLog() {

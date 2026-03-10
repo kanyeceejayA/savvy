@@ -7,9 +7,11 @@ loadEnvFiles([
 ]);
 
 // --- Configuration ---
-$RESEND_API_KEY = getenv('RESEND_API_KEY') ?: 'YOUR_RESEND_API_KEY_HERE';
-$ADMIN_EMAIL = getenv('ADMIN_EMAIL') ?: 'info@capitalsavvy.pro';
-$FROM_EMAIL = getenv('FROM_EMAIL') ?: 'CapitalSavvy Careers <careers@capitalsavvy.pro>';
+$RESEND_API_KEY  = getenv('RESEND_API_KEY')   ?: 'YOUR_RESEND_API_KEY_HERE';
+$ADMIN_EMAIL     = getenv('ADMIN_EMAIL')      ?: 'info@capitalsavvy.pro';
+$FROM_EMAIL      = getenv('FROM_EMAIL')       ?: (getenv('ADMIN_EMAIL') ?: 'CapitalSavvy Careers <careers@capitalsavvy.pro>');
+$REPLY_TO_EMAIL  = getenv('REPLY_TO_EMAIL')   ?: '';
+$CURL_CA_BUNDLE  = getenv('CURL_CA_BUNDLE')   ?: '';
 $SITE_URL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost');
 
 // Paths

@@ -164,6 +164,13 @@
                     </div>
                 </div>
                 <div class="toolbar-r">
+                    <button class="btn btn-outline btn-sm" id="filterBtn">
+                        <svg viewBox="0 0 20 20" fill="none" width="13" height="13">
+                            <path d="M3 5h14M6 10h8M9 15h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                        Filter
+                        <span class="filter-badge hidden" id="filterBadge">0</span>
+                    </button>
                     <div class="col-menu-wrap" id="colMenuWrap">
                         <button class="btn btn-outline btn-sm" id="colMenuBtn">
                             <svg viewBox="0 0 20 20" fill="none" width="13" height="13">
@@ -186,6 +193,55 @@
                         </svg>
                         Export CSV
                     </button>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar hidden" id="filterBar">
+                <div class="filter-bar-body">
+                    <div class="fb-field">
+                        <label>Experience</label>
+                        <select class="fb-select" id="fb_years_experience" data-col="years_experience">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <div class="fb-field">
+                        <label>Education</label>
+                        <select class="fb-select" id="fb_education_level" data-col="education_level">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <div class="fb-field">
+                        <label>Salary</label>
+                        <select class="fb-select" id="fb_salary_range" data-col="salary_range">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <div class="fb-field">
+                        <label>Employment</label>
+                        <select class="fb-select" id="fb_employment_status" data-col="employment_status">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <div class="fb-field">
+                        <label>Gender</label>
+                        <select class="fb-select" id="fb_gender" data-col="gender">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <div class="fb-field">
+                        <label>Country</label>
+                        <select class="fb-select" id="fb_country" data-col="country">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <div class="fb-field">
+                        <label>Heard Via</label>
+                        <select class="fb-select" id="fb_heard_about" data-col="heard_about">
+                            <option value="">Any</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-sm btn-ghost" id="clearFiltersBtn">Clear filters</button>
                 </div>
             </div>
 
