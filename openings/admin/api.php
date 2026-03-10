@@ -520,35 +520,62 @@ function getEmailLog() {
 }
 
 function buildEmailTemplate($template, $app, $customSubject, $customBody, $personalNote = '') {
-    $name = trim(($app['first_name'] ?? '') . ' ' . ($app['last_name'] ?? ''));
-    $ref = $app['reference_number'] ?? '';
+    $name    = trim(($app['first_name'] ?? '') . ' ' . ($app['last_name'] ?? ''));
+    $ref     = $app['reference_number'] ?? '';
+    $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+    $safeRef  = htmlspecialchars($ref,  ENT_QUOTES, 'UTF-8');
 
-    $noteHtml = ($personalNote !== '') ? '<p>' . nl2br(htmlspecialchars($personalNote, ENT_QUOTES, 'UTF-8')) . '</p>' : '';
-
-    if ($template === 'custom') {
-        $subject = $customSubject !== '' ? $customSubject : 'Update on your CapitalSavvy application';
-        $safe = nl2br(htmlspecialchars($customBody !== '' ? $customBody : 'Thank you for applying to CapitalSavvy.', ENT_QUOTES, 'UTF-8'));
-        $html = '<p>Dear ' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . ',</p><p>' . $safe . '</p>' . $noteHtml . '<p>Reference: <strong>' . htmlspecialchars($ref, ENT_QUOTES, 'UTF-8') . '</strong></p><p>Regards,<br>CapitalSavvy Team</p>';
-        return ['subject' => $subject, 'html' => $html];
+    // Personal note block (shared across all templates)
+    $noteBlock = '';
+    if ($personalNote !== '') {
+        $noteBlock = '
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 20px;">
+  <tr>
+    <td bgcolor="#FBF7F1" style="background-color:#FBF7F1;border-left:4px solid #B9915B;padding:14px 18px;font-size:14px;color:#3D4456;font-style:italic;">
+      ' . nl2br(htmlspecialchars($personalNote, ENT_QUOTES, 'UTF-8')) . '
+    </td>
+  </tr>
+</table>';
     }
+
+    // Reference line
+    $refLine = '<p style="margin:0 0 20px;font-size:13px;color:#6B7B99;">Reference: <strong style="font-family:\'Courier New\',Courier,monospace;color:#B9915B;letter-spacing:1px;">' . $safeRef . '</strong></p>';
+    $sign    = '<p style="margin:0;">Best regards,<br><strong style="color:#1E2540;">The CapitalSavvy Team</strong></p>';
 
     $templates = [
         'next_stage' => [
             'subject' => 'Next Step: CapitalSavvy Application (' . $ref . ')',
-            'body' => 'We are pleased to invite you to the next stage of our process. We will be in touch with details shortly.'
+            'body'    => 'We are pleased to invite you to the next stage of our process. We will be in touch shortly with further details.'
         ],
         'on_hold' => [
             'subject' => 'Update: CapitalSavvy Application (' . $ref . ')',
-            'body' => 'Your application is still under review. We appreciate your patience and continued interest in CapitalSavvy.'
+            'body'    => 'Your application is still under review. We appreciate your patience and continued interest in joining CapitalSavvy.'
         ],
         'rejection' => [
             'subject' => 'CapitalSavvy Application Outcome (' . $ref . ')',
-            'body' => 'Thank you for the time and effort you put into your application. After careful consideration, we are not moving forward at this stage. We value your interest in CapitalSavvy and encourage you to apply in the future.'
+            'body'    => 'Thank you for the time and effort you put into your application. After careful consideration, we will not be moving forward at this stage. We sincerely value your interest in CapitalSavvy and encourage you to apply again in the future.'
+        ],
+        'custom' => [
+            'subject' => $customSubject !== '' ? $customSubject : 'Update on your CapitalSavvy application',
+            'body'    => $customBody    !== '' ? $customBody    : 'Thank you for applying to CapitalSavvy.'
         ]
     ];
+
     $selected = $templates[$template] ?? $templates['next_stage'];
-    $html = '<p>Dear ' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . ',</p><p>' . htmlspecialchars($selected['body'], ENT_QUOTES, 'UTF-8') . '</p>' . $noteHtml . '<p>Reference: <strong>' . htmlspecialchars($ref, ENT_QUOTES, 'UTF-8') . '</strong></p><p>Regards,<br>CapitalSavvy Team</p>';
-    return ['subject' => $selected['subject'], 'html' => $html];
+    $subject  = $selected['subject'];
+
+    if ($template === 'custom') {
+        $bodyText = nl2br(htmlspecialchars($selected['body'], ENT_QUOTES, 'UTF-8'));
+    } else {
+        $bodyText = htmlspecialchars($selected['body'], ENT_QUOTES, 'UTF-8');
+    }
+
+    $content = '
+<p style="margin:0 0 18px;">Dear <strong style="color:#1E2540;">' . $safeName . '</strong>,</p>
+<p style="margin:0 0 20px;">' . $bodyText . '</p>
+' . $noteBlock . $refLine . $sign;
+
+    return ['subject' => $subject, 'html' => emailWrapper($content)];
 }
 
 function listAccounts() {

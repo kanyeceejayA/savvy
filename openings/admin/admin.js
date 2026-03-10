@@ -365,11 +365,6 @@
                     grid.innerHTML = '<div class="tbl-empty">No roles found. Applications will appear here once submitted.</div>';
                     return;
                 }
-                // If only one role exists, go straight into it
-                if (d.roles.length === 1) {
-                    selectRole(d.roles[0].name);
-                    return;
-                }
                 renderRoleCards(d.roles);
             })
             .catch(function (err) { grid.innerHTML = '<div class="tbl-empty" style="color:var(--danger)">Could not load roles: ' + esc(err.message) + '</div>'; });
