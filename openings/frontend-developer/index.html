@@ -194,7 +194,6 @@
                     <option value="">Prefer not to say</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
-                    <option value="Non-binary">Non-binary</option>
                 </select>
             </div>
 
@@ -255,8 +254,10 @@
 
             <div class="form-group" data-validate="required">
                 <label>University / Institution <span class="req">*</span></label>
-                <input type="text" name="institution" list="ugandaUniversities" required>
-                <datalist id="ugandaUniversities">
+                <input type="text" name="institution" list="universityList" placeholder="Type your university or institution name" required>
+                <small class="field-hint">Type your institution name — suggestions will appear as you type, but you can enter any institution not on the list.</small>
+                <datalist id="universityList">
+                    <!-- Uganda -->
                     <option value="Makerere University">
                     <option value="Kyambogo University">
                     <option value="Uganda Christian University">
@@ -270,8 +271,44 @@
                     <option value="Nkumba University">
                     <option value="Bishop Stuart University">
                     <option value="Uganda Technology and Management University">
-                    <option value="Victoria University">
+                    <option value="Victoria University Uganda">
                     <option value="Cavendish University Uganda">
+                    <option value="Islamic University in Uganda">
+                    <option value="Mountains of the Moon University">
+                    <option value="Bugema University">
+                    <option value="Kampala University">
+                    <!-- Kenya -->
+                    <option value="University of Nairobi">
+                    <option value="Strathmore University">
+                    <option value="Jomo Kenyatta University of Agriculture and Technology">
+                    <option value="Kenyatta University">
+                    <option value="Moi University">
+                    <option value="United States International University Africa">
+                    <option value="Daystar University">
+                    <option value="Multimedia University of Kenya">
+                    <!-- Tanzania -->
+                    <option value="University of Dar es Salaam">
+                    <option value="Ardhi University">
+                    <option value="University of Dodoma">
+                    <option value="Nelson Mandela African Institution of Science and Technology">
+                    <option value="Sokoine University of Agriculture">
+                    <!-- Rwanda -->
+                    <option value="University of Rwanda">
+                    <option value="African Leadership University">
+                    <option value="Carnegie Mellon University Africa">
+                    <option value="Kepler University">
+                    <!-- Other East / Central Africa -->
+                    <option value="University of Burundi">
+                    <option value="University of South Sudan">
+                    <option value="University of Kinshasa">
+                    <!-- Pan-African / International -->
+                    <option value="African University of Science and Technology">
+                    <option value="Ashesi University">
+                    <option value="University of Lagos">
+                    <option value="Covenant University">
+                    <option value="University of Cape Town">
+                    <option value="University of the Witwatersrand">
+                    <option value="Other">
                 </datalist>
                 <div class="error-msg">Institution is required</div>
             </div>
@@ -337,7 +374,10 @@
                     <option value="No professional experience">No professional experience</option>
                     <option value="Less than 1 year">Less than 1 year</option>
                     <option value="1-2 years">1-2 years</option>
-                    <option value="2+ years">2+ years</option>
+                    <option value="2-3 years">2-3 years</option>
+                    <option value="3-5 years">3-5 years</option>
+                    <option value="5-8 years">5-8 years</option>
+                    <option value="8+ years">8+ years</option>
                 </select>
                 <div class="error-msg">Experience level is required</div>
             </div>

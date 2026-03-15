@@ -284,6 +284,13 @@
     border-color: var(--error);
     box-shadow: 0 0 0 3px rgba(205, 30, 45, 0.1);
 }
+.form-group .field-hint {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-top: 4px;
+}
+
 .form-group .error-msg {
     color: var(--error);
     font-size: 0.8rem;

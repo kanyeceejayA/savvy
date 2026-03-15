@@ -6,6 +6,7 @@
   window.onscroll = function() {scrollFunction()};
 
   function scrollFunction() {
+    if (!mybutton) return;
     if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
       mybutton.style.display = "block";
     } else {
@@ -127,5 +128,6 @@
   });
 
   document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("year").innerHTML = (new Date().getFullYear());
+    var yearEl = document.getElementById("year");
+    if (yearEl) yearEl.innerHTML = (new Date().getFullYear());
   });
